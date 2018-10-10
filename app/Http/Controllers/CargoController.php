@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Personal;
+use App\Cargo;
 use Illuminate\Http\Request;
 
-class PersonalController extends Controller
+class CargoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class PersonalController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Personal  $personal
+     * @param  \App\Cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function show(Personal $personal)
+    public function show(Cargo $cargo)
     {
         //
     }
@@ -52,10 +52,10 @@ class PersonalController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Personal  $personal
+     * @param  \App\Cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function edit(Personal $personal)
+    public function edit(Cargo $cargo)
     {
         //
     }
@@ -64,10 +64,10 @@ class PersonalController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Personal  $personal
+     * @param  \App\Cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Personal $personal)
+    public function update(Request $request, Cargo $cargo)
     {
         //
     }
@@ -75,10 +75,10 @@ class PersonalController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Personal  $personal
+     * @param  \App\Cargo  $cargo
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Personal $personal)
+    public function destroy(Cargo $cargo)
     {
         //
     }

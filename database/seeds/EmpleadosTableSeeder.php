@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class PersonalsTableSeeder extends Seeder
+class EmpleadosTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,6 +11,6 @@ class PersonalsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+        //
     }
 }
