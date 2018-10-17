@@ -35,7 +35,7 @@
                 {{-- Info del usuario --}}
                 <div class="user">
                     <div class="photo">
-                        <img src="{{assets('img/faces/avatar.jpg')}}" />
+                        <img src="{{asset('img/faces/avatar.jpg')}}" />
                     </div>
                     <div class="user-info">
                         <a data-toggle="collapse" href="#collapseExample" class="username">
