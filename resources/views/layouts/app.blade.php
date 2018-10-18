@@ -82,7 +82,7 @@
                         <div class="collapse" id="modAdmin">
                             <ul class="nav">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="#p">
                                       <span class="sidebar-mini"> U </span>
                                       <span class="sidebar-normal"> Usuarios </span>
                                     </a>
