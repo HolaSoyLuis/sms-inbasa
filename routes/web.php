@@ -4,6 +4,7 @@ Route::get('/', 'Auth\LoginController@formPrincipal');
 
 // Auth::routes();
 Route::post('login', 'Auth\LoginController@login')->name('login');
+Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('inicio', 'InicioController@index')->name('inicio');
 
 

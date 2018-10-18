@@ -29,8 +29,13 @@ class LoginController extends Controller
             return redirect()->route('inicio');
         }
 
-        return $errors->withErrors(['username' => trans('auth.failed')])
+        return back()->withErrors(['username' => trans('auth.failed')])
             ->withInput(request(['username']));
+    }
+
+    public function logout(){
+        Auth::logout();
+        return redirect('/');
     }
 
 }

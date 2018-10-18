@@ -20,7 +20,7 @@
 
     <nav class="navbar navbar-default navbar-transparent navbar-fixed-top navbar-color-on-scroll" color-on-scroll="100">
     	<div class="container">
-        	<!-- Brand and toggle get grouped for better mobile display -->
+        	<!-- Toogle para dispositivos móviles -->
         	<div class="navbar-header">
         		<button type="button" class="navbar-toggle" data-toggle="collapse">
             		<span class="sr-only">Toggle navigation</span>
@@ -36,7 +36,7 @@
                     @auth
                         <li>
                             <a href="{{ url('/inicio') }}" class="btn btn-rose btn-round">
-                                <i class="material-icons">home</i>Dashboard
+                                <i class="material-icons">home</i>Inicio
                             </a>
                         </li>
                     @else
@@ -133,15 +133,30 @@
                             </div>
                         </div>
                         <div class="modal-body">
-                            <form class="form" method="" action="">
+                            <form class="form" method="" action="" id="validarLogin">
                                 <p class="description text-center">Ingrese sus datos</p>
+                                {{-- Mensaje de Error si no se autentica antes el usuario y desea acceder a otra ruta --}}
+                                @if (session()->has('flash'))
+                                    <div class="alert alert-info">
+                                        <div class="container">
+                                            <div class="alert-icon">
+                                                <i class="material-icons">info_outline</i>
+                                            </div>
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true"><i class="material-icons">clear</i></span>
+                                            </button>
+
+                                            <b>Info:</b> {{session('flash')}}
+                                        </div>
+                                    </div>
+                                @endif
                                 <div class="card-content">
                                     {{-- Input usuario --}}
                                     <div class="input-group">
                                         <span class="input-group-addon">
                                             <i class="material-icons">face</i>
                                         </span>
-                                        <input type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="Usuario..." name="username" value="{{ old('username') }}" required autofocus>
+                                        <input type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" placeholder="Usuario*" name="username" value="{{ old('username') }}" required="true" autofocus>
 
                                         {{-- Mostrar mensaje de error --}}
                                         @if ($errors->has('username'))
@@ -156,7 +171,7 @@
                                         <span class="input-group-addon">
                                             <i class="material-icons">lock_outline</i>
                                         </span>
-                                        <input type="password" placeholder="Contraseña..." class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required/>
+                                        <input type="password" placeholder="Contraseña*" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required="true"/>
                                         
                                         @if ($errors->has('password'))
                                             <span class="invalid-feedback" role="alert">
@@ -164,6 +179,7 @@
                                             </span>
                                         @endif
                                     </div>
+                                    <div class="category form-category">* Campos Requeridos</div>
                                 </div>
                             </form>
                         </div>
@@ -186,5 +202,26 @@
 <script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
 <!--    Centro de Control para Material Kit: ripples, efectos parallax,  -->
 <script src="{{ asset('js/material-kit.js?v=1.2.1') }}" type="text/javascript"></script>
+<script>
+    function setValidacion(id){
+        $(id).validate({
+            highlight: function(element) {
+                $(element).closest('.form-group').removeClass('has-success').addClass('has-danger');
+                $(element).closest('.form-check').removeClass('has-success').addClass('has-danger');
+            },
+            success: function(element) {
+                $(element).closest('.form-group').removeClass('has-danger').addClass('has-success');
+                $(element).closest('.form-check').removeClass('has-danger').addClass('has-success');
+            },
+            errorPlacement : function(error, element) {
+                $(element).append(error);
+            },
+        });
+    }
+
+    $(document).ready(function() {
+        setValidacion('#validarLogin');
+    });
+</script>
 
 </html>

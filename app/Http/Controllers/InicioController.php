@@ -13,6 +13,7 @@ class InicioController extends Controller
      */
     public function __construct()
     {
+        //Para que solo se pueda acceder siendo usuario autenticado
         $this->middleware('auth');
     }
 
