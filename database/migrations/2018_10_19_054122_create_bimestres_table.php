@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCargosTable extends Migration
+class CreateBimestresTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class CreateCargosTable extends Migration
      */
     public function up()
     {
-        Schema::create('cargos', function (Blueprint $table) {
+        Schema::create('bimestres', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cargo',45);
+            //Llaves foráneas
+            $table->unsignedInteger('ciclo_id')->nullable();
+            $table->foreign('ciclo_id')->references('id')->on('ciclos');
+            //Campos
+            $table->string('bimestre',45);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +32,6 @@ class CreateCargosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargos');
+        Schema::dropIfExists('bimestres');
     }
 }

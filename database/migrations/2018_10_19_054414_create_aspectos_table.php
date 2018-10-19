@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCargosTable extends Migration
+class CreateAspectosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateCargosTable extends Migration
      */
     public function up()
     {
-        Schema::create('cargos', function (Blueprint $table) {
+        Schema::create('aspectos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cargo',45);
+            $table->string('aspecto',45);
+            $table->float('nota_minima',2);
+            $table->float('nota_maxima',2);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +30,6 @@ class CreateCargosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargos');
+        Schema::dropIfExists('aspectos');
     }
 }

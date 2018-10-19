@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCargosTable extends Migration
+class CreateBackupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateCargosTable extends Migration
      */
     public function up()
     {
-        Schema::create('cargos', function (Blueprint $table) {
+        Schema::create('backups', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cargo',45);
+            $table->text('ruta_back',300);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +28,6 @@ class CreateCargosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargos');
+        Schema::dropIfExists('backups');
     }
 }

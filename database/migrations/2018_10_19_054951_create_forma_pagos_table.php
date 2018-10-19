@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCargosTable extends Migration
+class CreateFormaPagosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateCargosTable extends Migration
      */
     public function up()
     {
-        Schema::create('cargos', function (Blueprint $table) {
+        Schema::create('forma_pagos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('cargo',45);
+            $table->string('forma',45);
+            $table->string('detalles',200);
             $table->softDeletes();
             $table->timestamps();
         });
@@ -28,6 +29,6 @@ class CreateCargosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cargos');
+        Schema::dropIfExists('forma_pagos');
     }
 }

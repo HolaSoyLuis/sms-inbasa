@@ -21,10 +21,9 @@ class CreateCentrosTable extends Migration
             $table->string('cuidad',45);
             $table->string('nit',25)->nullable();
             $table->string('telefono1',15);
-            $table->string('telefono2',15)->nullable();;;
-            $table->string('slug');
-            $table->timestamps();
+            $table->string('telefono2',15)->nullable();
             $table->softDeletes();
+            $table->timestamps();
         });
     }
 
