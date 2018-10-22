@@ -3,15 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-use App\Http\Controllers\Controller;
-
-class RoleController extends Controller
-{
-    //
-    public function index(){                  
-      return view('admin.roles-y-permisos.index');   
-=======
 
 class RoleController extends Controller
 {
@@ -89,6 +80,5 @@ class RoleController extends Controller
     public function destroy($id)
     {
         //
->>>>>>> 52fa63d38e1e94f28a8088847929f51bb7d06530
     }
 }

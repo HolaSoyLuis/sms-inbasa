@@ -39,13 +39,12 @@
                 {{-- Apartados - Botones de Módulos --}}
                 <ul class="nav">
                     {{-- Botones Módulo Home --}}
-<<<<<<< HEAD
-                    <li class="nav-item active  ">
-                        <a class="nav-link" href="/">
-=======
                     <li class="nav-item  ">
                         <a class="nav-link" href="{{ route('inicio') }}">
->>>>>>> 52fa63d38e1e94f28a8088847929f51bb7d06530
+
+                    <li class="nav-item  ">
+                        <a class="nav-link" href="{{ route('inicio') }}">
+
                               <i class="material-icons">home</i>
                             <p>Inicio</p>
                         </a>
@@ -62,21 +61,13 @@
                         <div class="collapse" id="modAdmin">
                             <ul class="nav">
                                 <li class="nav-item ">
-<<<<<<< HEAD
-                                    <a class="nav-link" href="{{url('admin/usuarios')}}">
-=======
                                     <a class="nav-link" href="{{ route('usuarios.index') }}">
->>>>>>> 52fa63d38e1e94f28a8088847929f51bb7d06530
                                       <span class="sidebar-mini"> U </span>
                                       <span class="sidebar-normal"> Usuarios </span>                                    
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-<<<<<<< HEAD
-                                    <a class="nav-link" href="{{url('admin/roles-y-permisos')}}">
-=======
                                     <a class="nav-link" href="{{ route('roles.index') }}">
->>>>>>> 52fa63d38e1e94f28a8088847929f51bb7d06530
                                       <span class="sidebar-mini"> RP </span>
                                       <span class="sidebar-normal"> Roles y Permisos </span>
                                     </a>

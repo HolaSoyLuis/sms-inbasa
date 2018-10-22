@@ -48,13 +48,9 @@ Route::middleware(['auth'])->group(function(){
         ->middleware('permission:roles.create');
     
     //Navegar en los roles
-<<<<<<< HEAD
-    // Route::get('admin/roles-y-permisos/', 'RoleController@index')->name('roles.index')
-    //     ->middleware('permission:roles.index');
-=======
+
     Route::get('admin/roles', 'RoleController@index')->name('roles.index')
         ->middleware('permission:roles.index');
->>>>>>> 52fa63d38e1e94f28a8088847929f51bb7d06530
     
     //Formulario para crear - verifica el permiso de create = crear
     Route::get('admin/roles/create', 'RoleController@create')->name('roles.create')
