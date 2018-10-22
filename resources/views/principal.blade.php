@@ -133,7 +133,6 @@
                             </div>
                         </div>
                         <div class="modal-body">
-                            <form class="form" method="" action="" id="validarLogin">
                                 <p class="description text-center">Ingrese sus datos</p>
                                 {{-- Mensaje de Error si no se autentica antes el usuario y desea acceder a otra ruta --}}
                                 @if (session()->has('flash'))
@@ -145,7 +144,6 @@
                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                 <span aria-hidden="true"><i class="material-icons">clear</i></span>
                                             </button>
-
                                             <b>Info:</b> {{session('flash')}}
                                         </div>
                                     </div>
@@ -181,7 +179,6 @@
                                     </div>
                                     <div class="category form-category">* Campos Requeridos</div>
                                 </div>
-                            </form>
                         </div>
                         <div class="modal-footer text-center">
                             <button class="btn btn-default btn-wd btn-lg" style="margin-bottom:10px;">Ingresar</button>

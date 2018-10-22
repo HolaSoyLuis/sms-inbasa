@@ -16,6 +16,7 @@
 
     <!-- CSS Files -->
     <link href="{{asset('css/material-dashboard.min.css?v=2.0.2')}}" rel="stylesheet" />
+    @yield('css')
 
     <!-- Titulo -->
     <title>{{ config('app.name', 'INBASA') }}</title>
@@ -26,46 +27,19 @@
         {{-- Inicio SideBar --}}
         <div class="sidebar" data-color="purple" data-background-color="black" data-image="{{asset('img/bg_sidebar-1.jpg')}}">
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+                <a href="#" class="simple-text logo-mini">
                         GT
                 </a>
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+                <a href="#" class="simple-text logo-normal">
                     UMG
                 </a>
             </div>
             <div class="sidebar-wrapper">
-                {{-- Inicio UserInfo --}}
-                <div class="user">
-                    <div class="photo">
-                        <img src="{{asset('img/faces/avatar.jpg')}}" />
-                    </div>
-                    <div class="user-info">
-                        <a data-toggle="collapse" href="#collUsuario" class="username">
-                            <span>
-                               Tania Andrew
-                              <b class="caret"></b>
-                            </span>
-                        </a>
-                        <div class="collapse" id="collUsuario">
-                            <ul class="nav">
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">
-                                      <span class="sidebar-mini"> P </span>
-                                      <span class="sidebar-normal"> Perfil </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                    </div>
-                </div>
-                <!-- Fin UserInfo-->
-
                 {{-- Apartados - Botones de Módulos --}}
                 <ul class="nav">
                     {{-- Botones Módulo Home --}}
-                    <li class="nav-item active  ">
-                        <a class="nav-link" href="#">
+                    <li class="nav-item  ">
+                        <a class="nav-link" href="{{ route('inicio') }}">
                               <i class="material-icons">home</i>
                             <p>Inicio</p>
                         </a>
@@ -82,55 +56,55 @@
                         <div class="collapse" id="modAdmin">
                             <ul class="nav">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#p">
+                                    <a class="nav-link" href="{{ route('usuarios.index') }}">
                                       <span class="sidebar-mini"> U </span>
                                       <span class="sidebar-normal"> Usuarios </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('roles.index') }}">
                                       <span class="sidebar-mini"> RP </span>
                                       <span class="sidebar-normal"> Roles y Permisos </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('empleados.index') }}">
                                       <span class="sidebar-mini"> P </span>
                                       <span class="sidebar-normal"> Personal </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('estudiantes.index') }}">
                                       <span class="sidebar-mini"> ES </span>
                                       <span class="sidebar-normal"> Estudiantes </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('ciclos.index') }}">
                                       <span class="sidebar-mini"> CB </span>
                                       <span class="sidebar-normal"> Ciclos y Bimestres </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('grados.index') }}">
                                       <span class="sidebar-mini"> GS </span>
                                       <span class="sidebar-normal"> Grados y Secciones </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('cursos.index') }}">
                                       <span class="sidebar-mini"> C </span>
                                       <span class="sidebar-normal"> Cursos </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('centros.index') }}">
                                       <span class="sidebar-mini"> CE </span>
                                       <span class="sidebar-normal"> Centro Educativo </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('respaldos.index') }}">
                                       <span class="sidebar-mini"> BK </span>
                                       <span class="sidebar-normal"> Respaldos </span>
                                     </a>
@@ -152,19 +126,19 @@
                         <div class="collapse" id="modDocente">
                             <ul class="nav">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('docentes.cursos.index') }}">
                                       <span class="sidebar-mini"> C </span>
                                       <span class="sidebar-normal"> Cursos </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('docentes.horario.index') }}">
                                       <span class="sidebar-mini"> HR </span>
                                       <span class="sidebar-normal"> Horario </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('docentes.notas.index') }}">
                                       <span class="sidebar-mini"> N </span>
                                       <span class="sidebar-normal"> Notas </span>
                                     </a>
@@ -186,13 +160,13 @@
                         <div class="collapse" id="modEncargado">
                             <ul class="nav">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('encargados.notas.index') }}">
                                       <span class="sidebar-mini"> NT </span>
                                       <span class="sidebar-normal"> Notas </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('encargados.horario.index') }}">
                                       <span class="sidebar-mini"> HR </span>
                                       <span class="sidebar-normal"> Horario Clases </span>
                                     </a>
@@ -214,13 +188,13 @@
                         <div class="collapse" id="modEstudiante">
                             <ul class="nav">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('estudiantes.cursos.index') }}">
                                       <span class="sidebar-mini"> C </span>
                                       <span class="sidebar-normal"> Cursos </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('estudiantes.horario.index') }}">
                                       <span class="sidebar-mini"> HR </span>
                                       <span class="sidebar-normal"> Horario Clases </span>
                                     </a>
@@ -242,19 +216,19 @@
                         <div class="collapse" id="modEconomico">
                             <ul class="nav">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('inscripciones.index') }}">
                                       <span class="sidebar-mini"> IN </span>
                                       <span class="sidebar-normal"> Inscripciones </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('colegiaturas.index') }}">
                                       <span class="sidebar-mini"> CL </span>
                                       <span class="sidebar-normal"> Colegiaturas </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="#">
+                                    <a class="nav-link" href="{{ route('costos.index') }}">
                                       <span class="sidebar-mini"> GC </span>
                                       <span class="sidebar-normal"> Gestión de Costos </span>
                                     </a>
@@ -365,4 +339,5 @@
     <!--    Centro de Control para Material Kit: ripples, efectos parallax,  -->
     <script src="{{asset('js/material-dashboard.min.js?v=2.0.2')}}" type="text/javascript"></script>
     <script src="{{asset('js/layout/app-plantilla.js')}}"></script>
+    @yield('js')
 </html>

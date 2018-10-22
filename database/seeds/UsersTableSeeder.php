@@ -17,5 +17,15 @@ class UsersTableSeeder extends Seeder
             'slug'      =>  'admin',
             'special'   =>  'all-access'
         ]);
+
+        DB::table('users')->insert([
+            'username'      =>  'willy',
+            'password'      =>  bcrypt('willy12')
+        ]);
+
+        DB::table('role_user')->insert([
+            'role_id'      =>  '1',
+            'user_id'      =>  '1'
+        ]);
     }
 }
