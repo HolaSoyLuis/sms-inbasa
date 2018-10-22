@@ -14,7 +14,7 @@ class CentroController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin/centro_educativo/centro');
     }
 
     /**
