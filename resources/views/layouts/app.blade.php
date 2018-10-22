@@ -39,8 +39,6 @@
                 {{-- Apartados - Botones de Módulos --}}
                 <ul class="nav">
                     {{-- Botones Módulo Home --}}
-                    <li class="nav-item  ">
-                        <a class="nav-link" href="{{ route('inicio') }}">
 
                     <li class="nav-item  ">
                         <a class="nav-link" href="{{ route('inicio') }}">

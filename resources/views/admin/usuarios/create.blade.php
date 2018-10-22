@@ -29,7 +29,7 @@
 		<div class="col-md-4">
 			<div class="card">
 				<div class="card-body text-center">								
-				<form method="post" action="{{url('/admin/usuarios')}}">
+				<form method="post" action="{{ route('usuarios.store') }}">
 					@csrf
 					<h3>Ingrese los Datos</h3>										
 						<div class="form-group">

@@ -12,7 +12,7 @@
 		          <a class="nav-link" href="">Lista de Usuarios</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="create/">Nuevo Usuario</a>
+		          <a class="nav-link" href="{{ route('usuarios.create') }}">Nuevo Usuario</a>
 		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link" href="#">Pricing</a>
@@ -53,10 +53,22 @@
 					<td>{{$user->updated_at}}</td>
 					<td>
 						<a href="#">
-							<button class="btn btn-info">Editar</button>
+							<button class="btn btn-info btn-sm" title="Ver">
+								<i class="material-icons">visibility</i>
+								Ver
+							</button>
+						</a>
+						<a href="#">
+							<button class="btn btn-primary btn-sm" title="Editar">
+								<i class="material-icons">edit</i>
+								Editar
+							</button>
 						</a>
 						<a href="" data-target="#" data-toggle="modal">
-							<button class="btn btn-danger">Eliminar</button>
+							<button class="btn btn-danger btn-sm" title="Eliminar">
+								<i class="material-icons">delete</i>
+								Eliminar
+							</button>
 						</a>
 					</td>
 				</tr>	

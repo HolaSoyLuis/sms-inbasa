@@ -7,12 +7,6 @@ Route::post('login', 'Auth\LoginController@login')->name('login');
 Route::post('logout', 'Auth\LoginController@logout')->name('logout');
 Route::get('inicio', 'InicioController@index')->name('inicio');
 
-Route::get('admin/usuarios/', 'UsuariosController@index'); //listado de Usuarios
-Route::get('admin/usuarios/create', 'UsuariosController@create'); //Formulario para crear 
-Route::post('admin/usuarios/', 'UsuariosController@store'); // Crear Usuario
-
-
-Route::get('admin/roles-y-permisos/', 'RoleController@index'); //listado de Usuarios
 /*  RUTAS PARA EL SISTEMA
  */
 //Inicio de sesión
