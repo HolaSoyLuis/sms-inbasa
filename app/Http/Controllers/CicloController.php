@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Ciclo;
 
 class CicloController extends Controller
 {
@@ -13,7 +14,8 @@ class CicloController extends Controller
      */
     public function index()
     {
-        return view('admin/ciclosbimestres/ciclos');
+        $ciclos = Ciclo::all();      
+        return view('admin/ciclosbimestres/ciclos/ciclos')->with(compact('ciclos')); 
     }
 
     /**
@@ -23,7 +25,7 @@ class CicloController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin/ciclosbimestres/ciclos/create");
     }
 
     /**
@@ -34,7 +36,13 @@ class CicloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ciclos = new Ciclo();
+        $ciclos->fecha_inicio = $request->input('fecha_inicio');
+        $ciclos->fecha_fin = $request->input('fecha_fin');
+        $ciclos->estado = $request->input('estado');               
+        $ciclos->save();
+
+        return redirect('admin/ciclosbimestres/ciclos/index');
     }
 
     /**

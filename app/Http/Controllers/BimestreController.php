@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Bimestre;
 
 class BimestreController extends Controller
 {
@@ -13,7 +14,8 @@ class BimestreController extends Controller
      */
     public function index()
     {
-        return view('admin/ciclosbimestres/bimestres');
+        $bimestres = Bimestre::all();      
+        return view('admin/ciclosbimestres/bimestres/bimestres')->with(compact('bimestres')); 
     }
 
     /**
@@ -23,7 +25,7 @@ class BimestreController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin/ciclosbimestres/bimestres/create");
     }
 
     /**
@@ -34,7 +36,12 @@ class BimestreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $bimestres = new Bimestre();
+        $bimestres->ciclo_id = $request->input('ciclo_id');
+        $bimestres->bimestre = $request->input('bimestre');        
+        $bimestres->save();      
+
+        return redirect('admin/ciclosbimestres/bimestres/index');
     }
 
     /**
