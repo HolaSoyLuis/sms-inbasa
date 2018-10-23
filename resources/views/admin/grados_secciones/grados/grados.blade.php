@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Bimestres')
+@section('title', 'Grados')
 @section('content')
 <div class="row">
 	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">		
@@ -7,27 +7,19 @@
 		  <div class="container">		    		    		    
 		    <div class="collapse navbar-collapse">
 		      <ul class="navbar-nav">
-		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('ciclos.index') }}">Lista de Ciclos</a>
-		        </li>
-		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('ciclos.create') }}">Nuevo Ciclo</a>
-		        </li>
 		        <li class="nav-item active">
-		          <a class="nav-link" href="{{ route('bimestres.index') }}">Listado de Bimestres</a>
+		          <a class="nav-link" href="{{ route('grados.index') }}">Lista de Grados</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="{{ route('grados.create') }}">Nuevo Grado</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="{{ route('secciones.index') }}">Lista de Secciones</a>
 		        </li>
 		       	<li class="nav-item">
-		          <a class="nav-link" href="{{ route('bimestres.create') }}">Nuevo Bimestre</a>
+		          <a class="nav-link" href="{{ route('secciones.create') }}">Nuevo Seccion</a>
 		        </li>
 		      </ul>
-				<form class="form-inline ml-auto">
-					<div class="form-group has-white">
-						<input type="text" class="form-control" placeholder="Buscar">
-					</div>
-					<button type="submit" class="btn btn-white btn-just-icon btn-round">
-							<i class="material-icons">search</i>
-					</button>
-				</form>
 		    </div>
 		  </div>
 		</nav>
@@ -40,19 +32,23 @@
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
 					<th>No</th>	
-					<th>Ciclo_ID</th>					
-					<th>Bimestre</th>
-					<th>Actualizado</th>
+					<th>No Ciclo</th>					
+					<th>Jornada</th>
+					<th>Grado</th>
+					<th>Creado</th>
+					<th>Actualizado</th>					
 					<th>Eliminado</th>
 					<th>Opciones</th>
 				</thead>		
-				@foreach($bimestres as $bimestre)		
+				@foreach($grados as $grado)		
 				<tr>
-					<td>{{$bimestre->id}}</td>
-					<td>{{$bimestre->ciclo_id}}</td>
-					<td>{{$bimestre->bimestre}}</td>
-					<td>{{$bimestre->updated_at}}</td>
-					<td>{{$bimestre->deleted_at}}</td>
+					<td>{{$grado->id}}</td>
+					<td>{{$grado->ciclo_id}}</td>
+					<td>{{$grado->jornada_id}}</td>
+					<td>{{$grado->grado}}</td>
+					<td>{{$grado->deleted_at}}</td>
+					<td>{{$grado->created_at}}</td>
+					<td>{{$grado->updated_at}}</td>					
 					<td>
 						<a href="#">
 							<button class="btn btn-info btn-sm" title="Ver">

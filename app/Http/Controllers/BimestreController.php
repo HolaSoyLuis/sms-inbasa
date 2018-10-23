@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Bimestre;
+use App\Ciclo;
 
 class BimestreController extends Controller
 {
@@ -25,7 +26,8 @@ class BimestreController extends Controller
      */
     public function create()
     {
-        return view("admin/ciclosbimestres/bimestres/create");
+        $ciclos = Ciclo::all();
+        return view("admin/ciclosbimestres/bimestres/create")->with(compact('ciclos'));
     }
 
     /**

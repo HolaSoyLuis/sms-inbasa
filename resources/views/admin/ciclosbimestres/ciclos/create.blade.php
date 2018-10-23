@@ -1,9 +1,8 @@
 @extends('layouts.app')
-@section('title', 'Crear Bimestre')
+@section('title', 'Crear Ciclo')
 @section('content')
 <div class="row">
-	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
-		<!-- <h3>Listado de Usuarios <a href="usuarios/create"><button class="btn btn-success">Nuevo</button></h3></a>			 -->
+	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">		
 		<nav class="navbar navbar-expand-lg bg-primary">
 		  <div class="container">		    		    		    
 		    <div class="collapse navbar-collapse">
@@ -62,8 +61,11 @@
 								
 						<div class="form-group">
 							<div class="form-group label-floating">								
-								<label for="estado">Estado</label>
-								<input type="number" class="form-control" name="estado" input id="estado"></input>
+								<label for="estado">Estado</label>																
+								<select class="form-control" name="estado" id="estado">									
+										<option value="Activo">Activo</option>
+										<option value="Inactivo">Inactivo</option>																								
+								</select>																		
 								@if ($errors->has('estado'))
 										<span class="invalid-feedback" role="alert">
 												<strong>{{ $errors->first('estado') }}</strong>
@@ -71,7 +73,6 @@
 								@endif					
 							</div>
 						</div>
-
 																	
 						<div class="form-group">
 							<button class="btn btn-primary" type="submit">Guardar</button>				

@@ -2,8 +2,7 @@
 @section('title', 'Crear Usuarios')
 @section('content')
 <div class="row">
-	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
-		<!-- <h3>Listado de Usuarios <a href="usuarios/create"><button class="btn btn-success">Nuevo</button></h3></a>			 -->
+	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">		
 		<nav class="navbar navbar-expand-lg bg-primary">
 		  <div class="container">		    		    		    
 		    <div class="collapse navbar-collapse">
@@ -13,9 +12,6 @@
 		        </li>
 		        <li class="nav-item active">
 		          <a class="nav-link" href="">Nuevo Usuario</a>
-		        </li>
-		        <li class="nav-item">
-		          <a class="nav-link" href="">Pricing</a>
 		        </li>
 		      </ul>
 		    </div>

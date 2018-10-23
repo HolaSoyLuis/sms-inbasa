@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Grado;
 
 class GradoController extends Controller
 {
@@ -13,7 +14,8 @@ class GradoController extends Controller
      */
     public function index()
     {
-        return view('admin/grados_secciones/grados');
+        $grados = Grado::all();
+        return view('admin/grados_secciones/grados/grados')->with(compact('grados'));
     }
 
     /**
@@ -23,7 +25,7 @@ class GradoController extends Controller
      */
     public function create()
     {
-        //
+        return view("admin/grados_secciones/grados/create");
     }
 
     /**
@@ -34,7 +36,11 @@ class GradoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $grados = new Grado();
+      $grados->grado = $request->input('grado');           
+      $grados->save();
+
+      return redirect('admin/grados_secciones/grados/grados');
     }
 
     /**
