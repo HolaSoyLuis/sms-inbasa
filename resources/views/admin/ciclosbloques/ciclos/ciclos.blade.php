@@ -14,10 +14,10 @@
 		          <a class="nav-link" href="{{ route('ciclos.create') }}">Nuevo Ciclo</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('bimestres.index') }}">Listado de Bimestres</a>
+		          <a class="nav-link" href="{{ route('bloques.index') }}">Listado de Bloques</a>
 		        </li>
 		       	<li class="nav-item">
-		          <a class="nav-link" href="{{ route('bimestres.create') }}">Nuevo Bimestre</a>
+		          <a class="nav-link" href="{{ route('bloques.create') }}">Nuevo Bloque</a>
 		        </li>
 		      </ul>
 				<form class="form-inline ml-auto">

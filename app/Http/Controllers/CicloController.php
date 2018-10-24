@@ -15,7 +15,7 @@ class CicloController extends Controller
     public function index()
     {
         $ciclos = Ciclo::all();      
-        return view('admin/ciclosbimestres/ciclos/ciclos')->with(compact('ciclos')); 
+        return view('admin/ciclosbloques/ciclos/ciclos')->with(compact('ciclos')); 
     }
 
     /**
@@ -25,7 +25,7 @@ class CicloController extends Controller
      */
     public function create()
     {
-        return view("admin/ciclosbimestres/ciclos/create");
+        return view("admin/ciclosbloques/ciclos/create");
     }
 
     /**
@@ -38,11 +38,10 @@ class CicloController extends Controller
     {
         $ciclos = new Ciclo();
         $ciclos->fecha_inicio = $request->input('fecha_inicio');
-        $ciclos->fecha_fin = $request->input('fecha_fin');
-        $ciclos->estado = $request->input('estado');               
+        $ciclos->fecha_fin = $request->input('fecha_fin');             
         $ciclos->save();
 
-        return redirect('admin/ciclosbimestres/ciclos/index');
+        return redirect('admin/ciclosbloques/ciclos/ciclos');
     }
 
     /**

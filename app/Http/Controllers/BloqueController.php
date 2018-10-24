@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Bloque;
+use App\Ciclo;
 
 class BloqueController extends Controller
 {
@@ -25,7 +26,8 @@ class BloqueController extends Controller
      */
     public function create()
     {
-        return view("admin/ciclosbloques/bloques/create");
+        $ciclos = Ciclo::all();
+        return view("admin/ciclosbloques/bloques/create")->with(compact('ciclos'));
     }
 
     /**

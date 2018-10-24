@@ -14,10 +14,10 @@
 		          <a class="nav-link" href="{{ route('ciclos.create') }}">Nuevo ciclo</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('bimestres.index') }}">Lista de Bimestres</a>
+		          <a class="nav-link" href="{{ route('bloques.index') }}">Lista de Bimestres</a>
 		        </li>
 		       	<li class="nav-item">
-		          <a class="nav-link" href="{{ route('bimestres.create') }}">Nuevo Bimestre</a>
+		          <a class="nav-link" href="{{ route('bloques.create') }}">Nuevo Bimestre</a>
 		        </li>
 		      </ul>
 		    </div>
@@ -54,21 +54,6 @@
 								@if ($errors->has('fecha_fin'))
 										<span class="invalid-feedback" role="alert">
 												<strong>{{ $errors->first('fecha_fin') }}</strong>
-										</span>
-								@endif					
-							</div>
-						</div>
-								
-						<div class="form-group">
-							<div class="form-group label-floating">								
-								<label for="estado">Estado</label>																
-								<select class="form-control" name="estado" id="estado">									
-										<option value="Activo">Activo</option>
-										<option value="Inactivo">Inactivo</option>																								
-								</select>																		
-								@if ($errors->has('estado'))
-										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('estado') }}</strong>
 										</span>
 								@endif					
 							</div>
