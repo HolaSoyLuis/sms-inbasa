@@ -2,8 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use Caffeinated\Shinobi\Models\Role;
+use Caffeinated\Shinobi\Models\Permission;
 
-class UsersTableSeeder extends Seeder
+class PermissionRoles extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,102 +13,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        //Creación de roles por defecto
-        //Rol No. 1
-        Role::create([
-            'name'          =>  'Admin',
-            'slug'          =>  'admin',
-            'description'   => 'Rol para Administrador del Sistema por defecto con todos los permisos sobre agregar, editar, ver y eliminar.',
-            'special'       =>  'all-access'
-        ]);
-
-        //Rol No. 2
-        Role::create([
-            'name'          =>  'Docente',
-            'slug'          =>  'docente',
-            'description'   =>  'Rol creado por defecto para el acceso de los docentes únicamente a su módulo.'
-        ]);
-
-        //Rol No. 3
-        Role::create([
-            'name'          =>  'Estudiante',
-            'slug'          =>  'estudiante',
-            'description'   =>  'Rol por defecto para los estudiantes del centro educativo.'
-        ]);
-        
-        //Rol No. 4
-        Role::create([
-            'name'          =>  'Encargado',
-            'slug'          =>  'encargado',
-            'description'   =>  'Rol por defecto para encargados de estudiantes.'
-        ]);
-
-        //Rol No. 5
-        Role::create([
-            'name'          =>  'Secretaría',
-            'slug'          =>  'secretaria',
-            'description'   =>  'Rol creado por defecto para el personal de secretaría. Accede únicamente al módulo de Gestión Económica.'
-        ]);
-
-        //Creación de usuarios por defecto
-        //Usuario No. 1
-        DB::table('users')->insert([
-            'username'      =>  'admin',
-            'password'      =>  bcrypt('admin@12')
-        ]);
-
-        //Usuario No. 2
-        DB::table('users')->insert([
-            'username'      =>  'docente',
-            'password'      =>  bcrypt('docente@12')
-        ]);
-
-        //Usuario No. 3
-        DB::table('users')->insert([
-            'username'      =>  'estudiante',
-            'password'      =>  bcrypt('estudiante@12')
-        ]);
-
-        //Usuario No. 4
-        DB::table('users')->insert([
-            'username'      =>  'encargado',
-            'password'      =>  bcrypt('encargado@12')
-        ]);
-
-        //Usuario No. 5
-        DB::table('users')->insert([
-            'username'      =>  'secretaria',
-            'password'      =>  bcrypt('secretaria@12')
-        ]);
-
-
-        //Asignación de roles a los usuarios por defecto
-        DB::table('role_user')->insert([
-            'role_id'      =>  '1',
-            'user_id'      =>  '1'
-        ]);
-
-        DB::table('role_user')->insert([
-            'role_id'      =>  '2',
-            'user_id'      =>  '2'
-        ]);
-
-        DB::table('role_user')->insert([
-            'role_id'      =>  '3',
-            'user_id'      =>  '3'
-        ]);
-
-        DB::table('role_user')->insert([
-            'role_id'      =>  '4',
-            'user_id'      =>  '4'
-        ]);
-
-        DB::table('role_user')->insert([
-            'role_id'      =>  '5',
-            'user_id'      =>  '5'
-        ]);
-
-
         //Asignación de permisos a los roles por defecto excepto admin
         /*
             Inicio Permisos para el Rol de Docente

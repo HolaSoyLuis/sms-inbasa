@@ -13,7 +13,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        return view('admin/rolespermisos/rpermisos');
+        $permisos = Permisos::paginate();
+        return view('admin/rolespermisos/index')->with(compact('users'));
     }
 
     /**

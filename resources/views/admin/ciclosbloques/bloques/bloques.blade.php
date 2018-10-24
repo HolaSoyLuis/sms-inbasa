@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Bimestres')
+@section('title', 'bloques')
 @section('content')
 <div class="row">
 	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
@@ -15,10 +15,10 @@
 		          <a class="nav-link" href="{{ route('ciclos.create') }}">Nuevo Ciclo</a>
 		        </li>
 		        <li class="nav-item active">
-		          <a class="nav-link" href="{{ route('bimestres.index') }}">Listado de Bimestres</a>
+		          <a class="nav-link" href="{{ route('bloques.index') }}">Listado de bloques</a>
 		        </li>
 		       	<li class="nav-item">
-		          <a class="nav-link" href="{{ route('bimestres.create') }}">Nuevo Bimestre</a>
+		          <a class="nav-link" href="{{ route('bloques.create') }}">Nuevo bloque</a>
 		        </li>
 		      </ul>
 				<form class="form-inline ml-auto">
@@ -42,18 +42,18 @@
 				<thead>
 					<th>No</th>	
 					<th>Ciclo_ID</th>					
-					<th>Bimestre</th>
+					<th>bloque</th>
 					<th>Actualizado</th>
 					<th>Eliminado</th>
 					<th>Opciones</th>
 				</thead>		
-				@foreach($bimestres as $bimestre)		
+				@foreach($bloques as $bloque)		
 				<tr>
-					<td>{{$bimestre->id}}</td>
-					<td>{{$bimestre->ciclo_id}}</td>
-					<td>{{$bimestre->bimestre}}</td>
-					<td>{{$bimestre->updated_at}}</td>
-					<td>{{$bimestre->deleted_at}}</td>
+					<td>{{$bloque->id}}</td>
+					<td>{{$bloque->ciclo_id}}</td>
+					<td>{{$bloque->bloque}}</td>
+					<td>{{$bloque->updated_at}}</td>
+					<td>{{$bloque->deleted_at}}</td>
 					<td>
 						<a href="#">
 							<button class="btn btn-info btn-sm" title="Ver">

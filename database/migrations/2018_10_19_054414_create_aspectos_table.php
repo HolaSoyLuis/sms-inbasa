@@ -18,7 +18,7 @@ class CreateAspectosTable extends Migration
             $table->string('aspecto',45);
             $table->float('nota_minima',2);
             $table->float('nota_maxima',2);
-            $table->softDeletes();
+            
             $table->timestamps();
         });
     }

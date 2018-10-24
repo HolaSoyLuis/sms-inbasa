@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMesesTable extends Migration
+class CreateBloquesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,16 @@ class CreateMesesTable extends Migration
      */
     public function up()
     {
-        Schema::create('meses', function (Blueprint $table) {
+        Schema::create('bloques', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('mes',45);
-            $table->softDeletes();
+    
+            //Campos
+            $table->string('bloque',45);
+
+            //Llaves foráneas
+            $table->unsignedInteger('ciclo_id')->nullable();
+            $table->foreign('ciclo_id')->references('id')->on('ciclos')->onUpdate('cascade')->onDelete('set null');
+            
             $table->timestamps();
         });
     }
@@ -28,6 +34,6 @@ class CreateMesesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meses');
+        Schema::dropIfExists('bloques');
     }
 }

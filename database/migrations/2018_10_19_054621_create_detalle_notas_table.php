@@ -15,22 +15,24 @@ class CreateDetalleNotasTable extends Migration
     {
         Schema::create('detalle_notas', function (Blueprint $table) {
             $table->increments('id');
-            //Llaves foráneas
-            $table->unsignedInteger('nota_id');
-            $table->foreign('nota_id')->references('id')->on('notas');
-            $table->unsignedInteger('aspecto_id')->nullable();
-            $table->foreign('aspecto_id')->references('id')->on('aspectos');
-            $table->unsignedInteger('tipo_evaluacion_id')->nullable();
-            $table->foreign('tipo_evaluacion_id')->references('id')->on('tipo_evaluaciones');
-            $table->unsignedInteger('bimestre_id')->nullable();
-            $table->foreign('bimestre_id')->references('id')->on('bimestres');
-            $table->unsignedInteger('estudiante_id')->nullable();
-            $table->foreign('estudiante_id')->references('id')->on('estudiantes');
 
             //Campos
             $table->float('nota',2);
-            $table->dateTime('fecha_ingreso');
-            $table->softDeletes();
+
+            //Llaves foráneas
+            $table->unsignedInteger('nota_id');
+            $table->foreign('nota_id')->references('id')->on('notas')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedInteger('aspecto_id')->nullable();
+            $table->foreign('aspecto_id')->references('id')->on('aspectos')->onUpdate('cascade')->onDelete('set null');
+            $table->unsignedInteger('tipo_evaluacion_id')->nullable();
+            $table->foreign('tipo_evaluacion_id')->references('id')->on('tipo_evaluaciones')->onUpdate('cascade')->onDelete('set null');
+            $table->unsignedInteger('bloque_id')->nullable();
+            $table->foreign('bloque_id')->references('id')->on('bloques')->onUpdate('cascade')->onDelete('set null');
+            $table->unsignedInteger('estudiante_id')->nullable();
+            $table->foreign('estudiante_id')->references('id')->on('estudiantes')->onUpdate('cascade')->onDelete('set null');
+            $table->unsignedInteger('curso_id')->nullable();;
+            $table->foreign('curso_id')->references('id')->on('cursos')->onUpdate('cascade')->onDelete('set null');
+
             $table->timestamps();
         });
     }

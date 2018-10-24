@@ -16,7 +16,7 @@ class CreateTipoEvaluacionesTable extends Migration
         Schema::create('tipo_evaluaciones', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tipo',45);
-            $table->softDeletes();
+            
             $table->timestamps();
         });
     }

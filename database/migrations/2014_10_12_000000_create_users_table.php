@@ -17,8 +17,11 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('username')->unique();
             $table->string('password');
+            $table->enum('estado',[
+                \App\Empleado::ACTIVO, \App\Empleado::INACTIVO
+            ])->default(\App\Empleado::ACTIVO);
             $table->rememberToken();
-            $table->softDeletes();
+            
             $table->timestamps();
         });
     }

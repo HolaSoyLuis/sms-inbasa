@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Crear Bimestre')
+@section('title', 'Crear Bloque')
 @section('content')
 <div class="row">
 	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
@@ -15,10 +15,10 @@
 		          <a class="nav-link" href="{{ route('ciclos.create') }}">Nuevo ciclo</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('bimestres.index') }}">Listado de Bimestres</a>
+		          <a class="nav-link" href="{{ route('bloques.index') }}">Listado de Bloques</a>
 		        </li>
 		        <li class="nav-item active">
-		          <a class="nav-link" href="{{ route('bimestres.create') }}">Nuevo Bimestre</a>
+		          <a class="nav-link" href="{{ route('bloques.create') }}">Nuevo Bloque</a>
 		        </li>
 		      </ul>
 		    </div>
@@ -32,7 +32,7 @@
 		<div class="col-md-4">
 			<div class="card">
 				<div class="card-body text-center">								
-				<form method="post" action="{{ route('bimestres.store') }}">
+				<form method="post" action="{{ route('bloques.store') }}">
 					@csrf
 					<h3>Ingrese los Datos</h3>		
 
@@ -50,11 +50,11 @@
 
 						<div class="form-group">
 							<div class="form-group label-floating">								
-								<label for="bimestre">Bimestre</label>
-								<input type="char" class="form-control" name="bimestre" input id="bimestre"></input>
-								@if ($errors->has('bimestre'))
+								<label for="bloque">Bloque</label>
+								<input type="char" class="form-control" name="bloque" input id="bloque"></input>
+								@if ($errors->has('bloque'))
 										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('bimestre') }}</strong>
+												<strong>{{ $errors->first('bloque') }}</strong>
 										</span>
 								@endif					
 							</div>

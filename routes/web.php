@@ -154,27 +154,27 @@ Route::middleware(['auth'])->group(function(){
     Route::get('admin/ciclos/{id}/edit', 'CicloController@edit')->name('ciclos.edit')
         ->middleware('permission:ciclos.edit');
 
-    //Bimestres
-    Route::post('admin/bimestres/store', 'BimestreController@store')->name('bimestres.store')
-        ->middleware('permission:bimestres.create');
+    //Bloques o Unidades
+    Route::post('admin/bloques/store', 'BloqueController@store')->name('bloques.store')
+        ->middleware('permission:bloques.create');
 
-    Route::get('admin/bimestres', 'BimestreController@index')->name('bimestres.index')
-        ->middleware('permission:bimestres.index');
+    Route::get('admin/bloques', 'BloqueController@index')->name('bloques.index')
+        ->middleware('permission:bloques.index');
     
-    Route::get('admin/bimestres/create', 'BimestreController@create')->name('bimestres.create')
+    Route::get('admin/bloques/create', 'BloqueController@create')->name('bloques.create')
         ->middleware('permission:ciclosbim.create');
     
-    Route::put('admin/bimestres/{id}', 'BimestreController@update')->name('bimestres.update')
-        ->middleware('permission:bimestres.edit');
+    Route::put('admin/bloques/{id}', 'BloqueController@update')->name('bloques.update')
+        ->middleware('permission:bloques.edit');
     
-    Route::get('admin/bimestres/{id}', 'BimestreController@show')->name('bimestres.show')
-        ->middleware('permission:bimestres.show');
+    Route::get('admin/bloques/{id}', 'BloqueController@show')->name('bloques.show')
+        ->middleware('permission:bloques.show');
     
-    Route::delete('admin/bimestres/{id}', 'BimestreController@destroy')->name('bimestres.destroy')
-        ->middleware('permission:bimestres.destroy');
+    Route::delete('admin/bloques/{id}', 'BloqueController@destroy')->name('bloques.destroy')
+        ->middleware('permission:bloques.destroy');
     
-    Route::get('admin/bimestres/{id}/edit', 'BimestreController@edit')->name('bimestres.edit')
-        ->middleware('permission:bimestres.edit');
+    Route::get('admin/bloques/{id}/edit', 'BloqueController@edit')->name('bloques.edit')
+        ->middleware('permission:bloques.edit');
     
     //Grados
     Route::post('admin/grados/store', 'GradoController@store')->name('grados.store')

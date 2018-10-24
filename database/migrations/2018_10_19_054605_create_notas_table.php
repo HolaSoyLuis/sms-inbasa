@@ -15,15 +15,15 @@ class CreateNotasTable extends Migration
     {
         Schema::create('notas', function (Blueprint $table) {
             $table->increments('id');
-            //Llaves foráneas
-            $table->unsignedInteger('curso_id');
-            $table->foreign('curso_id')->references('id')->on('cursos');
-            $table->unsignedInteger('asignacion_id')->nullable();
-            $table->foreign('asignacion_id')->references('id')->on('asignaciones');
+            
             //Campos
-            $table->float('total_acumulado',2);
-            $table->string('detalles');
-            $table->softDeletes();
+            $table->float('total_bloque',2);
+            $table->string('detalles',200)->nullable();
+
+            //Llaves foráneas
+            $table->unsignedInteger('asignacion_id')->nullable();
+            $table->foreign('asignacion_id')->references('id')->on('asignaciones')->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

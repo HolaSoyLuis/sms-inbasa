@@ -17,7 +17,7 @@ class CreateDiasTable extends Migration
             $table->increments('id');
             //Campos
             $table->string('dia',45);
-            $table->softDeletes();
+            
             $table->timestamps();
         });
     }

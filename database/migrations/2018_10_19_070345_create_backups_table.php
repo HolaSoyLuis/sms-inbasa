@@ -16,7 +16,11 @@ class CreateBackupsTable extends Migration
         Schema::create('backups', function (Blueprint $table) {
             $table->increments('id');
             $table->text('ruta_back',300);
-            $table->softDeletes();
+
+            //Llaves foráneas
+            $table->unsignedInteger('usuario_id');
+            $table->foreign('usuario_id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

@@ -18,10 +18,7 @@ class CreateCiclosTable extends Migration
             //Campos
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
-            $table->enum('estado',[
-                \App\Ciclo::ACTIVO, \App\Ciclo::INACTIVO
-            ])->default(\App\Ciclo::ACTIVO);
-            $table->softDeletes();
+            
             $table->timestamps();
         });
     }

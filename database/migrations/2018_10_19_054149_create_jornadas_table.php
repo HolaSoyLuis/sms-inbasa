@@ -17,7 +17,7 @@ class CreateJornadasTable extends Migration
             $table->increments('id');
             //Campos
             $table->string('jornada',45);
-            $table->softDeletes();
+            
             $table->timestamps();
         });
     }

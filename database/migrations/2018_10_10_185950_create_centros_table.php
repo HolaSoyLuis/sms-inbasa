@@ -16,13 +16,14 @@ class CreateCentrosTable extends Migration
         Schema::create('centros', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre',150);
-            $table->string('direccion',100);
+            $table->string('direccion',100)->nullable();
             $table->string('departamento',45);
             $table->string('cuidad',45);
             $table->string('nit',25)->nullable();
+            $table->string('logo',255)->nullable();
             $table->string('telefono1',15);
             $table->string('telefono2',15)->nullable();
-            $table->softDeletes();
+            
             $table->timestamps();
         });
     }

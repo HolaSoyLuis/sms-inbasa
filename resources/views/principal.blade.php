@@ -105,11 +105,6 @@
 							UMG
 						</a>
 					</li>
-					<li>
-						<a href="https://www.facebook.com/Megaprog1/" target="_blank">
-						   Megaprogramación
-						</a>
-					</li>
 				</ul>
             </nav>
             <div class="copyright pull-right">
@@ -199,26 +194,6 @@
 <script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
 <!--    Centro de Control para Material Kit: ripples, efectos parallax,  -->
 <script src="{{ asset('js/material-kit.js?v=1.2.1') }}" type="text/javascript"></script>
-<script>
-    function setValidacion(id){
-        $(id).validate({
-            highlight: function(element) {
-                $(element).closest('.form-group').removeClass('has-success').addClass('has-danger');
-                $(element).closest('.form-check').removeClass('has-success').addClass('has-danger');
-            },
-            success: function(element) {
-                $(element).closest('.form-group').removeClass('has-danger').addClass('has-success');
-                $(element).closest('.form-check').removeClass('has-danger').addClass('has-success');
-            },
-            errorPlacement : function(error, element) {
-                $(element).append(error);
-            },
-        });
-    }
 
-    $(document).ready(function() {
-        setValidacion('#validarLogin');
-    });
-</script>
 
 </html>

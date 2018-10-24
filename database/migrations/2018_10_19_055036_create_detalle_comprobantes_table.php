@@ -15,19 +15,20 @@ class CreateDetalleComprobantesTable extends Migration
     {
         Schema::create('detalle_comprobantes', function (Blueprint $table) {
             $table->increments('id');
-            //Llaves foráneas
-            $table->unsignedInteger('comprobante_id')->nullable();
-            $table->foreign('comprobante_id')->references('id')->on('comprobantes');
-            $table->unsignedInteger('mes_id')->nullable();
-            $table->foreign('mes_id')->references('id')->on('meses');
-            $table->unsignedInteger('asignacion_id');
-            $table->foreign('asignacion_id')->references('id')->on('asignaciones');
-            $table->unsignedInteger('tipo_pago_id');
-            $table->foreign('tipo_pago_id')->references('id')->on('tipo_pagos');
 
             //Campos
             $table->integer('cantidad');
             $table->float('costo',2);
+            $table->string('mes',45);
+
+            //Llaves foráneas
+            $table->unsignedInteger('comprobante_id')->nullable();
+            $table->foreign('comprobante_id')->references('id')->on('comprobantes')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedInteger('asignacion_id');
+            $table->foreign('asignacion_id')->references('id')->on('asignaciones')->onUpdate('cascade')->onDelete('cascade');
+            $table->unsignedInteger('tipo_pago_id');
+            $table->foreign('tipo_pago_id')->references('id')->on('tipo_pagos')->onUpdate('cascade')->onDelete('cascade');
+
             $table->timestamps();
         });
     }

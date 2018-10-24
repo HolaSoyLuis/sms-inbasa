@@ -17,7 +17,8 @@ class CreateTipoPagosTable extends Migration
             $table->increments('id');
             $table->string('tipo',45);
             $table->float('costo',2);
-            $table->softDeletes();
+            $table->string('detalle',255);
+
             $table->timestamps();
         });
     }

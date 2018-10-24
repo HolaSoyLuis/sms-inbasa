@@ -15,11 +15,7 @@ class CreateCursosTable extends Migration
     {
         Schema::create('cursos', function (Blueprint $table) {
             $table->increments('id');
-            //Llaves foráneas
-            $table->unsignedInteger('grado_id')->nullable();
-            $table->foreign('grado_id')->references('id')->on('grados');
-            $table->unsignedInteger('docente_id')->nullable();
-            $table->foreign('docente_id')->references('id')->on('empleados');
+           
             //Campos
             $table->string('codigo',45);
             $table->string('nombre',45);
@@ -27,7 +23,13 @@ class CreateCursosTable extends Migration
             $table->enum('estado',[
                 \App\Curso::ACTIVO, \App\Curso::INACTIVO
             ])->default(\App\Curso::ACTIVO);
-            $table->softDeletes();
+
+             //Llaves foráneas
+            $table->unsignedInteger('grado_id')->nullable();
+            $table->foreign('grado_id')->references('id')->on('grados')->onUpdate('cascade')->onDelete('set null');
+            $table->unsignedInteger('docente_id')->nullable();
+            $table->foreign('docente_id')->references('id')->on('empleados')->onUpdate('cascade')->onDelete('set null');
+            
             $table->timestamps();
         });
     }

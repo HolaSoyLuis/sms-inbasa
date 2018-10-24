@@ -15,24 +15,24 @@ class CreateComprobantesTable extends Migration
     {
         Schema::create('comprobantes', function (Blueprint $table) {
             $table->increments('id');
-            //Llaves foráneas
-            $table->unsignedInteger('empleado_id')->nullable();
-            $table->foreign('empleado_id')->references('id')->on('empleados');
-            $table->unsignedInteger('forma_pago_id')->nullable();
-            $table->foreign('forma_pago_id')->references('id')->on('forma_pagos');
-            $table->unsignedInteger('encargado_id')->nullable();
-            $table->foreign('encargado_id')->references('id')->on('encargados');
 
             //Campos
-            $table->string('serie',15);
-            $table->dateTime('fecha');
-            $table->float('descuento',2);
+            $table->string('serie');
+            $table->float('descuento',2)->default(0.00);
             $table->float('total',2);
-            $table->string('detalles',255);
+            $table->string('detalles',255)->nullable();
             $table->enum('estado',[
                 \App\Comprobante::PROCESADO, \App\Comprobante::IMPRESO, \App\Comprobante::ANULADO, \App\Comprobante::PAGADO
             ])->default(\App\Comprobante::PROCESADO);
-            $table->softDeletes();
+
+            //Llaves foráneas
+            $table->unsignedInteger('empleado_id')->nullable();
+            $table->foreign('empleado_id')->references('id')->on('empleados')->onUpdate('cascade')->onDelete('set null');
+            $table->unsignedInteger('forma_pago_id')->nullable();
+            $table->foreign('forma_pago_id')->references('id')->on('forma_pagos')->onUpdate('cascade')->onDelete('set null');
+            $table->unsignedInteger('encargado_id')->nullable();
+            $table->foreign('encargado_id')->references('id')->on('encargados')->onUpdate('cascade')->onDelete('set null');
+
             $table->timestamps();
         });
     }

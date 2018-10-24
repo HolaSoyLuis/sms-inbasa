@@ -47,6 +47,7 @@
                             <p>Inicio</p>
                         </a>
                     </li>
+
                     {{-- Botones Módulo Administración --}}
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#modAdmin">
@@ -116,7 +117,7 @@
                         </div>
                     </li>
                     {{-- Fin Botones Administración --}}
-
+                    
                     {{-- Botones Módulo Docentes --}}
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#modDocente">
@@ -240,6 +241,19 @@
                         </div>
                     </li>
                     {{-- Fin Botones Gestión Económica --}}
+
+                    {{-- Botón para cerrar sesión --}}
+                    <li class="nav-item" style="margin-top:80px;">
+                        <a class="nav-link" href="{{ route('logout') }}"onclick="event.preventDefault();
+                                        document.getElementById('formCerrar').submit();">
+                        
+                            <i class="material-icons">person</i>
+                            <p>Cerrar Sesión</p>
+                        </a>
+                        <form id="formCerrar" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -302,11 +316,6 @@
                         <li>
                             <a href="https://www.umg.edu.gt/" target="_blank">
                             UMG
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://www.facebook.com/Megaprog1/" target="_blank">
-                            MEGAPROGRAMACIÓN
                             </a>
                         </li>
                     </ul>

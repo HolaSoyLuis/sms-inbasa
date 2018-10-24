@@ -15,14 +15,17 @@ class CreateSeccionesTable extends Migration
     {
         Schema::create('secciones', function (Blueprint $table) {
             $table->increments('id');
-            //Llaves foráneas
-            $table->unsignedInteger('grado_id')->nullable();
-            $table->foreign('grado_id')->references('id')->on('grados');
+            
             //Campos
             $table->string('seccion',45);
             $table->enum('estado',[
                 \App\Seccion::ACTIVO, \App\Seccion::INACTIVO
             ])->default(\App\Seccion::ACTIVO);
+
+            //Llaves foráneas
+            $table->unsignedInteger('grado_id')->nullable();
+            $table->foreign('grado_id')->references('id')->on('grados')->onUpdate('cascade')->onDelete('cascade');
+            
             $table->softDeletes();
             $table->timestamps();
         });

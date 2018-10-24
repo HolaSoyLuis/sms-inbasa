@@ -15,14 +15,14 @@ class CreateGradosTable extends Migration
     {
         Schema::create('grados', function (Blueprint $table) {
             $table->increments('id');
-            //Llaves foráneas
-            $table->unsignedInteger('ciclo_id')->nullable();
-            $table->foreign('ciclo_id')->references('id')->on('ciclos');
-            $table->unsignedInteger('jornada_id')->nullable();
-            $table->foreign('jornada_id')->references('id')->on('jornadas');
+           
             //Campos
             $table->string('grado',45);
-            $table->softDeletes();
+
+            //Llaves foráneas
+            $table->unsignedInteger('jornada_id')->nullable();
+            $table->foreign('jornada_id')->references('id')->on('jornadas')->onUpdate('cascade')->onDelete('set null');
+
             $table->timestamps();
         });
     }

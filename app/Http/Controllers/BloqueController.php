@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Bimestre;
+use App\Bloque;
 
-class BimestreController extends Controller
+class BloqueController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class BimestreController extends Controller
      */
     public function index()
     {
-        $bimestres = Bimestre::all();      
-        return view('admin/ciclosbimestres/bimestres/bimestres')->with(compact('bimestres')); 
+        $bloques = Bloque::all();      
+        return view('admin/ciclosbloques/bloques/bloques')->with(compact('bloques')); 
     }
 
     /**
@@ -25,7 +25,7 @@ class BimestreController extends Controller
      */
     public function create()
     {
-        return view("admin/ciclosbimestres/bimestres/create");
+        return view("admin/ciclosbloques/bloques/create");
     }
 
     /**
@@ -36,12 +36,12 @@ class BimestreController extends Controller
      */
     public function store(Request $request)
     {
-        $bimestres = new Bimestre();
-        $bimestres->ciclo_id = $request->input('ciclo_id');
-        $bimestres->bimestre = $request->input('bimestre');        
-        $bimestres->save();      
+        $bloques = new Bloque();
+        $bloques->ciclo_id = $request->input('ciclo_id');
+        $bloques->bloque = $request->input('bloque');        
+        $bloques->save();      
 
-        return redirect('admin/ciclosbimestres/bimestres/index');
+        return redirect('admin/ciclosbloques/bloques/index');
     }
 
     /**
