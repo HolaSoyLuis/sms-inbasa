@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use Illuminate\Http\Request;
+use App\Curso;
 
 class CursoController extends Controller
 {
@@ -13,8 +13,9 @@ class CursoController extends Controller
      */
     //Index para modulo admin
     public function index()
-    {
-        return view('admin/cursos/cursos');
+    {        
+        $cursos = Curso::all();
+        return view('admin/cursos/cursos')->with(compact('cursos'));        
     }
 
     /**
@@ -40,7 +41,7 @@ class CursoController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin/cursos/create');
     }
 
     /**
@@ -51,7 +52,13 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cursos = new Curso();        
+        $cursos->codigo = $request->input('codigo');
+        $cursos->nombre = $request->input('nombre');
+        $cursos->descripcion = $request->input('descripcion');
+        $cursos->estado = $request->input('estado');        
+        $cursos->save();        
+        return redirect('admin/curso/curso');
     }
 
     /**

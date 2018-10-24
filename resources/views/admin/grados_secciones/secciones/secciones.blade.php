@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Cursos')
+@section('title', 'Secciones')
 @section('content')
 <div class="row">
 	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">		
@@ -8,10 +8,16 @@
 		    <div class="collapse navbar-collapse">
 		      <ul class="navbar-nav">
 		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('cursos.index') }}">Lista de Cursos</a>
+		          <a class="nav-link" href="{{ route('grados.index') }}">Lista de Grados</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('cursos.create') }}">Nuevo curso</a>
+		          <a class="nav-link" href="{{ route('grados.create') }}">Nuevo Grado</a>
+		        </li>
+		        <li class="nav-item active">
+		          <a class="nav-link" href="{{ route('secciones.index') }}">Listado de Secciones</a>
+		        </li>
+		       	<li class="nav-item">
+		          <a class="nav-link" href="{{ route('secciones.create') }}">Nueva Seccion</a>
 		        </li>
 		      </ul>
 		    </div>
@@ -27,28 +33,22 @@
 				<thead>
 					<th>No</th>	
 					<th>Grado</th>					
-					<th>Docentes</th>
-					<th>Codigo</th>
-          <th>Nombre</th>
-          <th>Descripcion</th>
-          <th>Estado</th>
+					<th>Seccion</th>
+					<th>Estado</th>
 					<th>Creado</th>
 					<th>Actualizado</th>					
 					<th>Eliminado</th>
 					<th>Opciones</th>
 				</thead>		
-				@foreach($cursos as $curso)		
+				@foreach($secciones as $seccion)		
 				<tr>
-					<td>{{$curso->id}}</td>
-					<td>{{$curso->grado_id}}</td>
-					<td>{{$curso->docente_id}}</td>
-					<td>{{$curso->codigo}}</td>
-          <td>{{$curso->nombre}}</td>
-          <td>{{$curso->descripcion}}</td>
-          <td>{{$curso->estado}}</td>          
-					<td>{{$curso->deleted_at}}</td>
-					<td>{{$curso->created_at}}</td>
-					<td>{{$curso->updated_at}}</td>					
+					<td>{{$seccion->id}}</td>
+					<td>{{$seccion->grado_id}}</td>
+					<td>{{$seccion->seccion}}</td>
+					<td>{{$seccion->estado}}</td>
+					<td>{{$seccion->deleted_at}}</td>
+					<td>{{$seccion->created_at}}</td>
+					<td>{{$seccion->updated_at}}</td>					
 					<td>
 						<a href="#">
 							<button class="btn btn-info btn-sm" title="Ver">
