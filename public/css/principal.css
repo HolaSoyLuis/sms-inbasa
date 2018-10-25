@@ -12,6 +12,18 @@
     max-width: 600px;
 }
 
+.main{
+    min-height: 450px;
+    height: 100%;
+}
+
+.cont{
+    padding-bottom: 50px;
+    min-height: 500px;
+    height: 100%;
+    margin-bottom: 50px;
+}
+
 /* Centrar Modal */
 .modal {
     text-align: center;
@@ -30,4 +42,9 @@
     display: inline-block;
     text-align: left;
     vertical-align: middle;
+}
+
+.img-social{
+    min-width: 30px;
+    width: 100%;
 }

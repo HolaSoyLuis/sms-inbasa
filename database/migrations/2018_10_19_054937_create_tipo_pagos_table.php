@@ -16,7 +16,7 @@ class CreateTipoPagosTable extends Migration
         Schema::create('tipo_pagos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tipo',45);
-            $table->float('costo',2);
+            $table->float('costo',8,2);
             $table->string('detalle',255);
 
             $table->timestamps();

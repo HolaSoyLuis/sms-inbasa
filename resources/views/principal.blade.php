@@ -7,14 +7,14 @@
 
     <!--     Iconos y Fuentes     -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/material-icons.css') }}" />
-    <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" />
+    {{-- <link rel="stylesheet" href="{{ asset('css/font-awesome.min.css') }}" /> --}}
 
     <!-- CSS Files -->
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/material-kit.css?v=1.2.1') }}" rel="stylesheet"/>
     <link href="{{ asset('css/principal.css') }}" rel="stylesheet">
 
-    <title>{{ config('app.name', 'INBASA') }}</title>
+    <title>@yield('title', 'INBASA')</title>
 </head>
 <body >
 
@@ -28,7 +28,7 @@
 		            <span class="icon-bar"></span>
 		            <span class="icon-bar"></span>
         		</button>
-        		<a class="navbar-brand" href="#">INBASA</a>
+        		<a class="navbar-brand" href="{{ url('/') }}">INBASA</a>
         	</div>
 
         	<div class="collapse navbar-collapse">
@@ -61,8 +61,8 @@
         <div class="container">
             <div class="row">
 				<div class="col-xs-10 col-sm-8">
-					<h1 class="title">INBASA</h1>
-                    <h4>Instituto Básico por Cooperativa San Andrés Chápil, San Pedro Sacatepéquez.</h4>
+					<h1 class="title">@yield('txtPrincipal', 'INBASA')</h1>
+                    <h4>@yield('txtSecundario', 'Instituto Básico por Cooperativa San Andrés Chápil, San Pedro Sacatepéquez.')</h4>
 				</div>
             </div>
         </div>
@@ -70,28 +70,8 @@
 
     <!-- Contenedor Principal -->
     <div class="main main-raised">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-6">
-                    <h4 class="title">Quiénes Somos?</h4>
-                    <p class="description-p">El Instituto Básico por Cooperativa tiene como finalidad contribuir a la formación integral de los guatemaltecos, en las áreas y niveles regidos y autorizados por el Ministerio de Educación.</p>
-                    <hr />
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <h4 class="title">Misión</h4>
-                    <p class="description-p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero quaerat a distinctio ea harum, culpa dicta doloremque ab quos! Corporis blanditiis omnis nostrum natus esse magni cumque ipsa iusto quam.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Placeat suscipit eligendi, delectus quasi voluptatibus iste molestias. Mollitia rerum esse aspernatur numquam nostrum voluptatibus pariatur ipsam sunt nobis enim. Necessitatibus, libero.
-                    </p>
-                    <hr />
-                </div>
-                <div class="col-xs-12 col-md-6">
-                    <h4 class="title">Visión</h4>
-                    <p class="description-p">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quisquam, id, facilis blanditiis modi cumque sunt cum nam iure tenetur, ratione voluptatum commodi consequatur repudiandae temporibus nobis nihil quis qui impedit.
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor, illum quas culpa perspiciatis reiciendis libero rem ea saepe magnam fugiat nemo distinctio debitis ducimus ab accusantium sit dolores! Dicta, molestiae.
-                    </p>
-                    <br>
-                </div>
-            </div>
+        <div class="container  cont">
+            @yield('content')
         </div>
     </div>
 
@@ -99,13 +79,13 @@
     <footer class="footer">
         <div class="container">
             <nav class="pull-left">
-				<ul>
-					<li>
-						<a href="https://www.umg.edu.gt" target="_blank">
-							UMG
-						</a>
-					</li>
-				</ul>
+                <ul>
+                    <li>
+                        <a href="https://www.umg.edu.gt" target="_blank">
+                            UMG
+                        </a>
+                    </li>
+                </ul>
             </nav>
             <div class="copyright pull-right">
                 &copy; <script>document.write(new Date().getFullYear())</script> UMG - MEGAPROGRAMACIÓN
@@ -191,6 +171,7 @@
 <script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/material.min.js') }}"></script>
+<script src="{{ asset('js/fontawesome.js') }}"></script>
 <script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
 <!--    Centro de Control para Material Kit: ripples, efectos parallax,  -->
 <script src="{{ asset('js/material-kit.js?v=1.2.1') }}" type="text/javascript"></script>

@@ -19,7 +19,7 @@ class CreateComprobantesTable extends Migration
             //Campos
             $table->string('serie');
             $table->float('descuento',2)->default(0.00);
-            $table->float('total',2);
+            $table->float('total',8,2);
             $table->string('detalles',255)->nullable();
             $table->enum('estado',[
                 \App\Comprobante::PROCESADO, \App\Comprobante::IMPRESO, \App\Comprobante::ANULADO, \App\Comprobante::PAGADO

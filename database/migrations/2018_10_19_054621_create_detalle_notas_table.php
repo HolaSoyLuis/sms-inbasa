@@ -17,7 +17,7 @@ class CreateDetalleNotasTable extends Migration
             $table->increments('id');
 
             //Campos
-            $table->float('nota',2);
+            $table->float('nota',8,2);
 
             //Llaves foráneas
             $table->unsignedInteger('nota_id');

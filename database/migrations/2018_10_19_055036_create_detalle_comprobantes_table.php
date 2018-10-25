@@ -18,7 +18,7 @@ class CreateDetalleComprobantesTable extends Migration
 
             //Campos
             $table->integer('cantidad');
-            $table->float('costo',2);
+            $table->float('costo',8,2);
             $table->string('mes',45);
 
             //Llaves foráneas

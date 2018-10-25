@@ -344,6 +344,17 @@
     <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
     <script src="{{ asset('js/bootstrap-tagsinput.js') }}"></script>
     <script src="{{ asset('js/material.min.js') }}"></script>
+    <!--    Plugin for Date Time Picker and Full Calendar Plugin   -->
+    <script src="{{asset('js/moment.min.js')}}"></script>
+    <!--	Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/   -->
+    <script src="{{asset('js/nouislider.min.js')}}" type="text/javascript"></script>
+    <!--	Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker   -->
+	<script src="{{asset('js/bootstrap-datetimepicker.js')}}" type="text/javascript"></script>
+
+	<!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select   -->
+    <script src="{{asset('js/bootstrap-selectpicker.js')}}" type="text/javascript"></script>
+    <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput   -->
+	<script src="{{asset('js/jasny-bootstrap.min.js')}}"></script>
     <!-- Chartist JS -->
     <script src="{{asset('js/plugins/chartist.min.js')}}"></script>
     <!--  Plugin Notificaciones -->

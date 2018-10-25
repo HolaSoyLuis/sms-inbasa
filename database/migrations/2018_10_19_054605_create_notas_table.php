@@ -17,7 +17,7 @@ class CreateNotasTable extends Migration
             $table->increments('id');
             
             //Campos
-            $table->float('total_bloque',2);
+            $table->float('total_bloque',8,2);
             $table->string('detalles',200)->nullable();
 
             //Llaves foráneas

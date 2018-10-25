@@ -16,7 +16,11 @@ class LoginController extends Controller
     }
 
     public function formPrincipal(){
-        return view('principal');
+        return view('instituto');
+    }
+
+    public function formDesarrolladores(){
+        return view('desarrolladores');
     }
 
     public function login(){
@@ -26,6 +30,7 @@ class LoginController extends Controller
         ]);
 
         if(Auth::attempt($credentials)){
+            if(auth()->user())
             return redirect()->route('inicio');
         }
 
