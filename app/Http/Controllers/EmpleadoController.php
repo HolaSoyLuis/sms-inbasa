@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Empleado;
+
 use Illuminate\Http\Request;
+use App\Empleado;
+use App\User;
+use App\Centro;
 
 class EmpleadoController extends Controller
 {
@@ -14,7 +17,9 @@ class EmpleadoController extends Controller
      */
     public function index()
     {
-        return view('admin/personal/personal');
+        $empleados = Empleado::all();
+        return view('admin/personal/personal')->with(compact('empleados'));
+
     }
 
     /**
@@ -24,8 +29,25 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-        //
+
+        $users = User::all();
+        return view("admin/personal/create")->with(compact('users'));
+
+             //return view('admin/personal/create');
+
     }
+
+
+ public function create2()
+    {
+
+        $centros = Centro::all();
+        return view("admin/personal/create")->with(compact('centros'));
+
+             //return view('admin/personal/create');
+
+    }
+
 
     /**
      * Store a newly created resource in storage.
