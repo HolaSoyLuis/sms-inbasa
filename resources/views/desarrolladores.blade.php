@@ -53,7 +53,7 @@
   						<h4 class="card-title">Gerber Maldonado</h4>
   						<h6 class="category text-muted">WEB DEVELOPER</h6>
    						<p class="card-description">
-  							Desarrollador Web.
+  							Desarrollador Web y aplicaciones para dispositivos android, especialista en seguridad de sistemas informaticos. 
   						</p>
   						<div class="footer">
 						  <a href="#" class="btn btn-just-icon btn-simple btn-twitter" target="_blank"><img src="{{ asset('img/social/twitter.svg')}}" alt="tw" class="img-social"></a>
