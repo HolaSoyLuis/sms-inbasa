@@ -31,7 +31,7 @@
 						<div class="form-group">
 							<div class="form-group label-floating">								
 								<label for="username">Nombre</label>
-								<input type="text" class="form-control" name="username" input id="username"></input>
+								<input type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" id="username" required autofocus>
 								@if ($errors->has('username'))
 										<span class="invalid-feedback" role="alert">
 												<strong>{{ $errors->first('username') }}</strong>
@@ -39,16 +39,16 @@
 								@endif					
 							</div>
 						</div>
-								
+							 	
 						<div class="form-group">
 							<div class="form-group label-floating">			
 								<label for="password">{{ __('Contraseña') }}</label>					
-										<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
-										@if ($errors->has('password'))
-												<span class="invalid-feedback" role="alert">
-														<strong>{{ $errors->first('password') }}</strong>
-												</span>
-										@endif					
+								<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+								@if ($errors->has('password'))
+										<span class="invalid-feedback" role="alert">
+												<strong>{{ $errors->first('password') }}</strong>
+										</span>
+								@endif					
 							</div>
 						</div>
 
@@ -62,7 +62,7 @@
 						<div class="form-group">
 							<button class="btn btn-primary" type="submit">Guardar</button>				
 						</div>
-					</form>											
+					</form>										
 				</div>
 			</div>
 		</div>
