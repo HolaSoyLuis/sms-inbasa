@@ -361,13 +361,8 @@ Route::middleware(['auth'])->group(function(){
     /*
         RUTAS PARA EL MÓDULO DE ENCARGADOS
     */
-<<<<<<< HEAD
-    //Ruta para listar las notas de sus hijos
-     Route::get('encargado', 'EncargadoController@index')->name('encargados.index')
-        ->middleware('permission:encargados.index');
-        
-=======
-    
+
+
 /*
      Route::get('encargado', 'EncargadoController@index')->name('encargado.index')
         ->middleware('permission:encargado.index');
@@ -391,7 +386,6 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('encargado', 'EncargadoController')->middleware('permission:encargado');
     // Route::resource('encargado', 'EncargadoController');
     //Ruta para listar las notas de sus hijos
->>>>>>> e3efe31b6c34c69e191726f6e82ace9868e11621
     Route::get('encargado/notas', 'NotaController@indexEN')->name('encargados.notas.index')
         ->middleware('permission:encargados.notas.index');
     //Ruta para listar el horario de clases de su hijo
