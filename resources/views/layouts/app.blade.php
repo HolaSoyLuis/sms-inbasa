@@ -162,7 +162,14 @@
                         </a>
         
                         <div class="collapse" id="modEncargado">
+
                             <ul class="nav">
+                                <li class="nav-item ">
+                                    <a class="nav-link" href="{{ route('encargados.notas.index') }}">
+                                      <span class="sidebar-mini"> EN </span>
+                                      <span class="sidebar-normal"> ENCARGADO </span>
+                                    </a>
+                                </li>
                                 <li class="nav-item ">
                                     <a class="nav-link" href="{{ route('encargados.notas.index') }}">
                                       <span class="sidebar-mini"> NT </span>

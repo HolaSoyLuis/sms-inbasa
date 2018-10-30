@@ -313,9 +313,9 @@
 										<option value="{{ $u['id'] }}">{{ $u['username'] }}</option>										
 									@endforeach																										
 								</select>																							
-								@if ($errors->has('usuario_id'))
+								@if ($errors->has('username'))
 										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('usuario_id') }}</strong>
+												<strong>{{ $errors->first('username') }}</strong>
 										</span>
 								@endif					
 							</div>
@@ -324,6 +324,20 @@
 
 
 			<div class="col"> {{-- Segunda Columna --}}
+
+							<div class="form-group label-floating">								
+											<label for="usuario_id">Cargo</label>																
+											<select class="form-control" name="cargo_id" id="cargo_id">
+												@foreach ($cargos as $u)
+													<option value="{{ $u['id'] }}">{{ $u['cargo'] }}</option>										
+												@endforeach																										
+											</select>																							
+											@if ($errors->has('cargo'))
+													<span class="invalid-feedback" role="alert">
+															<strong>{{ $errors->first('cargo') }}</strong>
+													</span>
+											@endif					
+										</div>
 
 
 						</div> {{--Fin Columna--}}

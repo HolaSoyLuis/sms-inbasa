@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Empleado;
 use App\User;
 use App\Centro;
+use App\Cargo;
 
 class EmpleadoController extends Controller
 {
@@ -31,7 +32,9 @@ class EmpleadoController extends Controller
     {
 
         $users = User::all();
-        return view("admin/personal/create")->with(compact('users'));
+        $cargos = Cargo::all();
+        return view("admin/personal/create")->with(compact('users','cargos'));
+
 
              //return view('admin/personal/create');
 
