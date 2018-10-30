@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Encargado;
+use App\User;
 
 class EncargadoController extends Controller
 {
@@ -29,7 +30,10 @@ class EncargadoController extends Controller
     public function create()
     {
         //
-        return view('encargado.create');
+        // return view('encargado.create');
+
+        $users = User::all();
+        return view("encargado.create")->with(compact('users'));
     }
 
     /**
@@ -47,7 +51,7 @@ class EncargadoController extends Controller
             'p_apellido' => 'required',
             's_apellido'=> 'required',
             'genero'=> 'required',
-            // 'fecha_nac'=> 'required',
+            'fecha_nac'=> 'required',
             'direccion'=> 'required',
             'telefono'=> 'required|integer',
             'cui'=> 'required|integer',

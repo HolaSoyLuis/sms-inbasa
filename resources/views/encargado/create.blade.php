@@ -64,11 +64,25 @@
               <input type="text" class="form-control" name="foto"/>
           </div>
           <div class="form-group">
+              <!--
               <label for="quantity">Usuario id: </label>
               <input type="text" class="form-control" name="usuario_id"/>
+              -->
+              <label for="usuario_id">Ingrese ID del usuario</label>
+              <select class="form-control" name="usuario_id" id="usuario_id">
+                  @foreach ($users as $user)
+                    <option value="{{ $user['id'] }}">{{ $user['id'] }}</option>										
+                  @endforeach
+              </select>
           </div>
+
+
+
+
           <button type="submit" class="btn btn-primary">Agregar</button>
+
       </form>
+
   </div>
 </div>
 

@@ -10,7 +10,7 @@
 <div class="uper">
   @if(session()->get('success'))
     <div class="alert alert-success">
-      {{ session()->get('success') }}  
+      {{ session()->get('success') }}
     </div><br />
   @endif
   <table class="table table-striped">
@@ -36,9 +36,9 @@
             <td>{{$encargado->direccion}}</td>
             <td>{{$encargado->telefono}}</td>
             <td>{{$encargado->cui}}</td>
-            <td><a href="{{ route('encargados.edit',$encargado->id)}}" class="btn btn-primary">Editar</a></td>
+            <td><a href="{{ route('encargado.edit',$encargado->id)}}" class="btn btn-primary">Editar</a></td>
             <td>
-                <form action="{{ route('encargados.destroy', $encargado->id)}}" method="post">
+                <form action="{{ route('encargado.destroy', $encargado->id)}}" method="post">
                   @csrf
                   @method('DELETE')
                   <button class="btn btn-danger" type="submit">Eliminar</button>
