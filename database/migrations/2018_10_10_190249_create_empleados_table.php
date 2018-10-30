@@ -28,7 +28,7 @@ class CreateEmpleadosTable extends Migration
             $table->string('lugar_nac',100);
             $table->string('estado_civil',45);
             $table->string('direccion',100)->nullable();
-            $table->timestamp('inicio_labores');
+            $table->date('inicio_labores');
             $table->string('cui',25);
             $table->string('telefono',15)->nullable();
             $table->string('correo',100)->nullable();

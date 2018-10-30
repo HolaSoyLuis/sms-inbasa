@@ -56,13 +56,13 @@
                                <b class="caret"></b>
                             </p>
                         </a>
-        
+
                         <div class="collapse" id="modAdmin">
                             <ul class="nav">
                                 <li class="nav-item ">
                                     <a class="nav-link" href="{{ route('usuarios.index') }}">
                                       <span class="sidebar-mini"> U </span>
-                                      <span class="sidebar-normal"> Usuarios </span>                                    
+                                      <span class="sidebar-normal"> Usuarios </span>
                                     </a>
                                 </li>
                                 <li class="nav-item ">
@@ -117,7 +117,7 @@
                         </div>
                     </li>
                     {{-- Fin Botones Administración --}}
-                    
+
                     {{-- Botones Módulo Docentes --}}
                     <li class="nav-item ">
                         <a class="nav-link" data-toggle="collapse" href="#modDocente">
@@ -126,7 +126,7 @@
                                <b class="caret"></b>
                             </p>
                         </a>
-        
+
                         <div class="collapse" id="modDocente">
                             <ul class="nav">
                                 <li class="nav-item ">
@@ -160,12 +160,12 @@
                                <b class="caret"></b>
                             </p>
                         </a>
-        
+
                         <div class="collapse" id="modEncargado">
 
                             <ul class="nav">
                                 <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('encargados.index') }}">
+                                    <a class="nav-link" href="{{ route('encargado.index') }}">
                                       <span class="sidebar-mini"> EN </span>
                                       <span class="sidebar-normal"> ENCARGADO </span>
                                     </a>
@@ -195,7 +195,7 @@
                                <b class="caret"></b>
                             </p>
                         </a>
-        
+
                         <div class="collapse" id="modEstudiante">
                             <ul class="nav">
                                 <li class="nav-item ">
@@ -223,7 +223,7 @@
                                <b class="caret"></b>
                             </p>
                         </a>
-        
+
                         <div class="collapse" id="modEconomico">
                             <ul class="nav">
                                 <li class="nav-item ">
@@ -253,7 +253,7 @@
                     <li class="nav-item" style="margin-top:80px;">
                         <a class="nav-link" href="{{ route('logout') }}"onclick="event.preventDefault();
                                         document.getElementById('formCerrar').submit();">
-                        
+
                             <i class="material-icons">person</i>
                             <p>Cerrar Sesión</p>
                         </a>
@@ -305,7 +305,7 @@
                 </div>
             </nav>
             {{-- Fin NavBar --}}
-            
+
             {{-- Contenido de Módulos --}}
             <div class="content">
                 <div class="container-fluid">

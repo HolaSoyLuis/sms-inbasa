@@ -252,7 +252,7 @@
 
 								<div class="form-group label-floating">								
 								<label for="inicio_labores">Inicio de Labores</label>
-								<input type="time" class="form-control" name="inicio_labores" input id="inicio_labores"></input>
+								<input type="date" class="form-control" name="inicio_labores" input id="inicio_labores"></input>
 								@if ($errors->has('inicio_labores'))
 										<span class="invalid-feedback" role="alert">
 												<strong>{{ $errors->first('inicio_labores') }}</strong>
@@ -343,6 +343,31 @@
 						</div> {{--Fin Columna--}}
 
 
+
+			<div class="col"> {{-- Tercera Columna --}}
+
+							<div class="form-group label-floating">								
+										
+
+										<select class="form-control" name="centro_id" id="centro_id" >
+												@foreach ($centros as $u)
+												<option value="centros">Elegir Centro</option>
+													<option value="{{ $u['id'] }}">{{ $u['nombre'] }}</option>			
+
+												<							
+												@endforeach																										
+											</select>																							
+											@if ($errors->has('centro_id'))
+													<span class="invalid-feedback" role="alert">
+															<strong>{{ $errors->first('centro_id') }}</strong>
+													</span>
+											@endif					
+										</div>
+
+
+						</div> {{--Fin Columna--}}
+
+
 		</div>{{-- Fin Contenedor --}}
 
 
@@ -360,7 +385,7 @@
 
 						</div>
 																	
-						<div class="form-group">
+						<div class="form-group text-center">
 							<button class="btn btn-primary" type="submit">Guardar</button>				
 						</div>
 					</form>											
