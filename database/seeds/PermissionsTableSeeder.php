@@ -568,6 +568,12 @@ class PermissionsTableSeeder extends Seeder
             MODULO DE ENCARGADOS
             POR APARTADOS
         */
+        //76.0 
+        Permission::create([
+            'name'          => 'Navegar en Encargados',
+            'slug'          => 'encargados.index',
+            'description'   => 'Navega y muestra al encargado',
+        ]);    
         //76 Notas - notas de su hijo o estudiante a cargo
         Permission::create([
             'name'          => 'Navegar en Notas',
