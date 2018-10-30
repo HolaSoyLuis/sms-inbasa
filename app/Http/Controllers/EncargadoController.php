@@ -117,10 +117,10 @@ class EncargadoController extends Controller
             'p_apellido' => 'required',
             's_apellido'=> 'required',
             'genero'=> 'required',
-            // 'fecha_nac'=> 'required',
+            'fecha_nac'=> 'required',
             'direccion'=> 'required',
             'telefono'=> 'required|integer',
-            'cui'=> 'required|integer',
+            'cui'=> 'required',
             'foto'=> 'required',
             'usuario_id' => 'required'
         ]);
