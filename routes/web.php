@@ -362,7 +362,7 @@ Route::middleware(['auth'])->group(function(){
         RUTAS PARA EL MÓDULO DE ENCARGADOS
     */
     //Ruta para listar las notas de sus hijos
-     Route::resource('encargado', 'EncargadoController@index')->name('encargados.index')
+     Route::get('encargado', 'EncargadoController@index')->name('encargados.index')
         ->middleware('permission:encargados.index');
 
 
