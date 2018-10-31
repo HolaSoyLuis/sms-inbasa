@@ -22,6 +22,8 @@ class CreateEstudiantesTable extends Migration
             $table->string('t_nombre',45)->nullable();
             $table->string('p_apellido',45);
             $table->string('s_apellido',45);
+            $table->string('codigo', 20);
+
             $table->enum('genero',[
                 'Masculino','Femenino'
             ]);

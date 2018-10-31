@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use App\Http\Requests\EmpleadoStoreRequest;
+use App\Http\Requests\EmpleadoUpdateRequest;
+
+
+
 use App\Empleado;
 use App\User;
 use App\Centro;
@@ -59,8 +64,9 @@ class EmpleadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EmpleadoStoreRequest $request)
     {
+        /*
         $empleados = new Empleado();
         $empleados->p_nombre = $request->input('p_nombre');
         $empleados->s_nombre = $request->input('s_nombre'); 
@@ -81,9 +87,21 @@ class EmpleadoController extends Controller
         $empleados->cargo_id = $request->input('cargo_id');
         $empleados->centro_id = $request->input('centro_id');
 
-        $empleados->save();
+         $empleados->save();
 
-        return redirect('admin/personal/personal');
+
+          return redirect('admin/personal/personal');
+
+
+        */
+          $empleados = Empleado::create($request->all());
+
+          return redirect()->route('empleados.index',$empleados->id)
+            ->with('info', 'Empleado creado con Exito');
+
+       
+
+       
     }
 
     /**
@@ -118,6 +136,12 @@ class EmpleadoController extends Controller
     public function update(Request $request, Empleado $empleado)
     {
         //
+         $empleados = Empleado::find($id);
+
+         $empleados->fill($request->all())->save();
+
+          return redirect()->route('empleados.index',$empleados->id)
+            ->with('info', 'Empleado creado con Exito');
     }
 
     /**

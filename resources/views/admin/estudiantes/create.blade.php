@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Crear Empleados')
+@section('title', 'Crear Estudiantes')
 @section('content')
 
 
@@ -11,10 +11,10 @@
 		    <div class="collapse navbar-collapse">
 		      <ul class="navbar-nav">
 		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('empleados.index') }}">Lista de Empleados</a>
+		          <a class="nav-link" href="{{ route('estudiantes.index') }}">Lista de Estudiantes</a>
 		        </li>
 		        <li class="nav-item active">
-		          <a class="nav-link" href="{{ route('empleados.create') }}">Nuevo Empleado</a>
+		          <a class="nav-link" href="{{ route('estudiantes.create') }}">Nuevo Estudiantiantes</a>
 		        </li>
 		        </li>
 		      </ul>
@@ -45,7 +45,7 @@
       </div><br/>
     @endif
 				<div class="card-body text-center">								
-				<form method="post" action="{{ route('empleados.store') }}">
+				<form method="post" action="{{ route('estudiantes.store') }}">
 					@csrf
 					<h3>Ingrese los Datos</h3>	
 
@@ -133,11 +133,11 @@
 			<div class="col">  {{--Primera Columna --}}	
 						<div class="form-group">
 							<div class="form-group label-floating">								
-								<label for="cui">DPI</label>
-								<input type="text" class="form-control{{ $errors->has('cui') ? ' is-invalid' : '' }}" name="cui" input id="cui"></input>
-								@if ($errors->has('cui'))
+								<label for="codigo">Codigo</label>
+								<input type="text" class="form-control{{ $errors->has('codigo') ? ' is-invalid' : '' }}" name="codigo" input id="codigo"></input>
+								@if ($errors->has('codigo'))
 										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('cui') }}</strong>
+												<strong>{{ $errors->first('codigo') }}</strong>
 										</span>
 								@endif					
 							</div>
@@ -150,11 +150,11 @@
 				<div class="col"> {{-- Segunda Columna --}}
 
 								<div class="form-group label-floating">								
-								<label for="telefono">Telefono</label>
-								<input type="text" class="form-control{{ $errors->has('telefono') ? ' is-invalid' : '' }}" name="telefono" input id="telefono"></input>
-								@if ($errors->has('telefono'))
+								<label for="genero">Genero</label>
+								<input type="text" class="form-control{{ $errors->has('genero') ? ' is-invalid' : '' }}" name="genero" input id="genero"></input>
+								@if ($errors->has('genero'))
 										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('telefono') }}</strong>
+												<strong>{{ $errors->first('genero') }}</strong>
 										</span>
 								@endif	
 								</div>
@@ -173,11 +173,11 @@
 				<div class="col">  {{--Primera Columna --}}	
 						<div class="form-group">
 							<div class="form-group label-floating">								
-								<label for="genero">Genero</label>
-								<input type="text" class="form-control{{ $errors->has('genero') ? ' is-invalid' : '' }}" name="genero" input id="genero"></input>
-								@if ($errors->has('genero'))
+								<label for="fecha_nac">Fecha Nacimiento</label>
+								<input type="date" class="form-control{{ $errors->has('fecha_nac') ? ' is-invalid' : '' }}" name="fecha_nac" input id="fecha_nac"></input>
+								@if ($errors->has('fecha_nac'))
 										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('genero') }}</strong>
+												<strong>{{ $errors->first('fecha_nac') }}</strong>
 										</span>
 								@endif					
 							</div>
@@ -189,11 +189,11 @@
 				<div class="col">  {{--Segunda Columna --}}	
 						<div class="form-group">
 							<div class="form-group label-floating">								
-								<label for="fecha_nac">Fecha Nacimiento</label>
-								<input type="date" class="form-control{{ $errors->has('fecha_nac') ? ' is-invalid' : '' }}" name="fecha_nac" input id="fecha_nac"></input>
-								@if ($errors->has('fecha_nac'))
+								<label for="direccion">Direccion</label>
+								<input type="direccion" class="form-control{{ $errors->has('direccion') ? ' is-invalid' : '' }}" name="direccion" input id="direccion"></input>
+								@if ($errors->has('direccion'))
 										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('fecha_nac') }}</strong>
+												<strong>{{ $errors->first('direccion') }}</strong>
 										</span>
 								@endif					
 							</div>
@@ -210,92 +210,6 @@
 					<div class="col"> {{-- Primera  Columna --}}
 
 								<div class="form-group label-floating">								
-								<label for="lugar_nac">Lugar de Nacimiento</label>
-								<input type="text" class="form-control{{ $errors->has('lugar_nac') ? ' is-invalid' : '' }}" name="lugar_nac" input id="lugar_nac"></input>
-								@if ($errors->has('lugar_nac'))
-										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('lugar_nac') }}</strong>
-										</span>
-								@endif					
-								</div>
-
-					</div> {{--Fin Columna--}}
-
-
-					<div class="col"> {{-- Segunda Columna --}}
-
-								<div class="form-group label-floating">								
-								<label for="estado_civil">Estado Civil</label>
-								<input type="text" class="form-control{{ $errors->has('estado_civil') ? ' is-invalid' : '' }}" name="estado_civil" input id="estado_civil"></input>
-								@if ($errors->has('estado_civil'))
-										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('estado_civil') }}</strong>
-										</span>
-								@endif					
-								</div>
-
-					</div> {{--Fin Columna--}}
-
-		</div>{{-- Fin Contenedor --}}
-
-
-
-		<div class="form-row">  {{--Contenedor Quinta Fila--}} 
-
-
-						<div class="col"> {{-- Primera Columna --}}
-
-								<div class="form-group label-floating">								
-								<label for="direccion">Direccion</label>
-								<input type="text" class="form-control" name="direccion" input id="direccion"></input>
-								@if ($errors->has('direccion'))
-										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('direccion') }}</strong>
-										</span>
-								@endif					
-								</div>
-
-						</div> {{--Fin Columna--}}
-
-							<div class="col"> {{-- Segunda Columna --}}
-
-								<div class="form-group label-floating">								
-								<label for="inicio_labores">Inicio de Labores</label>
-								<input type="date" class="form-control{{ $errors->has('inicio_labores') ? ' is-invalid' : '' }}" name="inicio_labores" input id="inicio_labores"></input>
-								@if ($errors->has('inicio_labores'))
-										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('inicio_labores') }}</strong>
-										</span>
-								@endif					
-								</div>
-
-						</div> {{--Fin Columna--}}
-
-
-		</div>{{-- Fin Contenedor --}}
-
-
-		<div class="form-row">  {{--Contenedor Sexta Fila--}}
-
-
-
-						<div class="col"> {{-- Primera Columna --}}
-
-								<div class="form-group label-floating">								
-								<label for="correo">Correo Electronico</label>
-								<input type="email" class="form-control" name="correo" input id="correo"></input>
-								@if ($errors->has('correo'))
-										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('correo') }}</strong>
-										</span>
-								@endif					
-								</div>
-
-						</div> {{--Fin Columna--}}
-
-							<div class="col"> {{-- Segunda Columna --}}
-
-								<div class="form-group label-floating">								
 								<label for="estado">Estado</label>
 								<input type="text" class="form-control{{ $errors->has('estado') ? ' is-invalid' : '' }}" name="estado" input id="estado"></input>
 								@if ($errors->has('estado'))
@@ -305,15 +219,10 @@
 								@endif					
 								</div>
 
-						</div> {{--Fin Columna--}}
+					</div> {{--Fin Columna--}}
 
 
-		</div>{{-- Fin Contenedor --}}
-
-
-		<div class="form-row">  {{--Contenedor Septima Fila--}}
-
-			<div class="col"> {{-- Primera Columna --}}
+					<div class="col"> {{-- Primera Columna --}}
 
 							<div class="form-group label-floating">								
 								<label for="usuario_id">Usuario</label>																
@@ -330,69 +239,10 @@
 							</div>
 			</div> {{--Fin Columna--}}
 
-
-
-			<div class="col"> {{-- Segunda Columna --}}
-
-							<div class="form-group label-floating">								
-											<label for="cargo_id">Cargo</label>																
-											<select class="form-control{{ $errors->has('cargo_id') ? ' is-invalid' : '' }}" name="cargo_id" id="cargo_id">
-												@foreach ($cargos as $u)
-													<option value="{{ $u['id'] }}">{{ $u['cargo'] }}</option>										
-												@endforeach																										
-											</select>																							
-											@if ($errors->has('cargo'))
-													<span class="invalid-feedback" role="alert">
-															<strong>{{ $errors->first('cargo') }}</strong>
-													</span>
-											@endif					
-										</div>
-
-
-						</div> {{--Fin Columna--}}
-
-
-
-			<div class="col"> {{-- Tercera Columna --}}
-
-							<div class="form-group label-floating">								
-										
-
-										<select class="form-control{{ $errors->has('centro_id') ? ' is-invalid' : '' }}" name="centro_id" id="centro_id" >
-												@foreach ($centros as $u)
-												<option value="centros">Elegir Centro</option>
-													<option value="{{ $u['id'] }}">{{ $u['nombre'] }}</option>			
-
-												<							
-												@endforeach																										
-											</select>																							
-											@if ($errors->has('centro_id'))
-													<span class="invalid-feedback" role="alert">
-															<strong>{{ $errors->first('centro_id') }}</strong>
-													</span>
-											@endif					
-										</div>
-
-
-						</div> {{--Fin Columna--}}
-
-
 		</div>{{-- Fin Contenedor --}}
 
-
-
-
-
-
-
-
-							
-						
-					
-
-
-
-						</div>
+	
+		</div>
 																	
 						<div class="form-group text-center">
 							<button class="btn btn-primary" type="submit">Guardar</button>				
@@ -407,6 +257,8 @@
 	</div>
 
 </div>
+
+			
 
 
 

@@ -118,6 +118,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('admin/estudiantes', 'EstudianteController@index')->name('estudiantes.index')
         ->middleware('permission:estudiantes.index');
 
+    Route::get('admin/estudiantes/list', 'EstudianteController@index')->name('estudiantes.list')
+        ->middleware('permission:estudiantes.list');
+
     Route::get('admin/estudiantes/create', 'EstudianteController@create')->name('estudiantes.create')
         ->middleware('permission:estudiantes.create');
 

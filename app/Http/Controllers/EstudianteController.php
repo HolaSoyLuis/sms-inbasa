@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\EstudianteStoreRequest;
+
+
+use App\User;
+use App\Estudiante;
+
+
 class EstudianteController extends Controller
 {
     /**
@@ -13,8 +20,10 @@ class EstudianteController extends Controller
      */
     public function index()
     {
-        return view('admin/estudiantes/estudiantes');
+        $estudiantes= Estudiante::all();
+        return view('admin/estudiantes/estudiantes')->with(compact('estudiantes'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -23,7 +32,8 @@ class EstudianteController extends Controller
      */
     public function create()
     {
-        //
+        $users = User::all();
+        return view("admin/estudiantes/create")->with(compact('users'));
     }
 
     /**
@@ -32,9 +42,12 @@ class EstudianteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EstudianteStoreRequest $request)
     {
-        //
+            $estudiantes = Estudiante::create($request->all());
+
+          return redirect()->route('estudiantes.index',$estudiantes->id)
+            ->with('info', 'Empleado creado con Exito');
     }
 
     /**
