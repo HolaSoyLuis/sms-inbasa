@@ -57,14 +57,14 @@
                                    <b class="caret"></b>
                                 </p>
                             </a>
-            
+
                             <div class="collapse" id="modAdmin">
                                 <ul class="nav">
                                     @if(Auth::check() && Auth::user()->can('usuarios.index'))
                                         <li class="nav-item ">
                                             <a class="nav-link" href="{{ route('usuarios.index') }}">
                                               <span class="sidebar-mini"> U </span>
-                                              <span class="sidebar-normal"> Usuarios </span>                                    
+                                              <span class="sidebar-normal"> Usuarios </span>
                                             </a>
                                         </li>
                                     @endif
@@ -96,9 +96,9 @@
                                         </li>
                                     @endif
 
-                                    @if(Auth::check() && Auth::user()->can('encargados.index'))
+                                    @if(Auth::check() && Auth::user()->can('encargado.index'))
                                         <li class="nav-item ">
-                                            <a class="nav-link" href="{{ route('encargados.index') }}">
+                                            <a class="nav-link" href="{{ route('encargado.index') }}">
                                             <span class="sidebar-mini"> EN </span>
                                             <span class="sidebar-normal"> Encargados </span>
                                             </a>
@@ -154,7 +154,7 @@
                         </li>
                         {{-- Fin Botones Administración --}}
                     @endif
-                    
+
                     @if(Auth::check() && (Auth::user()->can('docentes.cursos.index'))||(Auth::user()->can('docentes.horario.index'))||(Auth::user()->can('docentes.notas.index')))
                         {{-- Botones Módulo Docentes --}}
                         <li class="nav-item ">
@@ -164,7 +164,7 @@
                                    <b class="caret"></b>
                                 </p>
                             </a>
-            
+
                             <div class="collapse" id="modDocente">
                                 <ul class="nav">
                                     @if(Auth::check() && Auth::user()->can('docentes.cursos.index'))
@@ -209,7 +209,7 @@
                                    <b class="caret"></b>
                                 </p>
                             </a>
-            
+
                             <div class="collapse" id="modEncargado">
                                 <ul class="nav">
                                     @if(Auth::check() && Auth::user()->can('encargados.notas.index'))
@@ -244,7 +244,7 @@
                                    <b class="caret"></b>
                                 </p>
                             </a>
-            
+
                             <div class="collapse" id="modEstudiante">
                                 <ul class="nav">
                                     @if(Auth::check() && Auth::user()->can('estudiantes.cursos.index'))
@@ -269,7 +269,7 @@
                         </li>
                         {{-- Fin Botones Estudiantes --}}
                     @endif
-                    
+
                     @if(Auth::check() && (Auth::user()->can('inscripciones.index'))||(Auth::user()->can('colegiaturas.index'))||(Auth::user()->can('costos.index')))
                         {{-- Botones Módulo Gestión Económica --}}
                         <li class="nav-item ">
@@ -279,7 +279,7 @@
                                    <b class="caret"></b>
                                 </p>
                             </a>
-            
+
                             <div class="collapse" id="modEconomico">
                                 <ul class="nav">
                                     @if(Auth::check() && Auth::user()->can('inscripciones.index'))
