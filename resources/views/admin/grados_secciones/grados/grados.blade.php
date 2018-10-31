@@ -17,7 +17,7 @@
 		          <a class="nav-link" href="{{ route('secciones.index') }}">Lista de Secciones</a>
 		        </li>
 		       	<li class="nav-item">
-		          <a class="nav-link" href="{{ route('secciones.create') }}">Nuevo Seccion</a>
+		          <a class="nav-link" href="{{ route('secciones.create') }}">Nuevo Sección</a>
 		        </li>
 		      </ul>
 		    </div>
@@ -31,22 +31,18 @@
 		<div class="table-responsive">
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
-					<th>No</th>	
-					<th>No Ciclo</th>					
+					<th>No</th>						
 					<th>Jornada</th>
 					<th>Grado</th>
 					<th>Creado</th>
-					<th>Actualizado</th>					
-					<th>Eliminado</th>
+					<th>Actualizado</th>
 					<th>Opciones</th>
 				</thead>		
 				@foreach($grados as $grado)		
 				<tr>
 					<td>{{$grado->id}}</td>
-					<td>{{$grado->ciclo_id}}</td>
-					<td>{{$grado->jornada_id}}</td>
+					<td>{{$grado->jornada->jornada}}</td>
 					<td>{{$grado->grado}}</td>
-					<td>{{$grado->deleted_at}}</td>
 					<td>{{$grado->created_at}}</td>
 					<td>{{$grado->updated_at}}</td>					
 					<td>

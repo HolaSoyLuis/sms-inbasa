@@ -15,7 +15,7 @@ class SeccionController extends Controller
     public function index()
     {
         $secciones = Seccion::all();
-        return view('admin/grados_secciones/secciones/secciones')->with(compact('secciones'));
+        return view('admin.grados_secciones.secciones.secciones')->with(compact('secciones'));
     }
 
     /**
@@ -25,7 +25,7 @@ class SeccionController extends Controller
      */
     public function create()
     {
-        return view("admin/grados_secciones/secciones/create");
+        return view("admin.grados_secciones.secciones.create");
     }
 
     /**
@@ -39,7 +39,7 @@ class SeccionController extends Controller
         $secciones = new Seccion();
         $secciones->seccion = $request->input('seccion');
         $secciones->save();        
-        return redirect('admin/grados_secciones/secciones/secciones');
+        return redirect('admin/secciones');
     }
 
     /**

@@ -19,7 +19,6 @@
     @yield('css')
 
     <!-- Titulo -->
-    <!-- <title>{{ config('app.name', 'INBASA') }}</title> -->
     <title>@yield('title', 'INBASA')</title>
 </head>
 <body>
@@ -29,7 +28,7 @@
         <div class="sidebar" data-color="purple" data-background-color="black" data-image="{{asset('img/bg_sidebar-1.jpg')}}">
             <div class="logo">
                 <a href="#" class="simple-text logo-mini">
-                        GT
+                    GT
                 </a>
                 <a href="#" class="simple-text logo-normal">
                     UMG
@@ -39,211 +38,275 @@
                 {{-- Apartados - Botones de Módulos --}}
                 <ul class="nav">
                     {{-- Botones Módulo Home --}}
+                    @if(Auth::check() && Auth::user()->can('inicio.index'))
+                        <li class="nav-item  ">
+                            <a class="nav-link" href="{{ route('inicio') }}">
 
-                    <li class="nav-item  ">
-                        <a class="nav-link" href="{{ route('inicio') }}">
+                                  <i class="material-icons">home</i>
+                                <p>Inicio</p>
+                            </a>
+                        </li>
+                    @endif
 
-                              <i class="material-icons">home</i>
-                            <p>Inicio</p>
-                        </a>
-                    </li>
+                    @if(Auth::check() && ((Auth::user()->can('usuarios.index'))||(Auth::user()->can('roles.index'))||(Auth::user()->can('personal.index'))||(Auth::user()->can('cargos.index'))||(Auth::user()->can('estudiantes.index'))||(Auth::user()->can('ciclos.index'))||(Auth::user()->can('bloques.index'))||(Auth::user()->can('ciclos.index'))||(Auth::user()->can('grados.index'))||(Auth::user()->can('secciones.index'))||(Auth::user()->can('cursos.index'))||(Auth::user()->can('centros.index'))||Auth::user()->can('respaldos.index')))
+                        {{-- Botones Módulo Administración --}}
+                        <li class="nav-item ">
+                            <a class="nav-link" data-toggle="collapse" href="#modAdmin">
+                                <i class="material-icons">supervisor_account</i>
+                                <p> Administración
+                                   <b class="caret"></b>
+                                </p>
+                            </a>
+            
+                            <div class="collapse" id="modAdmin">
+                                <ul class="nav">
+                                    @if(Auth::check() && Auth::user()->can('usuarios.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('usuarios.index') }}">
+                                              <span class="sidebar-mini"> U </span>
+                                              <span class="sidebar-normal"> Usuarios </span>                                    
+                                            </a>
+                                        </li>
+                                    @endif
 
-                    {{-- Botones Módulo Administración --}}
-                    <li class="nav-item ">
-                        <a class="nav-link" data-toggle="collapse" href="#modAdmin">
-                            <i class="material-icons">supervisor_account</i>
-                            <p> Administración
-                               <b class="caret"></b>
-                            </p>
-                        </a>
-        
-                        <div class="collapse" id="modAdmin">
-                            <ul class="nav">
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('usuarios.index') }}">
-                                      <span class="sidebar-mini"> U </span>
-                                      <span class="sidebar-normal"> Usuarios </span>                                    
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('roles.index') }}">
-                                      <span class="sidebar-mini"> RP </span>
-                                      <span class="sidebar-normal"> Roles y Permisos </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('empleados.index') }}">
-                                      <span class="sidebar-mini"> P </span>
-                                      <span class="sidebar-normal"> Personal </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('estudiantes.index') }}">
-                                      <span class="sidebar-mini"> ES </span>
-                                      <span class="sidebar-normal"> Estudiantes </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('ciclos.index') }}">
-                                      <span class="sidebar-mini"> CB </span>
-                                      <span class="sidebar-normal"> Ciclos y Bimestres </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('grados.index') }}">
-                                      <span class="sidebar-mini"> GS </span>
-                                      <span class="sidebar-normal"> Grados y Secciones </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('cursos.index') }}">
-                                      <span class="sidebar-mini"> C </span>
-                                      <span class="sidebar-normal"> Cursos </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('centros.index') }}">
-                                      <span class="sidebar-mini"> CE </span>
-                                      <span class="sidebar-normal"> Centro Educativo </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('respaldos.index') }}">
-                                      <span class="sidebar-mini"> BK </span>
-                                      <span class="sidebar-normal"> Respaldos </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    {{-- Fin Botones Administración --}}
+                                    @if(Auth::check() && Auth::user()->can('roles.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('roles.index') }}">
+                                              <span class="sidebar-mini"> RP </span>
+                                              <span class="sidebar-normal"> Roles y Permisos </span>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if(Auth::check() && Auth::user()->can('personal.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('empleados.index') }}">
+                                              <span class="sidebar-mini"> P </span>
+                                              <span class="sidebar-normal"> Personal </span>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if(Auth::check() && Auth::user()->can('estudiantes.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('estudiantes.index') }}">
+                                              <span class="sidebar-mini"> ES </span>
+                                              <span class="sidebar-normal"> Estudiantes </span>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if(Auth::check() && (Auth::user()->can('ciclos.index')||Auth::user()->can('bloques.index')))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('ciclos.index') }}">
+                                              <span class="sidebar-mini"> CB </span>
+                                              <span class="sidebar-normal"> Ciclos y Bloques </span>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if(Auth::check() && (Auth::user()->can('grados.index')||Auth::user()->can('Secciones.index')))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('grados.index') }}">
+                                              <span class="sidebar-mini"> GS </span>
+                                              <span class="sidebar-normal"> Grados y Secciones </span>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if(Auth::check() && Auth::user()->can('cursos.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('cursos.index') }}">
+                                              <span class="sidebar-mini"> C </span>
+                                              <span class="sidebar-normal"> Cursos </span>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if(Auth::check() && Auth::user()->can('centros.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('centros.index') }}">
+                                              <span class="sidebar-mini"> CE </span>
+                                              <span class="sidebar-normal"> Centro Educativo </span>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if(Auth::check() && Auth::user()->can('respaldos.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('respaldos.index') }}">
+                                              <span class="sidebar-mini"> BK </span>
+                                              <span class="sidebar-normal"> Respaldos </span>
+                                            </a>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </li>
+                        {{-- Fin Botones Administración --}}
+                    @endif
                     
-                    {{-- Botones Módulo Docentes --}}
-                    <li class="nav-item ">
-                        <a class="nav-link" data-toggle="collapse" href="#modDocente">
-                            <i class="material-icons">assignment_ind</i>
-                            <p> Docentes
-                               <b class="caret"></b>
-                            </p>
-                        </a>
-        
-                        <div class="collapse" id="modDocente">
-                            <ul class="nav">
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('docentes.cursos.index') }}">
-                                      <span class="sidebar-mini"> C </span>
-                                      <span class="sidebar-normal"> Cursos </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('docentes.horario.index') }}">
-                                      <span class="sidebar-mini"> HR </span>
-                                      <span class="sidebar-normal"> Horario </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('docentes.notas.index') }}">
-                                      <span class="sidebar-mini"> N </span>
-                                      <span class="sidebar-normal"> Notas </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    {{-- Fin Botones Docentes --}}
+                    @if(Auth::check() && (Auth::user()->can('docentes.cursos.index'))||(Auth::user()->can('docentes.horario.index'))||(Auth::user()->can('docentes.notas.index')))
+                        {{-- Botones Módulo Docentes --}}
+                        <li class="nav-item ">
+                            <a class="nav-link" data-toggle="collapse" href="#modDocente">
+                                <i class="material-icons">assignment_ind</i>
+                                <p> Docentes
+                                   <b class="caret"></b>
+                                </p>
+                            </a>
+            
+                            <div class="collapse" id="modDocente">
+                                <ul class="nav">
+                                    @if(Auth::check() && Auth::user()->can('docentes.cursos.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('docentes.cursos.index') }}">
+                                              <span class="sidebar-mini"> C </span>
+                                              <span class="sidebar-normal"> Cursos </span>
+                                            </a>
+                                        </li>
+                                    @endif
 
-                    {{-- Botones Módulo Encargados --}}
-                    <li class="nav-item ">
-                        <a class="nav-link" data-toggle="collapse" href="#modEncargado">
-                            <i class="material-icons">face</i>
-                            <p> Encargado
-                               <b class="caret"></b>
-                            </p>
-                        </a>
-        
-                        <div class="collapse" id="modEncargado">
-                            <ul class="nav">
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('encargados.notas.index') }}">
-                                      <span class="sidebar-mini"> NT </span>
-                                      <span class="sidebar-normal"> Notas </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('encargados.horario.index') }}">
-                                      <span class="sidebar-mini"> HR </span>
-                                      <span class="sidebar-normal"> Horario Clases </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    {{-- Fin Botones Encargados --}}
+                                    @if(Auth::check() && Auth::user()->can('docentes.horario.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('docentes.horario.index') }}">
+                                              <span class="sidebar-mini"> HR </span>
+                                              <span class="sidebar-normal"> Horario </span>
+                                            </a>
+                                        </li>
+                                    @endif
 
-                    {{-- Botones Módulo Estudiantes --}}
-                    <li class="nav-item ">
-                        <a class="nav-link" data-toggle="collapse" href="#modEstudiante">
-                            <i class="material-icons">school</i>
-                            <p> Estudiante
-                               <b class="caret"></b>
-                            </p>
-                        </a>
-        
-                        <div class="collapse" id="modEstudiante">
-                            <ul class="nav">
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('estudiantes.cursos.index') }}">
-                                      <span class="sidebar-mini"> C </span>
-                                      <span class="sidebar-normal"> Cursos </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('estudiantes.horario.index') }}">
-                                      <span class="sidebar-mini"> HR </span>
-                                      <span class="sidebar-normal"> Horario Clases </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    {{-- Fin Botones Estudiantes --}}
+                                    @if(Auth::check() && Auth::user()->can('docentes.notas.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('docentes.notas.index') }}">
+                                              <span class="sidebar-mini"> N </span>
+                                              <span class="sidebar-normal"> Notas </span>
+                                            </a>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </li>
+                        {{-- Fin Botones Docentes --}}
+                    @endif
 
-                    {{-- Botones Módulo Gestión Económica --}}
-                    <li class="nav-item ">
-                        <a class="nav-link" data-toggle="collapse" href="#modEconomico">
-                            <i class="material-icons">account_balance_wallet</i>
-                            <p> Gestión Económica
-                               <b class="caret"></b>
-                            </p>
-                        </a>
-        
-                        <div class="collapse" id="modEconomico">
-                            <ul class="nav">
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('inscripciones.index') }}">
-                                      <span class="sidebar-mini"> IN </span>
-                                      <span class="sidebar-normal"> Inscripciones </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('colegiaturas.index') }}">
-                                      <span class="sidebar-mini"> CL </span>
-                                      <span class="sidebar-normal"> Colegiaturas </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item ">
-                                    <a class="nav-link" href="{{ route('costos.index') }}">
-                                      <span class="sidebar-mini"> GC </span>
-                                      <span class="sidebar-normal"> Gestión de Costos </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                    {{-- Fin Botones Gestión Económica --}}
+
+                    @if(Auth::check() && (Auth::user()->can('encargados.notas.index'))||(Auth::user()->can('encargados.horario.index')))
+                        {{-- Botones Módulo Encargados --}}
+                        <li class="nav-item ">
+                            <a class="nav-link" data-toggle="collapse" href="#modEncargado">
+                                <i class="material-icons">face</i>
+                                <p> Encargado
+                                   <b class="caret"></b>
+                                </p>
+                            </a>
+            
+                            <div class="collapse" id="modEncargado">
+                                <ul class="nav">
+                                    @if(Auth::check() && Auth::user()->can('encargados.notas.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('encargados.notas.index') }}">
+                                              <span class="sidebar-mini"> NT </span>
+                                              <span class="sidebar-normal"> Notas </span>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if(Auth::check() && Auth::user()->can('encargados.horario.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('encargados.horario.index') }}">
+                                              <span class="sidebar-mini"> HR </span>
+                                              <span class="sidebar-normal"> Horario Clases </span>
+                                            </a>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </li>
+                        {{-- Fin Botones Encargados --}}
+                    @endif
+
+                    @if(Auth::check() && (Auth::user()->can('estudiantes.cursos.index'))||(Auth::user()->can('estudiantes.horario.index')))
+                        {{-- Botones Módulo Estudiantes --}}
+                        <li class="nav-item ">
+                            <a class="nav-link" data-toggle="collapse" href="#modEstudiante">
+                                <i class="material-icons">school</i>
+                                <p> Estudiante
+                                   <b class="caret"></b>
+                                </p>
+                            </a>
+            
+                            <div class="collapse" id="modEstudiante">
+                                <ul class="nav">
+                                    @if(Auth::check() && Auth::user()->can('estudiantes.cursos.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('estudiantes.cursos.index') }}">
+                                              <span class="sidebar-mini"> C </span>
+                                              <span class="sidebar-normal"> Cursos </span>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if(Auth::check() && Auth::user()->can('estudiantes.horario.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('estudiantes.horario.index') }}">
+                                              <span class="sidebar-mini"> HR </span>
+                                              <span class="sidebar-normal"> Horario Clases </span>
+                                            </a>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </li>
+                        {{-- Fin Botones Estudiantes --}}
+                    @endif
+                    
+                    @if(Auth::check() && (Auth::user()->can('inscripciones.index'))||(Auth::user()->can('colegiaturas.index'))||(Auth::user()->can('costos.index')))
+                        {{-- Botones Módulo Gestión Económica --}}
+                        <li class="nav-item ">
+                            <a class="nav-link" data-toggle="collapse" href="#modEconomico">
+                                <i class="material-icons">account_balance_wallet</i>
+                                <p> Gestión Económica
+                                   <b class="caret"></b>
+                                </p>
+                            </a>
+            
+                            <div class="collapse" id="modEconomico">
+                                <ul class="nav">
+                                    @if(Auth::check() && Auth::user()->can('inscripciones.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('inscripciones.index') }}">
+                                              <span class="sidebar-mini"> IN </span>
+                                              <span class="sidebar-normal"> Inscripciones </span>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if(Auth::check() && Auth::user()->can('colegiaturas.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('colegiaturas.index') }}">
+                                              <span class="sidebar-mini"> CL </span>
+                                              <span class="sidebar-normal"> Colegiaturas </span>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if(Auth::check() && Auth::user()->can('costos.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('costos.index') }}">
+                                              <span class="sidebar-mini"> GC </span>
+                                              <span class="sidebar-normal"> Gestión de Costos </span>
+                                            </a>
+                                        </li>
+                                    @endif
+                                </ul>
+                            </div>
+                        </li>
+                        {{-- Fin Botones Gestión Económica --}}
+                    @endif
 
                     {{-- Botón para cerrar sesión --}}
-                    <li class="nav-item" style="margin-top:80px;">
+                    <li class="nav-item" style="margin-top:40px;">
                         <a class="nav-link" href="{{ route('logout') }}"onclick="event.preventDefault();
                                         document.getElementById('formCerrar').submit();">
                         

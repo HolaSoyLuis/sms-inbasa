@@ -44,7 +44,7 @@
 					<tr>
 						<td>{{$user->id}}</td>
 						<td>{{$user->username}}</td>
-						<td>rol</td>
+						<td>Rol</td>
 						<td>{{$user->created_at}}</td>
 						<td>{{$user->updated_at}}</td>
 						<td>

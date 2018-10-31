@@ -37,11 +37,11 @@
 
 						<div class="form-group">
 							<div class="form-group label-floating">								
-								<label for="grado">Grado</label>
-								<input type="text" class="form-control" name="grado" input id="grado"></input>
-								@if ($errors->has('grado'))
+								<label for="seccion">Sección</label>
+								<input type="text" class="form-control" name="seccion" input id="seccion"></input>
+								@if ($errors->has('seccion'))
 										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('grado') }}</strong>
+												<strong>{{ $errors->first('seccion') }}</strong>
 										</span>
 								@endif					
 							</div>

@@ -16,8 +16,8 @@ class CreateAspectosTable extends Migration
         Schema::create('aspectos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('aspecto',45);
-            $table->float('nota_minima',2);
-            $table->float('nota_maxima',2);
+            $table->float('nota_minima',8 ,2);
+            $table->float('nota_maxima',8,2);
             
             $table->timestamps();
         });

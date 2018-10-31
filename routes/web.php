@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'Auth\LoginController@formPrincipal');
+Route::get('/login', 'Auth\LoginController@formLogin');
 Route::get('/desarrolladores', 'Auth\LoginController@formDesarrolladores');
 
 // Auth::routes();

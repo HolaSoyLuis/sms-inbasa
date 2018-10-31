@@ -13,11 +13,15 @@ class Ciclo extends Model
         'fecha_fin', 
     ];
 
-    public function bloques(){//Un ciclo tiene muchos bloques (4 bloques o unidades)
-        return $this->hasMany(Bloque::class);
+    public function bloques(){//Un ciclo va a estar en muchos bloques (4 bloques o unidades)
+        return $this->belongsToMany(Bloque::class, 'bloque_ciclo', 'ciclo_id', 'bloque_id');
     }
 
     public function asignaciones(){//Un ciclo tiene muchas asignaciones(inscripciones)
         return $this->hasMany(Asignacion::class);
+    }
+
+    public function asistencias(){//Un ciclo escolar va a tener muchas asistencias
+        return $this->hasMany(Asistencia::class);
     }
 }

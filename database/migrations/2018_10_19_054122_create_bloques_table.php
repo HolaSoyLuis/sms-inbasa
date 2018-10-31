@@ -18,10 +18,8 @@ class CreateBloquesTable extends Migration
     
             //Campos
             $table->string('bloque',45);
-
-            //Llaves foráneas
-            $table->unsignedInteger('ciclo_id')->nullable();
-            $table->foreign('ciclo_id')->references('id')->on('ciclos')->onUpdate('cascade')->onDelete('set null');
+            $table->float('nota_min',8,2)->nullable();
+            $table->float('nota_max',8,2)->nullable();
             
             $table->timestamps();
         });
