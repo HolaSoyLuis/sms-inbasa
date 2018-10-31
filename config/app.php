@@ -163,6 +163,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         //caffeinated/shinobi para roles y permisos de usuarios
         Caffeinated\Shinobi\ShinobiServiceProvider::class,
+        //Yajra Para la dataTable
+        Yajra\DataTables\DataTablesServiceProvider::class,
     ],
 
     /*
@@ -213,6 +215,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'DataTables' => Yajra\DataTables\Facades\DataTables::class,
     ],
 
 ];

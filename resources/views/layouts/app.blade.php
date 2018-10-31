@@ -7,17 +7,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
+    <!--  CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-    <!--     Iconos y Fuentes     -->
+    <!--  Iconos y Fuentes     -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/material-icons.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/fontawesome-all.min.css')}}" />
 
-    <!-- CSS Files -->
+    <!--  CSS Files -->
     <link href="{{asset('css/material-dashboard.min.css?v=2.0.2')}}" rel="stylesheet" />
+    <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet" />    
     @yield('css')
-
     <!-- Titulo -->
     <!-- <title>{{ config('app.name', 'INBASA') }}</title> -->
     <title>@yield('title', 'INBASA')</title>
@@ -339,11 +339,8 @@
         {{-- Fin Contenedor Principal --}}
     </div>
     {{-- Fin Contenido Completo --}}
-
-
 </body>
-
-    <!--   Scripts JS   -->
+    <!--    Scripts JS   -->
     <script src="{{ asset('js/jquery.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('js/bootstrap-material-design.min.js') }}" type="text/javascript"></script>
@@ -362,12 +359,44 @@
     <script src="{{asset('js/bootstrap-selectpicker.js')}}" type="text/javascript"></script>
     <!--	Plugin for Fileupload, full documentation here: http://www.jasny.net/bootstrap/javascript/#fileinput   -->
 	<script src="{{asset('js/jasny-bootstrap.min.js')}}"></script>
-    <!-- Chartist JS -->
+    <!--    Chartist JS -->
     <script src="{{asset('js/plugins/chartist.min.js')}}"></script>
-    <!--  Plugin Notificaciones -->
+    <!--    Plugin Notificaciones -->
     <script src="{{asset('js/plugins/bootstrap-notify.js')}}"></script>
     <!--    Centro de Control para Material Kit: ripples, efectos parallax,  -->
     <script src="{{asset('js/material-dashboard.min.js?v=2.0.2')}}" type="text/javascript"></script>
     <script src="{{asset('js/layout/app-plantilla.js')}}"></script>
+    <!--    Script para datatable   -->    
+    <script src="{{ asset('js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
+    <script>
+        $(document).ready(function() {
+            $('#datatable_table').DataTable( {
+                language: {
+                    "sProcessing":     "Procesando...",
+                    "sLengthMenu":     "Mostrar _MENU_ registros",
+                    "sZeroRecords":    "No se encontraron resultados",
+                    "sEmptyTable":     "Ningún dato disponible en esta tabla",
+                    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+                    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+                    "sInfoPostFix":    "",
+                    "sSearch":         "Buscar:",
+                    "sUrl":            "",
+                    "sInfoThousands":  ",",
+                    "sLoadingRecords": "Cargando...",
+                    "oPaginate": {
+                        "sFirst":    "Primero",
+                        "sLast":     "Último",
+                        "sNext":     "Siguiente",
+                        "sPrevious": "Anterior"
+                    },
+                    "oAria": {
+                        "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                        "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+                    }
+                }
+            } );
+        } );
+    </script>
     @yield('js')
 </html>

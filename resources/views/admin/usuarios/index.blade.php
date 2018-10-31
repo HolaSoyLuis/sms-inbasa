@@ -14,14 +14,6 @@
 		          <a class="nav-link" href="{{ route('usuarios.create') }}">Nuevo Usuario</a>
 		        </li>
 		      </ul>
-					<form class="form-inline ml-auto">
-						<div class="form-group has-white">
-							<input type="text" class="form-control" placeholder="Buscar">
-						</div>
-						<button type="submit" class="btn btn-white btn-just-icon btn-round">
-								<i class="material-icons">search</i>
-						</button>
-					</form>
 		    </div>
 		  </div>
 		</nav>
@@ -31,9 +23,9 @@
 <div class="row">
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<div class="table-responsive">
-				<table class="table table-striped table-bordered table-condensed table-hover">
+				<table id="datatable_table" class="table table-bordered table-condensed table-hover">
 					<thead>
-						<th>No</th>	
+						<th></th>	
 						<th>Nombre</th>											
 						<th>Creado</th>
 						<th>Actualizado</th>
