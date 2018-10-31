@@ -26,7 +26,7 @@ class Seccion extends Model
         return $this->hasMany(Asignacion::class);
     }
 
-    public function detalle_horarios(){//una sección puede asignarle varios horarios
+    public function horarios(){//una sección puede asignarle varios horarios
         return $this->hasMany(DetalleHorario::class);
     }
 }

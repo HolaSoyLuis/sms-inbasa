@@ -29,8 +29,8 @@ class Estudiante extends Model
     const RETIRADO=3;
     const SUSPENDIDO=4;
 
-    public function encargado_estudiantes(){//Muchos estudiantes pueden tener a muchos encargados
-        return $this->hasMany(EncargadoEstudiante::class);
+    public function encargados(){//Muchos estudiantes pueden tener a muchos encargados
+        return $this->belongsToMany(Encargado::class, 'encargado_estudiante', 'estudiante_id', 'encaargado_id');
     }
 
     public function usuario(){//Un estudiante tiene asigando un solo usuario
@@ -43,6 +43,10 @@ class Estudiante extends Model
     
     public function detalle_notas(){//Un estudiante tiene muchos detalles de notas (nota por aspecto)
         return $this->hasMany(DetalleNota::class);
+    }
+
+    public function asistencias(){//Un estudiante va a tener varias asistencias (de varios cursos y ciclos escolares)
+        return $this->hasMany(Asistencia::class);
     }
     
 }

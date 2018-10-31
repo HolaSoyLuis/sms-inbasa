@@ -12,7 +12,7 @@ class TipoPagosTableSeeder extends Seeder
     public function run()
     {
         DB::table('tipo_pagos')->insert([
-            'tipo'     =>  'Inscripcion',
+            'tipo'     =>  'Inscripción',
             'costo'    =>  25.00,
             'detalle'  =>  'Pago Inscripcion',
         ]);

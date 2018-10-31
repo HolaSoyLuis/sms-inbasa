@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Caffeinated\Shinobi\Models\Roles;
+use Caffeinated\Shinobi\Models\Permission;
 
 class UserController extends Controller
 {

@@ -15,6 +15,7 @@ class GradoController extends Controller
     public function index()
     {
         $grados = Grado::all();
+
         return view('admin/grados_secciones/grados/grados')->with(compact('grados'));
     }
 
@@ -40,7 +41,7 @@ class GradoController extends Controller
       $grados->grado = $request->input('grado');           
       $grados->save();
 
-      return redirect('admin/grados_secciones/grados/grados');
+      return redirect('admin/grados');
     }
 
     /**

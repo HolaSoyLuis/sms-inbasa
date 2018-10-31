@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTableEncargadoEstudiantes extends Migration
+class CreateTableEncargadoEstudiante extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateTableEncargadoEstudiantes extends Migration
      */
     public function up()
     {
-        Schema::create('encargado_estudiantes', function (Blueprint $table) {
+        Schema::create('encargado_estudiante', function (Blueprint $table) {
             $table->increments('id');
 
             //Campos
@@ -36,6 +36,6 @@ class CreateTableEncargadoEstudiantes extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('encargado_estudiantes');
+        Schema::dropIfExists('encargado_estudiante');
     }
 }

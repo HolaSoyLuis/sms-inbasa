@@ -19,6 +19,10 @@ class LoginController extends Controller
         return view('instituto');
     }
 
+    public function formLogin(){
+        return view('auth.login');
+    }
+
     public function formDesarrolladores(){
         return view('desarrolladores');
     }
