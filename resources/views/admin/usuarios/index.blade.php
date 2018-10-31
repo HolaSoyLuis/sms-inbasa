@@ -34,8 +34,7 @@
 				<table class="table table-striped table-bordered table-condensed table-hover">
 					<thead>
 						<th>No</th>	
-						<th>Nombre</th>					
-						<th>Rol</th>
+						<th>Nombre</th>											
 						<th>Creado</th>
 						<th>Actualizado</th>
 						<th>Opciones</th>
@@ -43,13 +42,7 @@
 					@foreach($users as $user)		
 					<tr>
 						<td>{{$user->id}}</td>
-						<td>{{$user->username}}</td>
-						<td>Rol</td>
-						<td>{{$user->created_at}}</td>
-						<td>{{$user->updated_at}}</td>
-						<td>
 							<a href="#">
-								<button class="btn btn-info btn-sm" title="Ver">
 									<i class="material-icons">visibility</i>
 									Ver
 								</button>

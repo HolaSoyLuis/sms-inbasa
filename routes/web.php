@@ -134,6 +134,28 @@ Route::middleware(['auth'])->group(function(){
     Route::get('admin/estudiantes/{id}/edit', 'EstudianteController@edit')->name('estudiantes.edit')
         ->middleware('permission:estudiantes.edit');
 
+    //Encargados
+    Route::post('admin/encargados/store', 'EncargadoController@store')->name('encargados.store')
+        ->middleware('permission:encargados.create');
+    
+    Route::get('admin/encargados', 'EncargadoController@index')->name('encargados.index')
+        ->middleware('permission:encargados.index');
+    
+    Route::get('admin/encargados/create', 'EncargadoController@create')->name('encargados.create')
+        ->middleware('permission:encargados.create');
+    
+    Route::put('admin/encargados/{id}', 'EncargadoController@update')->name('encargados.update')
+        ->middleware('permission:encargados.edit');
+    
+    Route::get('admin/encargados/{id}', 'EncargadoController@show')->name('encargados.show')
+        ->middleware('permission:encargados.show');
+    
+    Route::delete('admin/encargados/{id}', 'EncargadoController@destroy')->name('encargados.destroy')
+        ->middleware('permission:encargados.destroy');
+    
+    Route::get('admin/encargados/{id}/edit', 'EncargadoController@edit')->name('encargados.edit')
+        ->middleware('permission:encargados.edit');
+
     //Ciclos
     Route::post('admin/ciclos/store', 'CicloController@store')->name('ciclos.store')
         ->middleware('permission:ciclos.create');

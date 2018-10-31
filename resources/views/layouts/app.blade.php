@@ -48,7 +48,7 @@
                         </li>
                     @endif
 
-                    @if(Auth::check() && ((Auth::user()->can('usuarios.index'))||(Auth::user()->can('roles.index'))||(Auth::user()->can('personal.index'))||(Auth::user()->can('cargos.index'))||(Auth::user()->can('estudiantes.index'))||(Auth::user()->can('ciclos.index'))||(Auth::user()->can('bloques.index'))||(Auth::user()->can('ciclos.index'))||(Auth::user()->can('grados.index'))||(Auth::user()->can('secciones.index'))||(Auth::user()->can('cursos.index'))||(Auth::user()->can('centros.index'))||Auth::user()->can('respaldos.index')))
+                    @if(Auth::check() && (Auth::user()->can('usuarios.index'))||(Auth::user()->can('roles.index'))||(Auth::user()->can('personal.index'))||(Auth::user()->can('cargos.index'))||(Auth::user()->can('estudiantes.index'))||(Auth::user()->can('ciclos.index'))||(Auth::user()->can('bloques.index'))||(Auth::user()->can('ciclos.index'))||(Auth::user()->can('grados.index'))||(Auth::user()->can('secciones.index'))||(Auth::user()->can('cursos.index'))||(Auth::user()->can('centros.index'))||(Auth::user()->can('respaldos.index'))||(Auth::user()->can('encargados.index')))
                         {{-- Botones Módulo Administración --}}
                         <li class="nav-item ">
                             <a class="nav-link" data-toggle="collapse" href="#modAdmin">
@@ -92,6 +92,15 @@
                                             <a class="nav-link" href="{{ route('estudiantes.index') }}">
                                               <span class="sidebar-mini"> ES </span>
                                               <span class="sidebar-normal"> Estudiantes </span>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    @if(Auth::check() && Auth::user()->can('encargados.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('encargados.index') }}">
+                                            <span class="sidebar-mini"> EN </span>
+                                            <span class="sidebar-normal"> Encargados </span>
                                             </a>
                                         </li>
                                     @endif
@@ -309,7 +318,7 @@
                     <li class="nav-item" style="margin-top:40px;">
                         <a class="nav-link" href="{{ route('logout') }}"onclick="event.preventDefault();
                                         document.getElementById('formCerrar').submit();">
-                        
+
                             <i class="material-icons">person</i>
                             <p>Cerrar Sesión</p>
                         </a>
@@ -361,7 +370,7 @@
                 </div>
             </nav>
             {{-- Fin NavBar --}}
-            
+
             {{-- Contenido de Módulos --}}
             <div class="content">
                 <div class="container-fluid">

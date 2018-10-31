@@ -200,238 +200,273 @@ class PermissionsTableSeeder extends Seeder
             'description'   => 'Eliminar estudiantes del sistema',
         ]);
 
-        //27 Ciclos
+        //27 Encargados
+        Permission::create([
+            'name'          => 'Navegar en Encargados',
+            'slug'          => 'encargados.index',
+            'description'   => 'Navega y lista los encargados de estudiantes',
+        ]);
+
+        //28
+        Permission::create([
+            'name'          => 'Ver detalle de Encargados',
+            'slug'          => 'encargados.show',
+            'description'   => 'Ver datos de un encargado',
+        ]);
+
+        //29
+        Permission::create([
+            'name'          => 'Crear Encargados',
+            'slug'          => 'encargados.create',
+            'description'   => 'Crear encargados para un estudiante',
+        ]);
+
+        //30
+        Permission::create([
+            'name'          => 'Editar Encargados',
+            'slug'          => 'encargados.edit',
+            'description'   => 'Editar datos de un encargado',
+        ]);
+
+        //31
+        Permission::create([
+            'name'          => 'Eliminar Encargados',
+            'slug'          => 'encargados.destroy',
+            'description'   => 'Eliminar encargados de estudiante',
+        ]);
+
+        //32 Ciclos
         Permission::create([
             'name'          => 'Navegar en Ciclos',
             'slug'          => 'ciclos.index',
             'description'   => 'Navega y lista los ciclos y bimestres',
         ]);
 
-        //28
+        //33
         Permission::create([
             'name'          => 'Ver detalle de Ciclos',
             'slug'          => 'ciclos.show',
             'description'   => 'Ver datos de un ciclo',
         ]);
 
-        //29
+        //34
         Permission::create([
             'name'          => 'Crear Ciclos',
             'slug'          => 'ciclos.create',
             'description'   => 'Crear ciclos escolares',
         ]);
 
-        //30
+        //35
         Permission::create([
             'name'          => 'Editar Ciclos',
             'slug'          => 'ciclos.edit',
             'description'   => 'Editar datos de un ciclo',
         ]);
 
-        //31
+        //36
         Permission::create([
             'name'          => 'Eliminar Ciclos',
             'slug'          => 'ciclos.destroy',
             'description'   => 'Eliminar ciclos escolares',
         ]);
 
-        //32 Bloques o Unidades
+        //37 Bloques o Unidades
         Permission::create([
             'name'          => 'Navegar en Bloques',
             'slug'          => 'bloques.index',
             'description'   => 'Navega y lista los ciclos y bloques',
         ]);
 
-        //33
+        //38
         Permission::create([
             'name'          => 'Ver detalle de Bloques',
             'slug'          => 'bloques.show',
             'description'   => 'Ver datos de un bloque (unidad)',
         ]);
 
-        //34
+        //39
         Permission::create([
             'name'          => 'Crear Bloques',
             'slug'          => 'bloques.create',
             'description'   => 'Crear bloques',
         ]);
 
-        //35
+        //40
         Permission::create([
             'name'          => 'Editar Bloques',
             'slug'          => 'bloques.edit',
             'description'   => 'Editar datos de un bloque',
         ]);
 
-        //36
+        //41
         Permission::create([
             'name'          => 'Eliminar Bloques',
             'slug'          => 'bloques.destroy',
             'description'   => 'Eliminar bloques',
         ]);
 
-        //37 Grados 
+        //42 Grados 
         Permission::create([
             'name'          => 'Navegar en Grados',
             'slug'          => 'grados.index',
             'description'   => 'Navega y lista los grados registrados',
         ]);
 
-        //38
+        //43
         Permission::create([
             'name'          => 'Ver detalle de Grados',
             'slug'          => 'grados.show',
             'description'   => 'Ver datos de un grado',
         ]);
 
-        //39
+        //44
         Permission::create([
             'name'          => 'Crear Grados',
             'slug'          => 'grados.create',
             'description'   => 'Crear grados para el centro educativo',
         ]);
 
-        //40
+        //45
         Permission::create([
             'name'          => 'Editar Grados',
             'slug'          => 'grados.edit',
             'description'   => 'Editar datos de un grado del centro educativo',
         ]);
 
-        //41
+        //46
         Permission::create([
             'name'          => 'Eliminar Grados',
             'slug'          => 'grados.destroy',
             'description'   => 'Eliminar grados del centro educativo',
         ]);
 
-        //42 Secciones
+        //47 Secciones
         Permission::create([
             'name'          => 'Navegar en Secciones',
             'slug'          => 'secciones.index',
             'description'   => 'Navega y lista las secciones registradas',
         ]);
 
-        //43
+        //48
         Permission::create([
             'name'          => 'Ver detalle de Secciones',
             'slug'          => 'secciones.show',
             'description'   => 'Ver una sección',
         ]);
 
-        //44
+        //49
         Permission::create([
             'name'          => 'Crear Secciones',
             'slug'          => 'secciones.create',
             'description'   => 'Crear secciones para cada grado',
         ]);
 
-        //45
+        //50
         Permission::create([
             'name'          => 'Editar Secciones',
             'slug'          => 'secciones.edit',
             'description'   => 'Editar la letra de una sección',
         ]);
 
-        //46
+        //51
         Permission::create([
             'name'          => 'Eliminar Secciones',
             'slug'          => 'secciones.destroy',
             'description'   => 'Eliminar secciones de un grado',
         ]);
 
-        //47 Cursos
+        //52 Cursos
         Permission::create([
             'name'          => 'Navegar en Cursos',
             'slug'          => 'cursos.index',
             'description'   => 'Navega y lista los cursos registrados',
         ]);
 
-        //48
+        //53
         Permission::create([
             'name'          => 'Ver detalle de Cursos',
             'slug'          => 'cursos.show',
             'description'   => 'Ver datos de un curso',
         ]);
 
-        //49
+        //54
         Permission::create([
             'name'          => 'Crear Cursos',
             'slug'          => 'cursos.create',
             'description'   => 'Crear cursos para los distintos grados',
         ]);
 
-        //50
+        //55
         Permission::create([
             'name'          => 'Editar Cursos',
             'slug'          => 'cursos.edit',
             'description'   => 'Editar datos de un curso específico',
         ]);
 
-        //51
+        //56
         Permission::create([
             'name'          => 'Eliminar Cursos',
             'slug'          => 'cursos.destroy',
             'description'   => 'Eliminar un curso de acuerdo al grado',
         ]);
 
-        //52 Centro Educativo - Datos del centro educativo
+        //57 Centro Educativo - Datos del centro educativo
         Permission::create([
             'name'          => 'Navegar en Centro Educativo',
             'slug'          => 'centros.index',
             'description'   => 'Navega en el apartado el centro educativo',
         ]);
 
-        //53
+        //58
         Permission::create([
             'name'          => 'Ver detalle de Centro Educativo',
             'slug'          => 'centros.show',
             'description'   => 'Ver datos del centro educativo',
         ]);
 
-        //54
+        //59
         Permission::create([
             'name'          => 'Crear Centro Educativo',
             'slug'          => 'centros.create',
             'description'   => 'Crear datos para el centro educativo',
         ]);
 
-        //55
+        //60
         Permission::create([
             'name'          => 'Editar Centro Educativo',
             'slug'          => 'centros.edit',
             'description'   => 'Editar datos del centro educativo',
         ]);
 
-        //56
+        //61
         Permission::create([
             'name'          => 'Eliminar Centro Educativo',
             'slug'          => 'centros.destroy',
             'description'   => 'Eliminar datos del centro educativo',
         ]);
 
-        //57 Backups o Respaldos 
+        //62 Backups o Respaldos 
         Permission::create([
             'name'          => 'Navegar en Respaldos',
             'slug'          => 'respaldos.index',
             'description'   => 'Navega y lista los respaldos de la información',
         ]);
 
-        //58
+        //63
         Permission::create([
             'name'          => 'Ver detalle de Respaldos',
             'slug'          => 'respaldos.show',
             'description'   => 'Ver datos de un respaldo creado',
         ]);
 
-        //59
+        //64
         Permission::create([
             'name'          => 'Crear Respaldos',
             'slug'          => 'respaldos.create',
             'description'   => 'Crear respaldos de la información del sistema',
         ]);
 
-        //60
+        //65
         Permission::create([
             'name'          => 'Eliminar Respaldos',
             'slug'          => 'respaldos.destroy',
@@ -447,63 +482,63 @@ class PermissionsTableSeeder extends Seeder
             POR APARTADOS
         */
 
-        //61 Cursos - cursos que imparte el docente
+        //66 Cursos - cursos que imparte el docente
         Permission::create([
             'name'          => 'Navegar en Cursos',
             'slug'          => 'docentes.cursos.index',
             'description'   => 'Navega y lista los cursos que imparte',
         ]);
 
-        //62
+        //67
         Permission::create([
             'name'          => 'Ver detalle de Cursos',
             'slug'          => 'docentes.cursos.show',
             'description'   => 'Ver datos de un curso que imparte',
         ]);
         
-        //63
+        //68
         Permission::create([
             'name'          => 'Editar Curso',
             'slug'          => 'docentes.cursos.edit',
             'description'   => 'Editar descripción del curso que imparte',
         ]);
 
-        //64 Horario - Horario en los que debe impartir clases
+        //69 Horario - Horario en los que debe impartir clases
         Permission::create([
             'name'          => 'Navegar en Horario',
             'slug'          => 'docentes.horario.index',
             'description'   => 'Muestra el horario de clases para el docente',
         ]);
 
-        //65
+        //70
         Permission::create([
             'name'          => 'Ver detalle de Cursos',
             'slug'          => 'docentes.horario.show',
             'description'   => 'Ver detalle de un horario',
         ]);
 
-        //66
+        //71
         Permission::create([
             'name'          => 'Editar Horario de Docentes',
             'slug'          => 'docentes.horario.create',
             'description'   => 'Editar horario de cursos que imparte un docente',
         ]);
 
-        //67
+        //72
         Permission::create([
             'name'          => 'Editar Horarios',
             'slug'          => 'docentes.horario.edit',
             'description'   => 'Editar un horario de clases',
         ]);
 
-        //68
+        //73
         Permission::create([
             'name'          => 'Eliminar Horario de Clases',
             'slug'          => 'docentes.horario.destroy',
             'description'   => 'Eliminar horario de clases de algún docente seleccionado',
         ]);
 
-        /*  69 Notas
+        /*  74 Notas
             Para que el docente agregue notas para cada estudiante de acuerdo
             a los cursos que imparte.
         */
@@ -513,28 +548,28 @@ class PermissionsTableSeeder extends Seeder
             'description'   => 'Navega y lista las notas de los alumnos',
         ]);
 
-        //70
+        //75
         Permission::create([
             'name'          => 'Ver detalle de Notas',
             'slug'          => 'docentes.notas.show',
             'description'   => 'Ver datos de una nota',
         ]);
 
-        //71
+        //76
         Permission::create([
             'name'          => 'Registrar Notas',
             'slug'          => 'docentes.notas.create',
             'description'   => 'Registra notas para cada estudiante',
         ]);
 
-        //72
+        //77
         Permission::create([
             'name'          => 'Editar Notas',
             'slug'          => 'docentes.notas.edit',
             'description'   => 'Editar datos de una nota de estudiante',
         ]);
 
-        //73
+        //78
         Permission::create([
             'name'          => 'Eliminar Notas',
             'slug'          => 'docentes.notas.destroy',
@@ -548,14 +583,14 @@ class PermissionsTableSeeder extends Seeder
             MODULO DE ESTUDIANTES
             POR APARTADOS
         */
-        //74  Cursos - cursos que tiene asignados el estudiante
+        //79  Cursos - cursos que tiene asignados el estudiante
         Permission::create([
             'name'          => 'Navegar en Cursos',
             'slug'          => 'estudiantes.cursos.index',
             'description'   => 'Navega y lista los cursos asignados al estudiante',
         ]);
 
-        //75  Horario - horario de clases para el estudiante
+        //80  Horario - horario de clases para el estudiante
         Permission::create([
             'name'          => 'Navegar en Horario',
             'slug'          => 'estudiantes.horario.index',
@@ -568,14 +603,14 @@ class PermissionsTableSeeder extends Seeder
             MODULO DE ENCARGADOS
             POR APARTADOS
         */
-        //76 Notas - notas de su hijo o estudiante a cargo
+        //81 Notas - notas de su hijo o estudiante a cargo
         Permission::create([
             'name'          => 'Navegar en Notas',
             'slug'          => 'encargados.notas.index',
             'description'   => 'Navega y muestra la notas del estudiante a cargo',
         ]);
 
-        //77  Horario - horario de clases de su hijo o estudiante a cargo
+        //82  Horario - horario de clases de su hijo o estudiante a cargo
         Permission::create([
             'name'          => 'Navegar en Horario',
             'slug'          => 'encargados.horario.index',
@@ -588,105 +623,105 @@ class PermissionsTableSeeder extends Seeder
             MODULO DE GESTIÓN ECONÓMICA
             POR APARTADOS
         */
-        //78  Inscripciones
+        //83  Inscripciones
         Permission::create([
             'name'          => 'Navegar en Inscripciones',
             'slug'          => 'inscripciones.index',
             'description'   => 'Navega y lista las inscripciones',
         ]);
 
-        //79
+        //84
         Permission::create([
             'name'          => 'Ver detalle de Inscripciones',
             'slug'          => 'inscripciones.show',
             'description'   => 'Ver datos de una inscripción',
         ]);
 
-        //80
+        //85
         Permission::create([
             'name'          => 'Registrar una Inscripción',
             'slug'          => 'inscripciones.create',
             'description'   => 'Registra inscripciones de alumnos',
         ]);
 
-        //81
+        //86
         Permission::create([
             'name'          => 'Editar Inscripciones',
             'slug'          => 'inscripciones.edit',
             'description'   => 'Editar datos de una inscripción',
         ]);
 
-        //82
+        //87
         Permission::create([
             'name'          => 'Eliminar Inscripciones',
             'slug'          => 'inscripciones.destroy',
             'description'   => 'Elimina inscripciones de alumnos',
         ]);
 
-        //83  Colegiatura
+        //88  Colegiatura
         Permission::create([
             'name'          => 'Navegar en Colegiatura',
             'slug'          => 'colegiaturas.index',
             'description'   => 'Navega y lista los pagos de colegiaturas',
         ]);
 
-        //84
+        //89
         Permission::create([
             'name'          => 'Ver detalle de Colegiaturas',
             'slug'          => 'colegiaturas.show',
             'description'   => 'Ver datos de una colegiatura',
         ]);
 
-        //85
+        //90
         Permission::create([
             'name'          => 'Registrar Colegiaturas',
             'slug'          => 'colegiaturas.create',
             'description'   => 'Registra pagos de colegiatura',
         ]);
 
-        //86
+        //91
         Permission::create([
             'name'          => 'Editar Colegiaturas',
             'slug'          => 'colegiaturas.edit',
             'description'   => 'Editar pagos de colegiaturas',
         ]);
 
-        //87
+        //92
         Permission::create([
             'name'          => 'Eliminar Colegiatura',
             'slug'          => 'colegiaturas.destroy',
             'description'   => 'Elimina pago de una colegiatura',
         ]);
 
-        //88  Gestión de Costos
+        //93  Gestión de Costos
         Permission::create([
             'name'          => 'Navegar en Gestión de Costos',
             'slug'          => 'costos.index',
             'description'   => 'Navega y lista los costos de inscripción y/o colegiatura',
         ]);
 
-        //89
+        //94
         Permission::create([
             'name'          => 'Ver detalle de Costos',
             'slug'          => 'costos.show',
             'description'   => 'Ver datos de los costos de inscripción y/o colegiatura',
         ]);
 
-        //90
+        //95
         Permission::create([
             'name'          => 'Registrar Costos',
             'slug'          => 'costos.create',
             'description'   => 'Registra el costo de la inscripción y colegiatura',
         ]);
 
-        //91
+        //96
         Permission::create([
             'name'          => 'Editar Costos',
             'slug'          => 'costos.edit',
             'description'   => 'Editar el costo de la inscripción y colegiatura',
         ]);
 
-        //92
+        //97
         Permission::create([
             'name'          => 'Eliminar Costos',
             'slug'          => 'costos.destroy',
