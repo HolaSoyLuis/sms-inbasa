@@ -1,6 +1,7 @@
 <?php
 
 Route::get('/', 'Auth\LoginController@formPrincipal');
+Route::get('/login', 'Auth\LoginController@formLogin');
 Route::get('/desarrolladores', 'Auth\LoginController@formDesarrolladores');
 
 // Auth::routes();
@@ -132,6 +133,28 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('admin/estudiantes/{id}/edit', 'EstudianteController@edit')->name('estudiantes.edit')
         ->middleware('permission:estudiantes.edit');
+
+    //Encargados
+    Route::post('admin/encargado/store', 'EncargadoController@store')->name('encargado.store')
+        ->middleware('permission:encargado.store');
+
+    Route::get('admin/encargado', 'EncargadoController@index')->name('encargado.index')
+        ->middleware('permission:encargado.index');
+
+    Route::get('admin/encargado/create', 'EncargadoController@create')->name('encargado.create')
+        ->middleware('permission:encargado.create');
+
+    Route::put('admin/encargado/{id}', 'EncargadoController@update')->name('encargado.update')
+        ->middleware('permission:encargado.edit');
+
+    Route::get('admin/encargado/{id}', 'EncargadoController@show')->name('encargado.show')
+        ->middleware('permission:encargado.show');
+
+    Route::delete('admin/encargado/{id}', 'EncargadoController@destroy')->name('encargado.destroy')
+        ->middleware('permission:encargado.destroy');
+
+    Route::get('admin/encargado/{id}/edit', 'EncargadoController@edit')->name('encargado.edit')
+        ->middleware('permission:encargado.edit');
 
     //Ciclos
     Route::post('admin/ciclos/store', 'CicloController@store')->name('ciclos.store')
@@ -361,37 +384,12 @@ Route::middleware(['auth'])->group(function(){
     /*
         RUTAS PARA EL MÓDULO DE ENCARGADOS
     */
-
-
-/*
-     Route::get('encargado', 'EncargadoController@index')->name('encargado.index')
-        ->middleware('permission:encargado.index');
-
-    Route::get('encargado/edit/{id}', 'EncargadoController@edit')->name('encargado.edit')
-        ->middleware('permission:encargado.edit');
-
-    Route::get('encargado/destroy/{id}', 'EncargadoController@destroy')->name('encargado.destroy')
-        ->middleware('permission:encargado.destroy');
-
-    Route::get('encargado/update/{id}', 'EncargadoController@update')->name('encargado.update')
-        ->middleware('permission:encargado.update');
-
-    Route::get('encargado/create', 'EncargadoController@create')->name('encargado.create')
-        ->middleware('permission:encargado.create');
-
-    Route::get('encargado/store', 'EncargadoController@store')->name('encargado.store')
-        ->middleware('permission:encargado.store');
-*/
-
-    Route::resource('encargado', 'EncargadoController')->middleware('permission:encargado');
-    // Route::resource('encargado', 'EncargadoController');
     //Ruta para listar las notas de sus hijos
     Route::get('encargado/notas', 'NotaController@indexEN')->name('encargados.notas.index')
         ->middleware('permission:encargados.notas.index');
     //Ruta para listar el horario de clases de su hijo
     Route::get('encargado/horario', 'HorarioController@indexEN')->name('encargados.horario.index')
         ->middleware('permission:encargados.horario.index');
-
     /*
         FIN RUTAS PARA MODULO DE ENCARGADOS
     */
@@ -484,6 +482,4 @@ Route::middleware(['auth'])->group(function(){
     /*
         FIN RUTAS PARA MODULO DE GESTIÓN ECONÓMICA
     */
-
-
 });

@@ -110,7 +110,7 @@ class UsersTableSeeder extends Seeder
 
         //Asignación de permisos a los roles por defecto excepto admin
         /*
-            Inicio Permisos para el Rol de Docente
+            Inicio - Permisos para el Rol de Docente
         */
         //Permisos para ver Inicio
         DB::table('permission_role')->insert([
@@ -118,29 +118,23 @@ class UsersTableSeeder extends Seeder
             'role_id'           =>  '2'
         ]);
 
-        //Permisos para navegar y ver cursos
+        //Permisos para navegar, ver y editar cursos
         DB::table('permission_role')->insert([
-            'permission_id'     =>  '61',
+            'permission_id'     =>  '66',
             'role_id'           =>  '2'
         ]);
 
         DB::table('permission_role')->insert([
-            'permission_id'     =>  '62',
+            'permission_id'     =>  '67',
+            'role_id'           =>  '2'
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id'     =>  '68',
             'role_id'           =>  '2'
         ]);
 
         //Permisos para navegar y ver horario de clases
-        DB::table('permission_role')->insert([
-            'permission_id'     =>  '64',
-            'role_id'           =>  '2'
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id'     =>  '65',
-            'role_id'           =>  '2'
-        ]);
-
-        //Permisos para navegar, ver, editar y eliminar notas de estudiantes
         DB::table('permission_role')->insert([
             'permission_id'     =>  '69',
             'role_id'           =>  '2'
@@ -151,18 +145,29 @@ class UsersTableSeeder extends Seeder
             'role_id'           =>  '2'
         ]);
 
+        //Permisos para navegar, ver, editar y eliminar notas de estudiantes
         DB::table('permission_role')->insert([
-            'permission_id'     =>  '71',
+            'permission_id'     =>  '74',
             'role_id'           =>  '2'
         ]);
 
         DB::table('permission_role')->insert([
-            'permission_id'     =>  '72',
+            'permission_id'     =>  '75',
             'role_id'           =>  '2'
         ]);
 
         DB::table('permission_role')->insert([
-            'permission_id'     =>  '73',
+            'permission_id'     =>  '76',
+            'role_id'           =>  '2'
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id'     =>  '77',
+            'role_id'           =>  '2'
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id'     =>  '78',
             'role_id'           =>  '2'
         ]);
         /*
@@ -175,12 +180,12 @@ class UsersTableSeeder extends Seeder
         */
         //Permisos para navegar en cursos y horarios que tenga asignados el estudiante
         DB::table('permission_role')->insert([
-            'permission_id'     =>  '74',
+            'permission_id'     =>  '79',
             'role_id'           =>  '3'
         ]);
 
         DB::table('permission_role')->insert([
-            'permission_id'     =>  '75',
+            'permission_id'     =>  '80',
             'role_id'           =>  '3'
         ]);
         /*
@@ -193,12 +198,12 @@ class UsersTableSeeder extends Seeder
         */
         //Permisos para navegar en notas y horario de clases de los hijos que tenga el encargado
         DB::table('permission_role')->insert([
-            'permission_id'     =>  '76',
+            'permission_id'     =>  '81',
             'role_id'           =>  '4'
         ]);
 
         DB::table('permission_role')->insert([
-            'permission_id'     =>  '77',
+            'permission_id'     =>  '82',
             'role_id'           =>  '4'
         ]);
         /*
@@ -210,32 +215,6 @@ class UsersTableSeeder extends Seeder
             Inicio Permisos para el Rol de Secretaría
         */
         //Permisos para navegar, ver, crear, editar y eliminar inscripciones de estudiantes
-        DB::table('permission_role')->insert([
-            'permission_id'     =>  '78',
-            'role_id'           =>  '5'
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id'     =>  '79',
-            'role_id'           =>  '5'
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id'     =>  '80',
-            'role_id'           =>  '5'
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id'     =>  '81',
-            'role_id'           =>  '5'
-        ]);
-
-        DB::table('permission_role')->insert([
-            'permission_id'     =>  '82',
-            'role_id'           =>  '5'
-        ]);
-
-        //Permisos para navegar, ver, editar, crear y eliminar pagos de colegiaturas
         DB::table('permission_role')->insert([
             'permission_id'     =>  '83',
             'role_id'           =>  '5'
@@ -258,6 +237,32 @@ class UsersTableSeeder extends Seeder
 
         DB::table('permission_role')->insert([
             'permission_id'     =>  '87',
+            'role_id'           =>  '5'
+        ]);
+
+        //Permisos para navegar, ver, editar, crear y eliminar pagos de colegiaturas
+        DB::table('permission_role')->insert([
+            'permission_id'     =>  '88',
+            'role_id'           =>  '5'
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id'     =>  '89',
+            'role_id'           =>  '5'
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id'     =>  '90',
+            'role_id'           =>  '5'
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id'     =>  '91',
+            'role_id'           =>  '5'
+        ]);
+
+        DB::table('permission_role')->insert([
+            'permission_id'     =>  '92',
             'role_id'           =>  '5'
         ]);
         /*

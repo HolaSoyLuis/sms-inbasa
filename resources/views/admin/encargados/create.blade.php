@@ -66,7 +66,7 @@
           </div>
           <div class="form-group label-floating">
               <label for="price">Fecha de nacimiento: </label>
-              <input type="text" class="form-control" name="fecha_nac"/>
+              <input type="date" class="form-control" name="fecha_nac"/>
           </div>
           <div class="form-group label-floating">
               <label for="price">Direccion: </label>
@@ -88,7 +88,7 @@
               <label for="usuario_id">Ingrese ID del usuario</label>
               <select class="form-control" name="usuario_id" id="usuario_id">
                   @foreach ($users as $user)
-                    <option value="{{ $user['id'] }}">{{ $user['id'] }}</option>
+                    <option value="{{ $user['id'] }}">{{ $user['username'] }}</option>
                   @endforeach
               </select>
           </div>

@@ -11,23 +11,16 @@ class CentrosTableSeeder extends Seeder
      */
     public function run()
     {
-        // Centro::create([
-        //     'nombre'          =>  'Instituto Basico Por Cooperativa',
-        //     'direccion'          =>  'Aldea San Andres Chapil',
-        //     'departamento'          =>  'San Marcos',
-        //     'ciudad'          =>  'San Pedro',
-        //     'telefono1'          =>  '34232312',
-        // ]);
 
         DB::table('centros')->insert([
-            'nombre'        =>  'Instituto Basico Por Cooperativa',
-            'direccion'     =>  'Aldea San Andres Chapil',
+            'nombre'        =>  'Instituto Básico Por Cooperativa',
+            'direccion'     =>  'Aldea San Andrés Chápil',
             'departamento'  =>  'San Marcos',
-            'ciudad'        =>  'San Pedro',
+            'ciudad'        =>  'San Pedro Sacatepéquez',
             'nit'           =>  '',
             'logo'          =>  '',
-            'telefono1'     =>  '34232312',
-            'telefono2'     =>  '12341234',
+            'telefono1'     =>  '77605857',
+            'telefono2'     =>  '47596857',
 
         ]);
 

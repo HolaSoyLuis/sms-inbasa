@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Caffeinated\Shinobi\Models\Permission;
 
 class InicioController extends Controller
 {
@@ -24,6 +25,6 @@ class InicioController extends Controller
      */
     public function index()
     {
-        return view('inicio/inicio');
+        return view('inicio.inicio');
     }
 }

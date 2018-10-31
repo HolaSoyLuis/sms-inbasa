@@ -36,4 +36,8 @@ class Curso extends Model
     public function detalle_notas(){//Un curso va a registrarse en muchos detalles de notas
         return $this->hasMany(DetalleNota::class);
     }
+
+     public function asistencias(){//Un curso va a tener muchas asistencias (Una por estudiante)
+        return $this->hasMany(Asistencia::class);
+    }
 }

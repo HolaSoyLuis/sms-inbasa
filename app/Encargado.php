@@ -27,8 +27,8 @@ class Encargado extends Model
     	return $this->belongsTo(User::class);
     }
     
-    public function encargado_estudiantes(){//Un encargado puede tener muchos estudiantes a cargo
-        return $this->hasMany(EncargadoEstudiante::class);
+    public function estudiantes(){//Un encargado puede tener muchos estudiantes a cargo
+        return $this->belongsToMany(Estudiante::class, 'encargado_estudiante', 'encargado_id', 'estudiante_id');
     }
 
     public function comprobantes(){//Un encargado tiene muchos comprobantes de pago

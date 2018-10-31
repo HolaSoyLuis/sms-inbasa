@@ -19,23 +19,12 @@
 		</nav>
 	</div>
 </div>
-<style>
-  .uper {
-    margin-top: 40px;
-  }
-</style>
-<div class="uper">
-  @if(session()->get('success'))
-    <div class="alert alert-success">
-      {{ session()->get('success') }}
-    </div><br />
-  @endif
 
-  <div class="row">
-  	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  		<div class="table-responsive">
-  <table class="table table-striped">
-    <thead>
+<div class="row">
+	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+		<div class="table-responsive">
+			<table class="table table-striped table-bordered table-condensed table-hover">
+				<thead>
         <tr>
           <td>ID</td>
           <td>Nombre</td>
@@ -44,7 +33,7 @@
           <td>Direccion</td>
           <td>Telefono</td>
           <td>CUI</td>
-          <td>Accion</td>
+          <td>Actions</td>
         </tr>
     </thead>
     <tbody>
@@ -58,11 +47,27 @@
             <td>{{$encargado->telefono}}</td>
             <td>{{$encargado->cui}}</td>
             <td>
-              <a href="{{ route('encargado.edit',$encargado->id)}}" class="btn btn-primary btn-sm" title="Editar">Editar</a>
+              <!--
+                <a href="{{ route('encargado.edit',$encargado->id)}}" class="btn btn-primary">Editar</a>
                 <form action="{{ route('encargado.destroy', $encargado->id)}}" method="post">
                   @csrf
                   @method('DELETE')
-                  <button class="btn btn-danger btn-sm" title="Eliminar" type="submit">Eliminar</button>
+                  <button class="btn btn-danger" type="submit">Eliminar</button>
+                </form>
+              -->
+                <a href="{{ route('encargado.edit',$encargado->id)}}">
+    							<button class="btn btn-primary btn-sm" title="Editar">
+    								<i class="material-icons">edit</i>
+    								Editar
+    							</button>
+    						</a>
+                <form action="{{ route('encargado.destroy', $encargado->id)}}" method="post">
+                  @csrf
+                  @method('DELETE')
+                  <button class="btn btn-danger btn-sm" title="Eliminar">
+    								<i class="material-icons">delete</i>
+    								Eliminar
+    							</button>
                 </form>
             </td>
         </tr>

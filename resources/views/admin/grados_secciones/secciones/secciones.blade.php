@@ -17,7 +17,7 @@
 		          <a class="nav-link" href="{{ route('secciones.index') }}">Listado de Secciones</a>
 		        </li>
 		       	<li class="nav-item">
-		          <a class="nav-link" href="{{ route('secciones.create') }}">Nueva Seccion</a>
+		          <a class="nav-link" href="{{ route('secciones.create') }}">Nueva Sección</a>
 		        </li>
 		      </ul>
 		    </div>
@@ -36,17 +36,15 @@
 					<th>Seccion</th>
 					<th>Estado</th>
 					<th>Creado</th>
-					<th>Actualizado</th>					
-					<th>Eliminado</th>
+					<th>Actualizado</th>
 					<th>Opciones</th>
 				</thead>		
 				@foreach($secciones as $seccion)		
 				<tr>
 					<td>{{$seccion->id}}</td>
-					<td>{{$seccion->grado_id}}</td>
+					<td>{{$seccion->grado->grado}}</td>
 					<td>{{$seccion->seccion}}</td>
 					<td>{{$seccion->estado}}</td>
-					<td>{{$seccion->deleted_at}}</td>
 					<td>{{$seccion->created_at}}</td>
 					<td>{{$seccion->updated_at}}</td>					
 					<td>

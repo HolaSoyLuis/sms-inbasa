@@ -17,7 +17,7 @@ class Bloque extends Model
         return $this->hasMany(DetalleNota::class);
     }
 
-    public function ciclo(){//Un bloque le pertenece a un solo ciclo
-        return $this->belongsTo(Ciclo::class);
+    public function ciclos(){//Un bloque puede estar en muchos ciclos
+        return $this->belongsToMany(Ciclo::class, 'bloque_ciclo', 'bloque_id', 'ciclo_id');
     }
 }
