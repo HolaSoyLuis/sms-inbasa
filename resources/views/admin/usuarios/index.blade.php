@@ -41,7 +41,7 @@
 							<td>{{$user->updated_at}}</td>
 							<td class="td-actions text-center">						
 								<a href="#">
-									<button class="btn btn-primary btn-sm" title="Ver">
+									<button class="btn btn-info btn-sm" title="Ver">
 										<i class="material-icons">visibility</i>
 										Ver
 									</button>
