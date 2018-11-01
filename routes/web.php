@@ -485,4 +485,6 @@ Route::middleware(['auth'])->group(function(){
     /*
         FIN RUTAS PARA MODULO DE GESTIÓN ECONÓMICA
     */
+
+    Route::resource('/asignacion', 'AsignacionController');
 });

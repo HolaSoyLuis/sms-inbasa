@@ -149,6 +149,15 @@
                                             </a>
                                         </li>
                                     @endif
+
+                                    @if(Auth::check() && Auth::user()->can('asignacion.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('asignacion.index') }}">
+                                              <span class="sidebar-mini"> AS </span>
+                                              <span class="sidebar-normal"> Asignacion </span>
+                                            </a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </li>
