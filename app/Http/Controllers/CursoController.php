@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Curso;
+use App\Grado;
+use App\Empleado;
 
 class CursoController extends Controller
 {
@@ -41,7 +43,9 @@ class CursoController extends Controller
      */
     public function create()
     {
-        return view('admin/cursos/create');
+        $grados = Grado::all();  
+        $empleados = Empleado::all();
+        return view('admin/cursos/create')->with(compact('grados','empleados'));
     }
 
     /**
@@ -52,12 +56,11 @@ class CursoController extends Controller
      */
     public function store(Request $request)
     {
-        $cursos = new Curso();        
-        $cursos->codigo = $request->input('codigo');
-        $cursos->nombre = $request->input('nombre');
-        $cursos->descripcion = $request->input('descripcion');
-        $cursos->estado = $request->input('estado');        
-        $cursos->save();        
+      
+         $cursos = Curso::create($request->all());
+          return redirect()->route('cursos.index',$cursos->id)
+            ->with('info', 'Curso creado con Exito');
+         
         return redirect('admin/curso/curso');
     }
 

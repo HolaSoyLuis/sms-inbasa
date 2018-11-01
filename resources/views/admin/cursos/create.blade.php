@@ -75,7 +75,43 @@
 										</span>
 								@endif					
 							</div>
-						</div>						
+						</div>
+
+
+							
+									<div class="form-group label-floating">								
+											<label for="grado_id">Grados</label>																
+											<select class="form-control{{ $errors->has('grado_id') ? ' is-invalid' : '' }}" name="grado_id" id="grado_id">
+												@foreach ($grados as $u)
+													<option value="{{ $u['id'] }}">{{ $u['grado'] }}</option>										
+												@endforeach																										
+											</select>																							
+											@if ($errors->has('grado_id'))
+													<span class="invalid-feedback" role="alert">
+															<strong>{{ $errors->first('garado_id') }}</strong>
+													</span>
+											@endif					
+										</div>
+
+
+									<div class="form-group label-floating">								
+											<label for="empleado_id">Empleado</label>																
+											<select class="form-control{{ $errors->has('empleado_id') ? ' is-invalid' : '' }}" name="empleado_id" id="empleado_id">
+												@foreach ($empleados as $u)
+													<option value="{{ $u['id'] }}">{{ $u['id'] }}</option>										
+												@endforeach																										
+											</select>																							
+											@if ($errors->has('empleado_id'))
+													<span class="invalid-feedback" role="alert">
+															<strong>{{ $errors->first('empleado_id') }}</strong>
+													</span>
+											@endif					
+										</div>
+
+
+
+
+				
 						
 																									
 						<div class="form-group">
