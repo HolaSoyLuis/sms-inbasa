@@ -37,7 +37,7 @@
 					<th>Eliminado</th>
 					<th>Opciones</th>
 				</thead>		
-				@foreach($cursos as $curso,)		
+				@foreach($cursos as $curso)		
 				<tr>
 					<td>{{$curso->id}}</td>
 					<td>{{$curso->codigo}}</td>
