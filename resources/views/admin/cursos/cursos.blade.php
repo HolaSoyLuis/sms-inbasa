@@ -26,29 +26,29 @@
 			<table class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
 					<th>No</th>	
+					<th>Codigo</th>
 					<th>Grado</th>					
 					<th>Docentes</th>
-					<th>Codigo</th>
-          <th>Nombre</th>
-          <th>Descripcion</th>
-          <th>Estado</th>
+         			<th>Nombre</th>
+          			<th>Descripcion</th>
+        		    <th>Estado</th>
 					<th>Creado</th>
 					<th>Actualizado</th>					
 					<th>Eliminado</th>
 					<th>Opciones</th>
 				</thead>		
-				@foreach($cursos as $curso)		
+				@foreach($cursos as $curso,)		
 				<tr>
 					<td>{{$curso->id}}</td>
+					<td>{{$curso->codigo}}</td>
 					<td>{{$curso->grado_id}}</td>
 					<td>{{$curso->docente_id}}</td>
-					<td>{{$curso->codigo}}</td>
-          <td>{{$curso->nombre}}</td>
-          <td>{{$curso->descripcion}}</td>
-          <td>{{$curso->estado}}</td>          
-					<td>{{$curso->deleted_at}}</td>
-					<td>{{$curso->created_at}}</td>
-					<td>{{$curso->updated_at}}</td>					
+    			    <td>{{$curso->nombre}}</td>
+        			<td>{{$curso->descripcion}}</td>
+          			<td>{{$curso->estado}}</td>
+          			<td>{{$curso->created_at}}</td>  
+          			<td>{{$curso->updated_at}}</td>        
+					<td>{{$curso->deleted_at}}</td>			
 					<td>
 						<a href="#">
 							<button class="btn btn-info btn-sm" title="Ver">
