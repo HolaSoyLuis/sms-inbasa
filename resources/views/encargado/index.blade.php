@@ -2,22 +2,22 @@
 @section('title', 'Encargado')
 @section('content')
 <div class="row">
-	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
-		<nav class="navbar navbar-expand-lg bg-primary">
-		  <div class="container">
-		    <div class="collapse navbar-collapse">
-		      <ul class="navbar-nav">
-		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('encargado.index') }}">Lista de encargados</a>
-		        </li>
-		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('encargado.create') }}">Nuevo encargado</a>
-		        </li>
-		      </ul>
-		    </div>
-		  </div>
-		</nav>
-	</div>
+  <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
+    <nav class="navbar navbar-expand-lg bg-primary">
+      <div class="container">
+        <div class="collapse navbar-collapse">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('encargado.index') }}">Lista de encargados</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('encargado.create') }}">Nuevo encargado</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
 </div>
 <style>
   .uper {
@@ -32,8 +32,8 @@
   @endif
 
   <div class="row">
-  	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-  		<div class="table-responsive">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <div class="table-responsive">
   <table class="table table-striped">
     <thead>
         <tr>

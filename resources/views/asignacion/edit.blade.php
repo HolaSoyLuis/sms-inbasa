@@ -44,35 +44,35 @@
         @method('PATCH')
         @csrf
         <div class="form-group label-floating">
-            <label for="name">Fecha de asignacion: </label>
+            <label for="fecha_asignacion">Fecha de asignacion: </label>
             <input type="text" class="form-control" name="fecha_asignacion" value={{ $asignacion->fecha_asignacion }}/>
         </div>
         <div class="form-group label-floating">
-            <label for="price">Nuevo/Reingreso: </label>
+            <label for="nuevo_reingreso">Nuevo/Reingreso: </label>
             <input type="text" class="form-control" name="nuevo_reingreso" value={{ $asignacion->nuevo_reingreso }}/>
         </div>
         <div class="form-group label-floating">
-            <label for="price">Certificado: </label>
+            <label for="certificado">Certificado: </label>
             <input type="text" class="form-control" name="certificado" value={{ $asignacion->certificado }}/>
         </div>
         <div class="form-group label-floating">
-            <label for="price">Clave: </label>
+            <label for="clave_estudiante">Clave: </label>
             <input type="text" class="form-control" name="clave_estudiante" value={{ $asignacion->clave_estudiante }}/>
         </div>
         <div class="form-group label-floating">
-            <label for="price">Estudiante ID: </label>
+            <label for="estudiante_id">Estudiante ID: </label>
             <input type="text" class="form-control" name="estudiante_id" value={{ $asignacion->estudiante_id }}/>
         </div>
         <div class="form-group label-floating">
-            <label for="price">Ciclo ID: </label>
+            <label for="ciclo_id">Ciclo ID: </label>
             <input type="text" class="form-control" name="ciclo_id" value={{ $asignacion->ciclo_id }}/>
         </div>
         <div class="form-group label-floating">
-            <label for="price">Grado ID: </label>
+            <label for="grado_id">Grado ID: </label>
             <input type="text" class="form-control" name="grado_id" value={{ $asignacion->grado_id }}/>
         </div>
         <div class="form-group label-floating">
-            <label for="price">Seccion ID: </label>
+            <label for="seccion_id">Seccion ID: </label>
             <input type="text" class="form-control" name="seccion_id" value={{ $asignacion->seccion_id }}/>
         </div>
         <button type="submit" class="btn btn-primary">Actualizar</button>
