@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Crear Seccion')
+@section('title', 'Crear Curso')
 @section('content')
 <div class="row">
 	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">		
@@ -75,7 +75,43 @@
 										</span>
 								@endif					
 							</div>
-						</div>						
+						</div>
+
+
+							
+									<div class="form-group label-floating">								
+											<label for="grado_id">Grados</label>																
+											<select class="form-control{{ $errors->has('grado_id') ? ' is-invalid' : '' }}" name="grado_id" id="grado_id">
+												@foreach ($grados as $u)
+													<option value="{{ $u['id'] }}">{{ $u['grado'] }}</option>										
+												@endforeach																										
+											</select>																							
+											@if ($errors->has('grado_id'))
+													<span class="invalid-feedback" role="alert">
+															<strong>{{ $errors->first('garado_id') }}</strong>
+													</span>
+											@endif					
+										</div>
+
+
+									<div class="form-group label-floating">								
+											<label for="docente_id">Docente</label>																
+											<select class="form-control{{ $errors->has('docente_id') ? ' is-invalid' : '' }}" name="docente_id" id="docente_id">
+												@foreach ($docentes as $u)
+													<option value="{{ $u['id'] }}">{{ $u['p_nombre'] }}</option>										
+												@endforeach																										
+											</select>																							
+											@if ($errors->has('docente_id'))
+													<span class="invalid-feedback" role="alert">
+															<strong>{{ $errors->first('docente_id') }}</strong>
+													</span>
+											@endif					
+										</div>
+
+
+
+
+				
 						
 																									
 						<div class="form-group">

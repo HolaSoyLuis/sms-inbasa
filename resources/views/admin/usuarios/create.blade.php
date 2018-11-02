@@ -8,10 +8,10 @@
 		    <div class="collapse navbar-collapse">
 		      <ul class="navbar-nav">
 		        <li class="nav-item">
-		          <a class="nav-link" href="/admin/usuarios/">Lista de Usuarios</a>
+		          <a class="nav-link" href="{{ route('usuarios.index') }}">Lista de Usuarios</a>
 		        </li>
 		        <li class="nav-item active">
-		          <a class="nav-link" href="">Nuevo Usuario</a>
+		          <a class="nav-link" href="{{ route('usuarios.create') }}">Nuevo Usuario</a>
 		        </li>
 		      </ul>
 		    </div>
@@ -25,7 +25,7 @@
 		<div class="col-md-4">
 			<div class="card">
 				<div class="card-body text-center">								
-				<form method="post" action="{{ route('usuarios.store') }}">
+					<form method="post" action="{{ route('usuarios.store') }}">
 					@csrf
 					<h3>Ingrese los Datos</h3>										
 						<div class="form-group">
@@ -60,7 +60,8 @@
 						</div>
 																	
 						<div class="form-group">
-							<button class="btn btn-primary" type="submit">Guardar</button>				
+							<button class="btn btn-primary" type="submit">Guardar</button>
+							<a href="{{ route('usuarios.index') }}" class="btn btn-default" >Cancelar</a>				
 						</div>
 					</form>										
 				</div>

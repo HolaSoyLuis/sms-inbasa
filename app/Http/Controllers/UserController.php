@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();      
+        $users = User::all();    
         return view('admin/usuarios/index')->with(compact('users')); 
     }
 
@@ -27,7 +27,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view("admin/usuarios/create");
+        return view('admin/usuarios/create');
     }
 
     /**
@@ -40,13 +40,13 @@ class UserController extends Controller
     {
         $request->validate([            
             'username'=>'required|string|min:4|max:120|unique:users',
-            'password'=>'required|min:6|confirmed',            
+            'password'=>'required|min:6|confirmed'            
         ]);
         $users = new User();
         $users->username = $request->input('username');      
         $users->password=bcrypt($request->input('password'));            
         $users->save();      
-        return redirect('admin/usuarios/create');
+        return redirect('admin/usuarios');
     }
 
     /**
@@ -68,7 +68,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $users = User::find($id);
+        return view('admin/usuarios/edit')->with(compact('users'));
     }
 
     /**
@@ -80,7 +81,15 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([            
+            'username'=>'required|string|min:4|max:120|unique:users',
+            'password'=>'required|min:6|confirmed'            
+        ]);
+        $users = User::find($id);
+        $users->username = $request->input('username');      
+        $users->password=bcrypt($request->input('password'));            
+        $users->save();      
+        return redirect('admin/usuarios');
     }
 
     /**
@@ -91,6 +100,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $users = User::find($id);
+        $users->delete();
+        return redirect('admin/usuarios');
     }
 }

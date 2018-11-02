@@ -25,39 +25,34 @@
 		<div class="card">
 			<div class="card-body text-center">	
 				<div class="table-responsive">
-					<table id="datatable_table" class="table table-bordered table-condensed table-hover">
+					<table id="datatable_table" class="table table-condensed table-hover">
 						<thead>
 							<th></th>	
 							<th>Nombre</th>											
 							<th>Creado</th>
 							<th>Actualizado</th>
 							<th>Opciones</th>
-						</thead>		
+						</thead>
 						@foreach($users as $user)		
 						<tr>
 							<td>{{$user->id}}</td>
 							<td>{{$user->username}}</td>					
 							<td>{{$user->created_at}}</td>
 							<td>{{$user->updated_at}}</td>
-							<td class="td-actions text-center">						
-								<a href="#">
-									<button class="btn btn-info btn-sm" title="Ver">
-										<i class="material-icons">visibility</i>
-										Ver
-									</button>
-								</a>
-								<a href="#">
-									<button class="btn btn-primary btn-sm" title="Editar">
-										<i class="material-icons">edit</i>
-										Editar
-									</button>
-								</a>
-								<a href="" data-target="#" data-toggle="modal">
-									<button class="btn btn-danger btn-sm" title="Eliminar">
-										<i class="material-icons">delete</i>
-										Eliminar
-									</button>
-								</a>
+							<td class="td-actions text-center">
+								<form method="post" action="{{ route('usuarios.destroy', $user->id) }}">						
+									<a href="#" class="btn btn-info btn-sm" title="Ver">
+										<i class="material-icons">visibility</i>Ver
+									</a>
+									<a href="{{ route('usuarios.edit', $user->id) }}" class="btn btn-primary btn-sm" title="Editar">
+											<i class="material-icons">edit</i>Editar
+									</a>													
+									@csrf
+                  @method('DELETE')
+									<button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+										<i class="material-icons">delete</i>Eliminar
+									</button>								
+								</form>	
 							</td>
 						</tr>	
 						@endforeach						

@@ -334,20 +334,25 @@
 
 			<div class="col"> {{-- Segunda Columna --}}
 
-							<div class="form-group label-floating">								
-											<label for="cargo_id">Cargo</label>																
-											<select class="form-control{{ $errors->has('cargo_id') ? ' is-invalid' : '' }}" name="cargo_id" id="cargo_id">
+				<div class="form-group label-floating">								
+										
+
+										<select class="form-control{{ $errors->has('cargo_id') ? ' is-invalid' : '' }}" name="cargo_id" id="centro_id" >
 												@foreach ($cargos as $u)
-													<option value="{{ $u['id'] }}">{{ $u['cargo'] }}</option>										
+												<option value="centros">Cargo</option>
+													<option value="{{ $u['id'] }}">{{ $u['cargo'] }}</option>			
+
+												<							
 												@endforeach																										
 											</select>																							
-											@if ($errors->has('cargo'))
+											@if ($errors->has('cargo_id'))
 													<span class="invalid-feedback" role="alert">
-															<strong>{{ $errors->first('cargo') }}</strong>
+															<strong>{{ $errors->first('cargo_id') }}</strong>
 													</span>
 											@endif					
 										</div>
 
+					
 
 						</div> {{--Fin Columna--}}
 
