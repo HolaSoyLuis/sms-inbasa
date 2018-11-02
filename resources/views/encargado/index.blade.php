@@ -59,6 +59,7 @@
             <td>{{$encargado->cui}}</td>
             <td>
               <a href="{{ route('encargado.edit',$encargado->id)}}" class="btn btn-primary btn-sm" title="Editar">Editar</a>
+              <a href="{{ route('encargado.show',$encargado->id)}}" class="btn btn-primary btn-sm" title="Mostrar">Mostrar</a>
                 <form action="{{ route('encargado.destroy', $encargado->id)}}" method="post">
                   @csrf
                   @method('DELETE')

@@ -85,6 +85,12 @@ class AsignacionController extends Controller
     public function show($id)
     {
         //
+        $asignacion = Asignacion::find($id);
+        $estudiantes = Estudiante::all();
+        $grados = Grado::all();
+        $ciclos = Ciclo::all();
+        $secciones = Seccion::all();
+        return view('asignacion.show')->with(compact('asignacion', 'estudiantes', 'grados', 'ciclos', 'secciones'));
     }
 
     /**
@@ -131,7 +137,7 @@ class AsignacionController extends Controller
         $asignacion->grado_id = $request->get('grado_id');
         $asignacion->seccion_id = $request->get('seccion_id');
 
-        $encargado->save();
+        $asignacion->save();
         return redirect('/asignacion')->with('success', 'Asignacion actualizada :D');
     }
 

@@ -84,7 +84,9 @@ class EncargadoController extends Controller
     public function show($id)
     {
         //
-
+        $encargado = Encargado::find($id);
+        $users = User::all();
+        return view('encargado.edit', compact('encargado', 'users'));
     }
 
     /**

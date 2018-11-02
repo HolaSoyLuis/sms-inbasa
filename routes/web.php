@@ -150,7 +150,7 @@ Route::middleware(['auth'])->group(function(){
     Route::put('admin/encargado/{id}', 'EncargadoController@update')->name('encargado.update')
         ->middleware('permission:encargado.edit');
 
-    Route::get('admin/encargado/{id}', 'EncargadoController@show')->name('encargado.show')
+    Route::get('admin/encargado/{id}/show', 'EncargadoController@show')->name('encargado.show')
         ->middleware('permission:encargado.show');
 
     Route::delete('admin/encargado/{id}', 'EncargadoController@destroy')->name('encargado.destroy')
@@ -487,4 +487,5 @@ Route::middleware(['auth'])->group(function(){
     */
 
     Route::resource('/asignacion', 'AsignacionController');
+    Route::resource('/detalle_comprobante', 'DetalleComprobanteController');
 });

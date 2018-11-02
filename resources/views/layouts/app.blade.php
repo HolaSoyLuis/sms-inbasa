@@ -158,6 +158,15 @@
                                             </a>
                                         </li>
                                     @endif
+
+                                    @if(Auth::check() && Auth::user()->can('asignacion.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('detalle_comprobante.index') }}">
+                                              <span class="sidebar-mini"> DC </span>
+                                              <span class="sidebar-normal"> Detalle comprobante </span>
+                                            </a>
+                                        </li>
+                                    @endif
                                 </ul>
                             </div>
                         </li>

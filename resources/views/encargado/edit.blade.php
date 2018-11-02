@@ -41,6 +41,9 @@
     <form method="post" action="{{ route('encargado.update', $encargado->id) }}">
         @method('PATCH')
         @csrf
+
+        <div class="form-row">
+
         <div class="col">
           <div class="form-group">
         <div class="form-group label-floating">
@@ -73,11 +76,24 @@
         </div>
         </div>
         </div>
+        
+        </div>
+
+        <div class="form-row">
+
         <div class="col">
           <div class="form-group">
         <div class="form-group label-floating">
+            <!--
             <label for="genero">Genero: </label>
             <input type="text" class="form-control" name="genero" value={{ $encargado->genero }}/>
+            -->
+            <label for="genero">Seleccione el genero</label>
+            <select class="form-control" name="genero" id="genero" value="{{ $encargado->genero }}">
+                <option value="{{ $encargado->genero }}">{{ $encargado->genero }}</option>
+                <option value="Femenino">Femenino</option>
+                <option value="Masculino">Masculino</option>
+            </select>
         </div>
         </div>
         </div>
@@ -105,6 +121,11 @@
         </div>
         </div>
         </div>
+        
+        </div>
+
+        <div class="form-row">
+
         <div class="col">
           <div class="form-group">
         <div class="form-group label-floating">
@@ -129,6 +150,7 @@
         </div>
         </div>
         </div>
+    </div>
         <button type="submit" class="btn btn-primary">Actualizar</button>
     </form>
   </div>

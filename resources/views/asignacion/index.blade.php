@@ -84,6 +84,7 @@
             @endforeach
             <td>
               <a href="{{ route('asignacion.edit',$asignacion->id)}}" class="btn btn-primary btn-sm" title="Editar">Editar</a>
+              <a href="{{ route('asignacion.show',$asignacion->id)}}" class="btn btn-primary btn-sm" title="Mostrar">Mostrar</a>
                 <form action="{{ route('asignacion.destroy', $asignacion->id)}}" method="post">
                   @csrf
                   @method('DELETE')

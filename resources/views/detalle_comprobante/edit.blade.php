@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Asignacion')
+@section('title', 'Detalle comprobante')
 @section('content')
 <div class="row">
   <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
@@ -8,10 +8,10 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('asignacion.index') }}">Lista de asignaciones</a>
+              <a class="nav-link" href="{{ route('detalle_comprobante.index') }}">Lista de detalles de comprobante</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('asignacion.create') }}">Nueva asignacion</a>
+              <a class="nav-link" href="{{ route('detalle_comprobante.create') }}">Nuevo detalle de comprobante</a>
             </li>
           </ul>
         </div>
@@ -38,70 +38,54 @@
     <div class="container">
       <div class="row justify-content-center">
             <div class="card-body text-center">
-    <form method="post" action="{{ route('asignacion.update', $asignacion->id) }}">
+    <form method="post" action="{{ route('detalle_comprobante.update', $detallecomprobante->id) }}">
         @method('PATCH')
         @csrf
         <div class="col">
           <div class="form-group">
         <div class="form-group label-floating">
-            <label for="fecha_asignacion">Fecha de asignacion: </label>
-            <input type="text" class="form-control" name="fecha_asignacion" value={{ $asignacion->fecha_asignacion }}/>
+            <label for="cantidad">Cantidad: </label>
+            <input type="text" class="form-control" name="cantidad" value={{ $detallecomprobante->cantidad }}/>
         </div>
         </div>
         </div>
         <div class="col">
           <div class="form-group">
         <div class="form-group label-floating">
-            <label for="nuevo_reingreso">Nuevo/Reingreso: </label>
-            <input type="text" class="form-control" name="nuevo_reingreso" value={{ $asignacion->nuevo_reingreso }}/>
+            <label for="costo">Costo: (Q)</label>
+            <input type="text" class="form-control" name="costo" value={{ $detallecomprobante->costo }}/>
         </div>
         </div>
         </div>
         <div class="col">
           <div class="form-group">
         <div class="form-group label-floating">
-            <label for="certificado">Certificado: </label>
-            <input type="text" class="form-control" name="certificado" value={{ $asignacion->certificado }}/>
+            <label for="mes">Mes: </label>
+            <input type="text" class="form-control" name="mes" value={{ $detallecomprobante->mes }}/>
         </div>
         </div>
         </div>
         <div class="col">
           <div class="form-group">
         <div class="form-group label-floating">
-            <label for="clave_estudiante">Clave: </label>
-            <input type="text" class="form-control" name="clave_estudiante" value={{ $asignacion->clave_estudiante }}/>
+            <label for="comprobante_id">Comprobante ID: </label>
+            <input type="text" class="form-control" name="comprobante_id" value={{ $detallecomprobante->comprobante_id }}/>
         </div>
         </div>
         </div>
         <div class="col">
           <div class="form-group">
         <div class="form-group label-floating">
-            <label for="estudiante_id">Estudiante ID: </label>
-            <input type="text" class="form-control" name="estudiante_id" value={{ $asignacion->estudiante_id }}/>
+            <label for="asignacion_id">Asignacion ID: </label>
+            <input type="text" class="form-control" name="asignacion_id" value={{ $detallecomprobante->asignacion_id }}/>
         </div>
         </div>
         </div>
         <div class="col">
           <div class="form-group">
         <div class="form-group label-floating">
-            <label for="ciclo_id">Ciclo ID: </label>
-            <input type="text" class="form-control" name="ciclo_id" value={{ $asignacion->ciclo_id }}/>
-        </div>
-        </div>
-        </div>
-        <div class="col">
-          <div class="form-group">
-        <div class="form-group label-floating">
-            <label for="grado_id">Grado ID: </label>
-            <input type="text" class="form-control" name="grado_id" value={{ $asignacion->grado_id }}/>
-        </div>
-        </div>
-        </div>
-        <div class="col">
-          <div class="form-group">
-        <div class="form-group label-floating">
-            <label for="seccion_id">Seccion ID: </label>
-            <input type="text" class="form-control" name="seccion_id" value={{ $asignacion->seccion_id }}/>
+            <label for="tipo_pago_id">Tipo pago ID: </label>
+            <input type="text" class="form-control" name="tipo_pago_id" value={{ $detallecomprobante->tipo_pago_id }}/>
         </div>
         </div>
         </div>
