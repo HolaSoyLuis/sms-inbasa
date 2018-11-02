@@ -72,7 +72,7 @@ class EncargadoController extends Controller
             'usuario_id' => $request->get('usuario_id')
           ]);
           $encargado->save();
-          return redirect('/encargado')->with('success', 'Encargado guardado :D');
+          return redirect('/admin/encargado')->with('success', 'Encargado guardado :D');
     }
 
     /**
@@ -138,7 +138,7 @@ class EncargadoController extends Controller
         $encargado->usuario_id = $request->get('usuario_id');
 
         $encargado->save();
-        return redirect('/encargado')->with('success', 'Encargado actualizado :D');
+        return redirect('/admin/encargado')->with('success', 'Encargado actualizado :D');
     }
     /**
      * Remove the specified resource from storage.
@@ -152,6 +152,6 @@ class EncargadoController extends Controller
         $encargado = Encargado::find($id);
         $encargado->delete();
 
-        return redirect('/encargado')->with('success', 'Encargado eliminado');
+        return redirect('/admin/encargado')->with('success', 'Encargado eliminado');
     }
 }
