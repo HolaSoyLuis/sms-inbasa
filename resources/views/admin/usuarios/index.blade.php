@@ -25,7 +25,7 @@
 		<div class="card">
 			<div class="card-body text-center">	
 				<div class="table-responsive">
-					<table id="datatable_table" class="table table-bordered table-condensed table-hover">
+					<table id="datatable_table" class="table table-condensed table-hover">
 						<thead>
 							<th></th>	
 							<th>Nombre</th>											
