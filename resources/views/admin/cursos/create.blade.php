@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Crear Seccion')
+@section('title', 'Crear Curso')
 @section('content')
 <div class="row">
 	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">		
@@ -95,15 +95,15 @@
 
 
 									<div class="form-group label-floating">								
-											<label for="empleado_id">Empleado</label>																
-											<select class="form-control{{ $errors->has('empleado_id') ? ' is-invalid' : '' }}" name="empleado_id" id="empleado_id">
-												@foreach ($empleados as $u)
-													<option value="{{ $u['id'] }}">{{ $u['id'] }}</option>										
+											<label for="docente_id">Docente</label>																
+											<select class="form-control{{ $errors->has('docente_id') ? ' is-invalid' : '' }}" name="docente_id" id="docente_id">
+												@foreach ($docentes as $u)
+													<option value="{{ $u['id'] }}">{{ $u['p_nombre'] }}</option>										
 												@endforeach																										
 											</select>																							
-											@if ($errors->has('empleado_id'))
+											@if ($errors->has('docente_id'))
 													<span class="invalid-feedback" role="alert">
-															<strong>{{ $errors->first('empleado_id') }}</strong>
+															<strong>{{ $errors->first('docente_id') }}</strong>
 													</span>
 											@endif					
 										</div>

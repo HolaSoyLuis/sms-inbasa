@@ -44,8 +44,8 @@ class CursoController extends Controller
     public function create()
     {
         $grados = Grado::all();  
-        $empleados = Empleado::all();
-        return view('admin/cursos/create')->with(compact('grados','empleados'));
+        $docentes = Empleado::all();
+        return view('admin/cursos/create')->with(compact('grados','docentes'));
     }
 
     /**
