@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\DetalleNota;
 
 class DetalleNotaController extends Controller
 {
@@ -13,7 +14,8 @@ class DetalleNotaController extends Controller
      */
     public function index()
     {
-        //
+        $notas = DetalleNota::all();
+        return view('docentes/notas/notas', compact('notas'));
     }
 
     /**
@@ -23,7 +25,7 @@ class DetalleNotaController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

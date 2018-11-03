@@ -335,11 +335,10 @@
 			<div class="col"> {{-- Segunda Columna --}}
 
 				<div class="form-group label-floating">								
-										
+										<label for="cargo_id">Cargo</label>	
 
 										<select class="form-control{{ $errors->has('cargo_id') ? ' is-invalid' : '' }}" name="cargo_id" id="centro_id" >
 												@foreach ($cargos as $u)
-												<option value="centros">Cargo</option>
 													<option value="{{ $u['id'] }}">{{ $u['cargo'] }}</option>			
 
 												<							
@@ -362,10 +361,9 @@
 
 							<div class="form-group label-floating">								
 										
-
+										<label for="cargo_id">Centro</label>	
 										<select class="form-control{{ $errors->has('centro_id') ? ' is-invalid' : '' }}" name="centro_id" id="centro_id" >
 												@foreach ($centros as $u)
-												<option value="centros">Elegir Centro</option>
 													<option value="{{ $u['id'] }}">{{ $u['nombre'] }}</option>			
 
 												<							

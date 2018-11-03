@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\DetalleNota;
+use App\Estudiante;
+use App\Curso;
+use App\TipoEvaluacion;
+
 
 class NotaController extends Controller
 {
@@ -13,7 +18,8 @@ class NotaController extends Controller
      */
     public function index()
     {
-        return view('docentes/notas/notas');
+        $notas = DetalleNota::all();
+        return view('docentes/notas/notas', compact('notas'));
     }
 
     //Devuelve notas de los hijos de encargados
@@ -28,7 +34,10 @@ class NotaController extends Controller
      */
     public function create()
     {
-        //
+        $tipoEvaluaciones = TipoEvaluacion::all();
+        $estudiantes = Estudiante::all();
+        $cursos = Curso::all();
+        return view("docentes/notas/create")->with(compact('estudiantes','cursos','tipoEvaluaciones'));   
     }
 
     /**
@@ -39,7 +48,24 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+         $detallenotas = new DetalleNota();
+        $detallenotas->nota = $request->input('nota');
+        $detallenotas->tipo_evaluacion_id = $request->input('tipo_evaluacion_id'); 
+        $detallenotas->estudiante_id = $request->input('estudiante_id'); 
+        $detallenotas->curso_id = $request->input('curso_id'); 
+       
+
+         $detallenotas->save();
+          return redirect()->route('docentes.notas.index',$detallenotas->id)
+            ->with('info', 'Empleado creado con Exito');
+
+         /*
+         $detallenotas = DetalleNota::create($request->all());
+
+          return redirect()->route('docentes.notas.index',$notas->id)
+            ->with('info', 'Empleado creado con Exito');
+            */
     }
 
     /**

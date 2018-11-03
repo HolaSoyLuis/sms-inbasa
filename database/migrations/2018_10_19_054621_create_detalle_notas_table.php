@@ -20,7 +20,7 @@ class CreateDetalleNotasTable extends Migration
             $table->float('nota',8,2);
 
             //Llaves foráneas
-            $table->unsignedInteger('nota_id');
+            $table->unsignedInteger('nota_id')->nullable();
             $table->foreign('nota_id')->references('id')->on('notas')->onUpdate('cascade')->onDelete('cascade');
             $table->unsignedInteger('aspecto_id')->nullable();
             $table->foreign('aspecto_id')->references('id')->on('aspectos')->onUpdate('cascade')->onDelete('set null');
