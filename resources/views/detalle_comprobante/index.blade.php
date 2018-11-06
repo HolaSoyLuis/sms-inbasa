@@ -54,7 +54,7 @@
             <td>{{$detallecomprobante->cantidad}}</td>
             <td>{{$detallecomprobante->costo}}</td>
             <td>{{$detallecomprobante->mes}}</td>
-            
+
             @foreach($comprobantes as $comprobante)
               @if($comprobante->id == $detallecomprobante->comprobante_id)
                 <td>No. Serie:{{ $comprobante['serie']}} Total:{{ $comprobante['total']}}</td>
@@ -76,7 +76,7 @@
                 <td>{{ $tipopago['tipo'] }}</td>
               @endif
             @endforeach
-            
+
             <td>
               <a href="{{ route('detalle_comprobante.edit',$detallecomprobante->id)}}" class="btn btn-primary btn-sm" title="Editar">Editar</a>
               <a href="{{ route('detalle_comprobante.show',$detallecomprobante->id)}}" class="btn btn-primary btn-sm" title="Mostrar">Mostrar</a>

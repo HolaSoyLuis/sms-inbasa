@@ -88,7 +88,7 @@ class DetalleComprobanteController extends Controller
         $tipopagos = TipoPago::all();
         $estudiantes = Estudiante::all();
 
-        return view('detalle_comprobante.show',compact('detallecomprobante', 'asignaciones', 'comprobantes', 'tipopagos', 'estudiantes'));
+        return view('detalle_comprobante.show', compact('detallecomprobante', 'asignaciones', 'comprobantes', 'tipopagos', 'estudiantes'));
     }
 
     /**
