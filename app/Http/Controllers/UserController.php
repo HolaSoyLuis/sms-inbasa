@@ -30,6 +30,13 @@ class UserController extends Controller
         return view('admin/usuarios/create');
     }
 
+    public function createPDF()
+    {
+        $users = User::all(); 
+        $pdf = \PDF::loadView('admin/usuarios/pdf', ['users' => $users]);
+        return $pdf->download('Reporte Usuarios.pdf');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -83,12 +90,12 @@ class UserController extends Controller
     {
         $request->validate([            
             'username'=>'required|string|min:4|max:120|unique:users',
-            'password'=>'required|min:6|confirmed'            
+            'password'=>'required|min:6|confirmed'                        
         ]);
         $users = User::find($id);
         $users->username = $request->input('username');      
         $users->password=bcrypt($request->input('password'));            
-        $users->save();      
+        $users->update(); 
         return redirect('admin/usuarios');
     }
 

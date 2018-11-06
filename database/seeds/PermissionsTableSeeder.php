@@ -60,6 +60,13 @@ class PermissionsTableSeeder extends Seeder
             'description'   => 'Elimina usuarios dentro del sistema',
         ]);
 
+        //6.1
+        Permission::create([
+            'name'          => 'Crear Pdf',
+            'slug'          => 'usuarios.pdf',
+            'description'   => 'Crear pdf dentro del sistema',
+        ]);
+
         //7. Roles y Permisos
         Permission::create([
             'name'          => 'Navegar en Roles y Permisos',

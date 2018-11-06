@@ -13,6 +13,9 @@
 		        <li class="nav-item">
 		          <a class="nav-link" href="{{ route('usuarios.create') }}">Nuevo Usuario</a>
 		        </li>
+						<li class="nav-item">
+		          <a class="nav-link" href="{{ route('usuarios.pdf') }}">Exportar PDF</a>
+		        </li>
 		      </ul>
 		    </div>
 		  </div>

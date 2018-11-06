@@ -165,6 +165,8 @@ return [
         Caffeinated\Shinobi\ShinobiServiceProvider::class,
         //Yajra Para la dataTable
         Yajra\DataTables\DataTablesServiceProvider::class,
+        //DomPDF pra generar los reportes
+        Barryvdh\DomPDF\ServiceProvider::class,
     ],
 
     /*
@@ -216,6 +218,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
     ],
 
 ];

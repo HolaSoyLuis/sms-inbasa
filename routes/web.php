@@ -17,8 +17,6 @@ Route::middleware(['auth'])->group(function(){
         RUTAS PARA MÓDULO DE ADMINISTRACIÓN
     */
     //Usuarios
-    Route::post('admin/usuarios/store', 'UserController@store')->name('usuarios.store')
-        ->middleware('permission:usuarios.create');
 
     Route::get('admin/usuarios', 'UserController@index')->name('usuarios.index')
         ->middleware('permission:usuarios.index');
@@ -26,17 +24,25 @@ Route::middleware(['auth'])->group(function(){
     Route::get('admin/usuarios/create', 'UserController@create')->name('usuarios.create')
         ->middleware('permission:usuarios.create');
 
-    Route::put('admin/usuarios/{id}', 'UserController@update')->name('usuarios.update')
-        ->middleware('permission:usuarios.edit');
+    Route::get('admin/usuarios/pdf', 'UserController@createPDF')->name('usuarios.pdf')
+        ->middleware('permission:usuarios.pdf');
 
+    Route::post('admin/usuarios/store', 'UserController@store')->name('usuarios.store')
+        ->middleware('permission:usuarios.create');
+    
     Route::get('admin/usuarios/{id}', 'UserController@show')->name('usuarios.show')
         ->middleware('permission:usuarios.show');
+
+    Route::get('admin/usuarios/{id}/edit', 'UserController@edit')->name('usuarios.edit')
+        ->middleware('permission:usuarios.edit');
+
+    Route::put('admin/usuarios/{id}', 'UserController@update')->name('usuarios.update')
+        ->middleware('permission:usuarios.edit');
 
     Route::delete('admin/usuarios/{id}', 'UserController@destroy')->name('usuarios.destroy')
         ->middleware('permission:usuarios.destroy');
 
-    Route::get('admin/usuarios/{id}/edit', 'UserController@edit')->name('usuarios.edit')
-        ->middleware('permission:usuarios.edit');
+
 
     // Roles
     //Creación de roles
