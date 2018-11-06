@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function(){
         ->middleware('permission:usuarios.create');
 
     Route::get('admin/usuarios/pdf', 'UserController@createPDF')->name('usuarios.pdf')
-        ->middleware('permission:usuarios.pdf');
+        ->middleware('permission:usuarios.edit');
 
     Route::post('admin/usuarios/store', 'UserController@store')->name('usuarios.store')
         ->middleware('permission:usuarios.create');
@@ -73,6 +73,11 @@ Route::middleware(['auth'])->group(function(){
     //Formulario para editar
     Route::get('admin/roles/{id}/edit', 'RoleController@edit')->name('roles.edit')
         ->middleware('permission:roles.edit');
+
+    //Permisos
+    //Navegar en los roles
+    Route::get('admin/permisos', 'RoleController@index1')->name('permisos.index')
+        ->middleware('permission:roles.index');
 
      //Empleados
     Route::post('admin/empleados/store', 'EmpleadoController@store')->name('empleados.store')
