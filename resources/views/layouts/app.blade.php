@@ -16,7 +16,7 @@
 
     <!--  CSS Files -->
     <link href="{{asset('css/material-dashboard.min.css?v=2.0.2')}}" rel="stylesheet" />
-    <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet" />    
+    <link href="{{asset('css/jquery.dataTables.min.css')}}" rel="stylesheet" />
     @yield('css')
     <!-- Titulo -->
     <title>@yield('title', 'INBASA')</title>
@@ -159,7 +159,7 @@
                                         </li>
                                     @endif
 
-                                    @if(Auth::check() && Auth::user()->can('asignacion.index'))
+                                    @if(Auth::check() && Auth::user()->can('detalle_comprobante.index'))
                                         <li class="nav-item ">
                                             <a class="nav-link" href="{{ route('detalle_comprobante.index') }}">
                                               <span class="sidebar-mini"> DC </span>
@@ -167,6 +167,16 @@
                                             </a>
                                         </li>
                                     @endif
+
+                                    @if(Auth::check() && Auth::user()->can('tipo_pago.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('tipo_pago.index') }}">
+                                              <span class="sidebar-mini"> TP </span>
+                                              <span class="sidebar-normal"> Tipo de pago </span>
+                                            </a>
+                                        </li>
+                                    @endif
+
                                 </ul>
                             </div>
                         </li>
@@ -449,7 +459,7 @@
     <!--    Centro de Control para Material Kit: ripples, efectos parallax,  -->
     <script src="{{asset('js/material-dashboard.min.js?v=2.0.2')}}" type="text/javascript"></script>
     <script src="{{asset('js/layout/app-plantilla.js')}}"></script>
-    <!--    Script para datatable   -->    
+    <!--    Script para datatable   -->
     <script src="{{ asset('js/jquery.dataTables.min.js') }}" type="text/javascript"></script>
     <script>
         $(document).ready(function() {

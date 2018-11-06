@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\TipoPago;
 
 class TipoPagoController extends Controller
 {
@@ -14,6 +15,8 @@ class TipoPagoController extends Controller
     public function index()
     {
         //
+        $tipopagos = TipoPago::all();
+        return view('tipo_pago.index', compact('tipopagos'));
     }
 
     /**
@@ -24,6 +27,7 @@ class TipoPagoController extends Controller
     public function create()
     {
         //
+        return view('tipo_pago.create');
     }
 
     /**
@@ -35,6 +39,21 @@ class TipoPagoController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+          'tipo' => 'required',
+          'costo' => 'required',
+          'detalle' => 'required'
+        ]);
+
+        $tipo_pago = new TipoPago([
+          'tipo' => $request->get('tipo'),
+          'costo' => $request->get('costo'),
+          'detalle' => $request->get('detalle')
+        ]);
+
+        $tipo_pago->save();
+
+        return redirect('/tipo_pago')->with('success', 'tipo de pago guardado :D');
     }
 
     /**
@@ -46,6 +65,8 @@ class TipoPagoController extends Controller
     public function show($id)
     {
         //
+        $tipo_pago = TipoPago::find($id);
+        return view('tipo_pago.show', compact('tipo_pago'));
     }
 
     /**
@@ -57,6 +78,9 @@ class TipoPagoController extends Controller
     public function edit($id)
     {
         //
+        $tipopago = TipoPago::find($id);
+
+        return view('tipo_pago.edit', compact('tipopago'));
     }
 
     /**
@@ -69,6 +93,20 @@ class TipoPagoController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+          'tipo' => 'required',
+          'costo' => 'required',
+          'detalle' => 'required'
+        ]);
+
+        $tipo_pago = TipoPago::find($id);
+        $tipo_pago->tipo = $request->get('tipo');
+        $tipo_pago->costo = $request->get('costo');
+        $tipo_pago->detalle = $request->get('detalle');
+
+        $tipo_pago->save();
+
+        return redirect('/tipo_pago')->with('success', 'Tipo de pago actualizado :D');
     }
 
     /**
@@ -80,5 +118,9 @@ class TipoPagoController extends Controller
     public function destroy($id)
     {
         //
+        $tipo_pago = TipoPago::find($id);
+        $tipo_pago->delete();
+
+        return redirect('/tipo_pago')->with('success', 'Tipo de pago eliminado :D');
     }
 }
