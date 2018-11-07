@@ -47,7 +47,7 @@
 							<td class="td-actions text-left">{{$e->direccion}}</td>
 							<td class="td-actions text-center">
 								<form method="post" action="{{ route('empleados.destroy', $e->id) }}">						
-									<a href="#" class="btn btn-info btn-sm" title="Ver">
+									<a href="{{ route('empleados.show', $e->id) }}" class="btn btn-info btn-sm" title="Ver">
 										<i class="material-icons">visibility</i>Ver
 									</a>
 									<a href="{{ route('empleados.edit', $e->id) }}" class="btn btn-primary btn-sm" title="Editar">

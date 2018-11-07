@@ -8,7 +8,7 @@ use App\Asignacion;
 use App\Estudiante;
 use App\Grado;
 use App\Ciclo;
-use App\Seccion;
+use App\Seccion; 
 
 class AsignacionController extends Controller
 {

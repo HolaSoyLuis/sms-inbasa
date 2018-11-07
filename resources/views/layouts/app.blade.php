@@ -81,8 +81,8 @@
                                     @if(Auth::check() && Auth::user()->can('personal.index'))
                                         <li class="nav-item ">
                                             <a class="nav-link" href="{{ route('empleados.index') }}">
-                                              <span class="sidebar-mini"> P </span>
-                                              <span class="sidebar-normal"> Personal </span>
+                                              <span class="sidebar-mini"> EM </span>
+                                              <span class="sidebar-normal"> Empleados </span>
                                             </a>
                                         </li>
                                     @endif
