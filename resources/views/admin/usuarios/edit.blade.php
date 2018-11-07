@@ -30,16 +30,16 @@
 				<div class="card-body text-center">								
 				<form method="POST" action="{{ route('usuarios.update', $users->id) }}">										
 					@method('PUT')
-					@csrf
+					@csrf 
 					<h3>Actualizar Datos</h3>										
 						<div class="form-group">
 							<div class="form-group label-floating">								
 								<label for="username">Nombre</label>
 								<input type="text" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" value='{{$users->username}}' name="username" id="username" required autofocus>
 								@if ($errors->has('username'))
-										<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('username') }}</strong>
-										</span>
+									<span class="invalid-feedback" role="alert">
+										<strong>{{ $errors->first('username') }}</strong>
+									</span>
 								@endif					
 							</div>
 						</div>

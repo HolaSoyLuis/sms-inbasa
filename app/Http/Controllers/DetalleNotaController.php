@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\DetalleNota;
+use App\TipoEvaluacion;
+use App\Estudiante;
+use App\Curso;
+use App\Nota;
 
 class DetalleNotaController extends Controller
 {
@@ -15,7 +19,7 @@ class DetalleNotaController extends Controller
     public function index()
     {
         $notas = DetalleNota::all();
-        return view('docentes/notas/notas', compact('notas'));
+        return view('docentes/notas/detalle_nota', compact('notas'));
     }
 
     /**
@@ -25,7 +29,11 @@ class DetalleNotaController extends Controller
      */
     public function create()
     {
-        
+        $tipoEvaluaciones = TipoEvaluacion::all();
+        $estudiantes = Estudiante::all();
+        $cursos = Curso::all();
+        $notas = Nota::all();
+        return view("docentes/notas/detalle_nota_create")->with(compact('estudiantes','cursos','tipoEvaluaciones','notas')); 
     }
 
     /**
@@ -36,7 +44,20 @@ class DetalleNotaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $detallenotas = new DetalleNota();
+        $detallenotas->nota = $request->input('nota');
+        $detallenotas->nota_id = $request->input('nota_id');
+        $detallenotas->tipo_evaluacion_id = $request->input('tipo_evaluacion_id'); 
+        $detallenotas->estudiante_id = $request->input('estudiante_id'); 
+        $detallenotas->curso_id = $request->input('curso_id'); 
+       
+
+         $detallenotas->save();
+         return redirect('/detalle_nota')->with('success', 'detalle de nota almacenada :D');
+          
+
+        
     }
 
     /**
