@@ -503,5 +503,11 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/tipo_pago', 'TipoPagoController');
     Route::resource('/comprobante', 'ComprobanteController');
 
+    Route::resource('/detalle_nota','DetalleNotaController');
+    //Route::resource('/nota','NotaController');
+
+
+
+
     // Route::resource('/admin/comprobante', 'ComprobanteController')->middleware('permission::comprobante');
 });
