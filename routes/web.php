@@ -501,7 +501,7 @@ Route::middleware(['auth'])->group(function(){
     Route::resource('/asignacion', 'AsignacionController');
     Route::resource('/detalle_comprobante', 'DetalleComprobanteController');
     Route::resource('/tipo_pago', 'TipoPagoController');
-    //Route::resource('/comprobante', 'ComprobanteController');
+    Route::resource('/comprobante', 'ComprobanteController');
 
-    Route::resource('/admin/comprobante', 'ComprobanteController')->middleware('permission::comprobante');
+    // Route::resource('/admin/comprobante', 'ComprobanteController')->middleware('permission::comprobante');
 });
