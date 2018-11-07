@@ -9,14 +9,14 @@ class Comprobante extends Model
     protected $table = 'comprobantes';
 
     protected $fillable = [
-        'serie', 
-        'descuento',   
-        'total', 
-        'detalles',  
-        'estado', 
-        'empleado_id',  
-        'forma_pago_id', 
-        'encargado_id',  
+        'serie',
+        'descuento',
+        'total',
+        'detalles',
+        'estado',
+        'empleado_id',
+        'forma_pago_id',
+        'encargado_id',
     ];
 
     //Variables para el estado del comprobante
