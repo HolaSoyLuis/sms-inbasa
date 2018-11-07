@@ -45,7 +45,7 @@
           <div class="form-group">
         <div class="form-group label-floating">
             <label for="fecha_asignacion">Fecha de asignacion: </label>
-            <input type="text" class="form-control" name="fecha_asignacion" value={{ $asignacion->fecha_asignacion }}/>
+            <input type="text" class="form-control" name="fecha_asignacion" value={{ $asignacion->fecha_asignacion }}>
         </div>
         </div>
         </div>
@@ -53,7 +53,7 @@
           <div class="form-group">
         <div class="form-group label-floating">
             <label for="nuevo_reingreso">Nuevo/Reingreso: </label>
-            <input type="text" class="form-control" name="nuevo_reingreso" value={{ $asignacion->nuevo_reingreso }}/>
+            <input type="text" class="form-control" name="nuevo_reingreso" value={{ $asignacion->nuevo_reingreso }}>
         </div>
         </div>
         </div>
@@ -61,7 +61,7 @@
           <div class="form-group">
         <div class="form-group label-floating">
             <label for="certificado">Certificado: </label>
-            <input type="text" class="form-control" name="certificado" value={{ $asignacion->certificado }}/>
+            <input type="text" class="form-control" name="certificado" value={{ $asignacion->certificado }}>
         </div>
         </div>
         </div>
@@ -69,7 +69,7 @@
           <div class="form-group">
         <div class="form-group label-floating">
             <label for="clave_estudiante">Clave: </label>
-            <input type="text" class="form-control" name="clave_estudiante" value={{ $asignacion->clave_estudiante }}/>
+            <input type="text" class="form-control" name="clave_estudiante" value={{ $asignacion->clave_estudiante }}>
         </div>
         </div>
         </div>
@@ -77,7 +77,7 @@
           <div class="form-group">
         <div class="form-group label-floating">
             <label for="estudiante_id">Estudiante ID: </label>
-            <input type="text" class="form-control" name="estudiante_id" value={{ $asignacion->estudiante_id }}/>
+            <input type="text" class="form-control" name="estudiante_id" value={{ $asignacion->estudiante_id }}>
         </div>
         </div>
         </div>
@@ -85,7 +85,7 @@
           <div class="form-group">
         <div class="form-group label-floating">
             <label for="ciclo_id">Ciclo ID: </label>
-            <input type="text" class="form-control" name="ciclo_id" value={{ $asignacion->ciclo_id }}/>
+            <input type="text" class="form-control" name="ciclo_id" value={{ $asignacion->ciclo_id }}>
         </div>
         </div>
         </div>
@@ -93,7 +93,7 @@
           <div class="form-group">
         <div class="form-group label-floating">
             <label for="grado_id">Grado ID: </label>
-            <input type="text" class="form-control" name="grado_id" value={{ $asignacion->grado_id }}/>
+            <input type="text" class="form-control" name="grado_id" value={{ $asignacion->grado_id }}>
         </div>
         </div>
         </div>
@@ -101,7 +101,7 @@
           <div class="form-group">
         <div class="form-group label-floating">
             <label for="seccion_id">Seccion ID: </label>
-            <input type="text" class="form-control" name="seccion_id" value={{ $asignacion->seccion_id }}/>
+            <input type="text" class="form-control" name="seccion_id" value={{ $asignacion->seccion_id }}>
         </div>
         </div>
         </div>
