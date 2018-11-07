@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function(){
         ->middleware('permission:usuarios.create');
 
     Route::get('admin/usuarios/pdf', 'UserController@createPDF')->name('usuarios.pdf')
-        ->middleware('permission:usuarios.pdf');
+        ->middleware('permission:usuarios.edit');
 
     Route::post('admin/usuarios/store', 'UserController@store')->name('usuarios.store')
         ->middleware('permission:usuarios.create');
@@ -73,6 +73,11 @@ Route::middleware(['auth'])->group(function(){
     //Formulario para editar
     Route::get('admin/roles/{id}/edit', 'RoleController@edit')->name('roles.edit')
         ->middleware('permission:roles.edit');
+
+    //Permisos
+    //Navegar en los roles
+    Route::get('admin/permisos', 'RoleController@index1')->name('permisos.index')
+        ->middleware('permission:roles.index');
 
      //Empleados
     Route::post('admin/empleados/store', 'EmpleadoController@store')->name('empleados.store')
@@ -493,32 +498,10 @@ Route::middleware(['auth'])->group(function(){
     */
 
 
-    //Prueba de rutas temporales para asignacion
-    /*
-    Route::post('admin/asignacion/store', 'AsignacionController@store')->name('asignacion.store')
-        ->middleware('permission:asignacion.create');
-
-    Route::get('admin/asignacion', 'AsignacionController@index')->name('asignacion.index')
-        ->middleware('permission:asignacion.index');
-
-    Route::get('admin/asignacion/create', 'AsignacionController@create')->name('asignacion.create')
-        ->middleware('permission:asignacion.create');
-
-    Route::put('admin/asignacion/{id}', 'AsignacionController@update')->name('asignacion.update')
-        ->middleware('permission:asignacion.edit');
-
-    Route::get('admin/asignacion/{id}', 'AsignacionController@show')->name('asignacion.show')
-        ->middleware('permission:asignacion.show');
-
-    Route::delete('admin/asignacion/{id}', 'AsignacionController@destroy')->name('asignacion.destroy')
-        ->middleware('permission:asignacion.destroy');
-
-    Route::get('admin/asignacion/{id}/edit', 'AsignacionController@edit')->name('asignacion.edit')
-        ->middleware('permission:asignacion.edit');
-    */
-
-
     Route::resource('/asignacion', 'AsignacionController');
     Route::resource('/detalle_comprobante', 'DetalleComprobanteController');
     Route::resource('/tipo_pago', 'TipoPagoController');
+    Route::resource('/comprobante', 'ComprobanteController');
+
+    // Route::resource('/admin/comprobante', 'ComprobanteController')->middleware('permission::comprobante');
 });
