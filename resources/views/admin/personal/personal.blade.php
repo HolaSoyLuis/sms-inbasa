@@ -14,72 +14,58 @@
 		          <a class="nav-link" href="{{ route('empleados.create') }}">Nuevo Empleado</a>
 		        </li>
 		      </ul>
-				<form class="form-inline ml-auto">
-					<div class="form-group has-white">
-						<input type="text" class="form-control" placeholder="Buscar">
-					</div>
-					<button type="submit" class="btn btn-white btn-just-icon btn-round">
-							<i class="material-icons">search</i>
-					</button>
-				</form>
 		    </div>
 		  </div>
 		</nav>
 	</div>
 </div>
 
+@include('message._message')
+
 <div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		<div class="table-responsive">
-			<table id="datatable_table" class="table table-striped table-bordered table-condensed table-hover">
-				<thead>
-					<th>No</th>	
-					<th>Primer Nombre</th>					
-					<th>Primer Apellido</th>
-					<th>Genero</th>
-					<th>Telefono</th>
-					<th>Direccion</th>
-					<th>Creado</th>
-					<th>Actualizaado</th>
-					<th>Eliminado</th>
-					<th>Opciones</th>
-
-				</thead>		
-				@foreach($empleados as $e)		
-				<tr>
-					<td>{{$e->id}}</td>
-					<td>{{$e->p_nombre}}</td>
-					<td>{{$e->p_apellido}}</td>
-					<td>{{$e->genero}}</td>
-					<td>{{$e->telefono}}</td>
-					<td>{{$e->direccion}}</td>
-					<td>{{$e->created_at}}</td>
-					<td>{{$e->updated_at}}</td>
-					<td>{{$e->deleted_at}}</td>
-					<td>
-						<a href="#">
-							<button class="btn btn-info btn-sm" title="Ver">
-								<i class="material-icons">visibility</i>
-								Ver
-							</button>
-						</a>
-						<a href="#">
-							<button class="btn btn-primary btn-sm" title="Editar">
-								<i class="material-icons">edit</i>
-								Editar
-							</button>
-						</a>
-						<a href="" data-target="#" data-toggle="modal">
-							<button class="btn btn-danger btn-sm" title="Eliminar">
-								<i class="material-icons">delete</i>
-								Eliminar
-							</button>
-						</a>
-					</td>
-				</tr>	
-				@endforeach						
-			</table>
-		</div>		
+		<div class="card">
+			<div class="card-body">	
+				<div class="table-responsive">
+					<table id="datatable_table" class="table table-condensed table-hover">
+						<thead>
+							<th></th>	
+							<th>Primer Nombre</th>					
+							<th>Primer Apellido</th>
+							<th>Genero</th>
+							<th>Telefono</th>
+							<th>Direccion</th>	
+							<th>Opciones</th>
+						</thead>		
+						@foreach($empleados as $e)		
+						<tr>
+							<td class="td-actions text-left">{{$e->id}}</td>
+							<td class="td-actions text-left">{{$e->p_nombre}}</td>
+							<td class="td-actions text-left">{{$e->p_apellido}}</td>
+							<td class="td-actions text-left">{{$e->genero}}</td>
+							<td class="td-actions text-left">{{$e->telefono}}</td>
+							<td class="td-actions text-left">{{$e->direccion}}</td>
+							<td class="td-actions text-center">
+								<form method="post" action="{{ route('empleados.destroy', $e->id) }}">						
+									<a href="#" class="btn btn-info btn-sm" title="Ver">
+										<i class="material-icons">visibility</i>Ver
+									</a>
+									<a href="{{ route('empleados.edit', $e->id) }}" class="btn btn-primary btn-sm" title="Editar">
+											<i class="material-icons">edit</i>Editar
+									</a>													
+									@csrf
+                  @method('DELETE')
+									<button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+										<i class="material-icons">delete</i>Eliminar
+									</button>								
+								</form>
+							</td>
+						</tr>	
+						@endforeach						
+					</table>
+				</div>
+			</div>		
+		</div>
 	</div>
 </div>
 @endsection

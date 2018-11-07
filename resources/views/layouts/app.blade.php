@@ -491,5 +491,8 @@
             } );
         } );
     </script>
+    <script>
+        $('#errorAlert').hide(4000).slideUp(400);
+    </script>
     @yield('js')
 </html>

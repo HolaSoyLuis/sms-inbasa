@@ -1,13 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
-use App\Http\Requests\EmpleadoStoreRequest;
-use App\Http\Requests\EmpleadoUpdateRequest;
-
-
+use App\Http\Requests\EmpleadoRequest;
 
 use App\Empleado;
 use App\User;
@@ -25,7 +20,6 @@ class EmpleadoController extends Controller
     {
         $empleados = Empleado::all();
         return view('admin/personal/personal')->with(compact('empleados'));
-
     }
 
     /**
@@ -35,28 +29,11 @@ class EmpleadoController extends Controller
      */
     public function create()
     {
-
         $users = User::all();
         $cargos = Cargo::all();
         $centros = Centro::all();
-        return view("admin/personal/create")->with(compact('users','cargos','centros'));
-
-
-             //return view('admin/personal/create');
-
+        return view("admin/personal/create")->with(compact('users','cargos','centros'));            
     }
-
-
- public function create2()
-    {
-
-        $centros = Centro::all();
-        return view("admin/personal/create")->with(compact('centros'));
-
-             //return view('admin/personal/create');
-
-    }
-
 
     /**
      * Store a newly created resource in storage.
@@ -64,7 +41,7 @@ class EmpleadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EmpleadoStoreRequest $request)
+    public function store(EmpleadoRequest $request)
     {
         /*
         $empleados = new Empleado();
@@ -87,21 +64,18 @@ class EmpleadoController extends Controller
         $empleados->cargo_id = $request->input('cargo_id');
         $empleados->centro_id = $request->input('centro_id');
 
-         $empleados->save();
+        $empleados->save();
 
-
-          return redirect('admin/personal/personal');
-
+        return redirect('admin/personal/personal');
 
         */
-          $empleados = Empleado::create($request->all());
+        $empleados = Empleado::create($request->all());
 
-          return redirect()->route('empleados.index',$empleados->id)
-            ->with('info', 'Empleado creado con Exito');
+        $request->session()->flash('alert-success', 'Empleado Creado con Exito');
+        return redirect()->route('empleados.index'); 
 
-       
-
-       
+        // return redirect()->route('empleados.index',$empleados->id)
+        //     ->with('info', 'Empleado creado con Exito');              
     }
 
     /**
@@ -121,9 +95,13 @@ class EmpleadoController extends Controller
      * @param  \App\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function edit(Empleado $empleado)
+    public function edit($id)
     {
-        //
+        $empleados = Empleado::find($id);
+        $users = User::all();
+        $cargos = Cargo::all();
+        $centros = Centro::all();
+        return view('admin/personal/edit')->with(compact('empleados','users','cargos','centros'));
     }
 
     /**
@@ -133,15 +111,13 @@ class EmpleadoController extends Controller
      * @param  \App\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Empleado $empleado)
-    {
-        //
-         $empleados = Empleado::find($id);
-
-         $empleados->fill($request->all())->save();
-
-          return redirect()->route('empleados.index',$empleados->id)
-            ->with('info', 'Empleado creado con Exito');
+    public function update(EmpleadoRequest $request, $id)
+    {        
+        $empleados = Empleado::find($id);
+        $empleados->fill($request->all())->save();
+        
+        $request->session()->flash('alert-success', 'Empleado Actualizado con Exito');
+        return redirect()->route('empleados.index'); 
     }
 
     /**
@@ -150,8 +126,12 @@ class EmpleadoController extends Controller
      * @param  \App\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Empleado $empleado)
+    public function destroy(Request $request, $id)
     {
-        //
+        $empleados = Empleado::find($id);
+        $empleados->delete();        
+
+        $request->session()->flash('alert-success', 'Empleado Eliminado con Exito');
+        return redirect()->back();
     }
 }
