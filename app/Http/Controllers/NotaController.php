@@ -7,7 +7,8 @@ use App\DetalleNota;
 use App\Estudiante;
 use App\Curso;
 use App\TipoEvaluacion;
-
+use App\Nota;
+use App\Asignacion;
 
 class NotaController extends Controller
 {
@@ -18,7 +19,7 @@ class NotaController extends Controller
      */
     public function index()
     {
-        $notas = DetalleNota::all();
+        $notas = Nota::all();
         return view('docentes/notas/notas', compact('notas'));
     }
 
@@ -34,10 +35,8 @@ class NotaController extends Controller
      */
     public function create()
     {
-        $tipoEvaluaciones = TipoEvaluacion::all();
-        $estudiantes = Estudiante::all();
-        $cursos = Curso::all();
-        return view("docentes/notas/create")->with(compact('estudiantes','cursos','tipoEvaluaciones'));   
+        $asignaciones = Asignacion::all();
+        return view("docentes/notas/notas_create")->with(compact('asignaciones'));
     }
 
     /**
@@ -48,24 +47,9 @@ class NotaController extends Controller
      */
     public function store(Request $request)
     {
+          $notas = Nota::create($request->all());
 
-         $detallenotas = new DetalleNota();
-        $detallenotas->nota = $request->input('nota');
-        $detallenotas->tipo_evaluacion_id = $request->input('tipo_evaluacion_id'); 
-        $detallenotas->estudiante_id = $request->input('estudiante_id'); 
-        $detallenotas->curso_id = $request->input('curso_id'); 
-       
-
-         $detallenotas->save();
-          return redirect()->route('docentes.notas.index',$detallenotas->id)
-            ->with('info', 'Empleado creado con Exito');
-
-         /*
-         $detallenotas = DetalleNota::create($request->all());
-
-          return redirect()->route('docentes.notas.index',$notas->id)
-            ->with('info', 'Empleado creado con Exito');
-            */
+         return redirect('detalle_nota/create')->with('success', 'tipo de pago guardado :D');
     }
 
     /**

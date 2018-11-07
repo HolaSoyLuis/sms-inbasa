@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Registrar Notas')
+@section('title', 'Registrar Detalle Notas')
 @section('content')
 
 
@@ -10,12 +10,17 @@
 		  <div class="container">		    		    		    
 		    <div class="collapse navbar-collapse">
 		      <ul class="navbar-nav">
-		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('docentes.notas.index') }}">Listar Notas</a>
-		        </li>
 		        <li class="nav-item active">
+		          <a class="nav-link" href="{{ route('docentes.notas.index') }}">Notas</a>
+		        </li>
+		        <li class="nav-item">
 		          <a class="nav-link" href="{{ route('docentes.notas.create') }}">Registrar Notas</a>
 		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="{{ route('detalle_nota.index') }}">Detalle Notas</a>
+		        </li>
+		        <li class="nav-item">
+		          <a class="nav-link" href="{{ route('detalle_nota.create') }}">Registrar Detalle Notas</a>
 		        </li>
 		      </ul>
 		    </div>
@@ -37,7 +42,7 @@
       <br/>
     		
     					<div class="card-body text-center">				
-				<form method="post" action="{{ route('docentes.notas.store') }}">
+				<form method="post" action="{{ route('detalle_nota.store') }}">
 					@csrf
 					
 				
@@ -65,6 +70,24 @@
 								@endif					
 							</div>
 						</div>
+
+				</div> {{--Fin Columna--}}
+
+
+				<div class="col">  {{--Segunda Columna --}}	
+					<div class="form-group label-floating">								
+								<label for="nota_id">Nota ID</label>																
+								<select class="form-control{{ $errors->has('tipo_evaluacion_id') ? ' is-invalid' : '' }}" name="nota_id" id="nota_id">
+									@foreach ($notas as $u)
+										<option value="{{ $u['id'] }}">{{ $u['total_bloque']}}</option>										
+									@endforeach																										
+								</select>																							
+								@if ($errors->has('nota_id'))
+										<span class="invalid-feedback" role="alert">
+												<strong>{{ $errors->first('nota_id') }}</strong>
+										</span>
+								@endif					
+							</div>
 
 				</div> {{--Fin Columna--}}
 

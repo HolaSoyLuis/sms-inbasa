@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
+use Caffeinated\Shinobi\Models\Role;
+use Caffeinated\Shinobi\Models\Permission;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -12,9 +15,15 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
+    {        
+        $roles = Role::all();
+        return view('admin/rolespermisos/roles/index')->with(compact('roles'));
+    }
+
+    public function index1()
     {
-        $permisos = Permisos::paginate();
-        return view('admin/rolespermisos/index')->with(compact('users'));
+        $permisos = Permission::all();        
+        return view('admin/rolespermisos/permisos/index')->with(compact('permisos'));
     }
 
     /**

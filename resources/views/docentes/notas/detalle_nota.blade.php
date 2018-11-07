@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Notas')
+@section('title', 'Detalle Notas')
 @section('content')
 <div class="row">
 	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">		
@@ -32,9 +32,13 @@
 			<table id="datatable_table" class="table table-striped table-bordered table-condensed table-hover">
 				<thead>
 					<th>No</th>	
-					<th>Total Bloque</th>					
-					<th>Detalles</th>
-					<th>Asignacion<th>
+					<th>Nota</th>					
+					<th>ID nota</th>
+					<th>ID aspecto<th>
+					<th>ID Tipo de Evaluacion</th>
+					<th>ID Bloque</th>
+					<th>ID Estudiante</th>
+					<th>ID Curso</th>
 					<th>Creado</th>
 					<th>Actualizado</th>
 					<th>Eliminado</th>
@@ -43,9 +47,14 @@
 				</thead>		
 				@foreach($notas as $n)		
 				<tr>
-					<td>{{$n->total_bloque}}</td>
-					<td>{{$n->detalles}}</td>
-					<td>{{$n->asignacion_id}}</td>
+					<td>{{$n->id}}</td>
+					<td>{{$n->nota}}</td>
+					<td>{{$n->nota_id}}</td>
+					<td>{{$n->aspecto_id}}</td>
+					<td>{{$n->tipo_evaluacion_id}}</td>
+					<td>{{$n->bloque_id}}</td>
+					<td>{{$n->estudiante_id}}</td>
+					<td>{{$n->curso_id}}</td>
 					<td>{{$n->created_at}}</td>
 					<td>{{$n->updated_at}}</td>
 					<td>{{$n->deleted_at}}</td>
