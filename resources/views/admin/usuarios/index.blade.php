@@ -30,11 +30,11 @@
 				<div class="table-responsive">
 					<table id="datatable_table" class="table table-condensed table-hover">
 						<thead>
-							<th></th>	
-							<th>Nombre</th>											
-							<th>Creado</th>
-							<th>Actualizado</th>
-							<th>Opciones</th>
+							<td></td>	
+							<td>Nombre</td>											
+							<td>Creado</td>
+							<td>Actualizado</td>
+							<td>Opciones</td>
 						</thead>
 						@foreach($users as $user)		
 						<tr>
@@ -44,9 +44,6 @@
 							<td class="td-actions text-left">{{$user->updated_at}}</td>
 							<td class="td-actions text-center">
 								<form method="post" action="{{ route('usuarios.destroy', $user->id) }}">						
-									<a href="#" class="btn btn-info btn-sm" title="Ver">
-										<i class="material-icons">visibility</i>Ver
-									</a>
 									<a href="{{ route('usuarios.edit', $user->id) }}" class="btn btn-primary btn-sm" title="Editar">
 											<i class="material-icons">edit</i>Editar
 									</a>													

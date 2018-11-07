@@ -8,7 +8,7 @@
 		    <div class="collapse navbar-collapse">
 		      <ul class="navbar-nav">
 		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('usuarios.index') }}">Lista de Usuarios</a>
+		          <a class="nav-link" href="{{ route('empleado.index') }}">Lista de Usuarios</a>
 		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link" href="{{ route('usuarios.create') }}">Nuevo Usuario</a>

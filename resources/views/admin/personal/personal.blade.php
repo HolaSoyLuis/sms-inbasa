@@ -29,13 +29,13 @@
 				<div class="table-responsive">
 					<table id="datatable_table" class="table table-condensed table-hover">
 						<thead>
-							<th></th>	
-							<th>Primer Nombre</th>					
-							<th>Primer Apellido</th>
-							<th>Genero</th>
-							<th>Telefono</th>
-							<th>Direccion</th>	
-							<th>Opciones</th>
+							<td></td>	
+							<td>Primer Nombre</td>					
+							<td>Primer Apellido</td>
+							<td>Genero</td>
+							<td>Telefono</td>
+							<td>Direccion</td>	
+							<td>Opciones</td>
 						</thead>		
 						@foreach($empleados as $e)		
 						<tr>

@@ -27,11 +27,11 @@
 				<div class="table-responsive">
 					<table id="datatable_table" class="table table-condensed table-hover">
 						<thead>
-							<th></th>	
-							<th>Nombre</th>											
-							<th>Slug</th>
-                            <th>Descripcion</th>
-							<th>Opciones</th>
+							<td></td>	
+							<td>Nombre</td>											
+							<td>Slug</td>
+              <td>Descripcion</td>
+							<td>Opciones</td>
 						</thead>
 						@foreach($permisos as $permiso)		
 						<tr>
