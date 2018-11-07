@@ -109,6 +109,9 @@
                   @foreach ($empleados as $empleado)
                     @if($comproba->empleado_id == $empleado->id)
                       <option value="{{ $empleado['id'] }}" selected="true">{{ $empleado['p_nombre'] }} {{ $empleado['p_apellido'] }}</option>
+                      @elseif ($comproba->empleado_id != $empleado->id)
+                      <option value="{{ $empleado['id'] }}">{{ $empleado['p_nombre'] }} {{ $empleado['p_apellido'] }}</option>
+                    @endif
                     @endif
                   @endforeach
               </select>
@@ -134,11 +137,19 @@
         <div class="form-group label-floating">
             <select class="form-control" name="encargado_id">
                 <option selected="true" disabled="disabled">seleccione el encargado</option>
+                <!--
                   @foreach ($encargados as $encargado)
                     @if($comproba->encargado_id == $encargado->id)
                       <option value="{{ $encargado['id'] }}" selected="true">{{ $encargado['p_nombre'] }} {{ $encargado['p_apellido'] }}</option>
                     @endif
-                    
+                  @endforeach
+                -->
+                  @foreach ($encargados as $encargado)
+                    @if($comproba->encargado_id == $encargado->id)
+                      <option value="{{ $encargado['id'] }}" selected="true">{{ $encargado['p_nombre'] }} {{ $encargado['p_apellido'] }}</option>
+                    @elseif ($comproba->encargado_id != $encargado->id)
+                        <option value="{{ $encargado['id'] }}">{{ $encargado['p_nombre'] }} {{ $encargado['p_apellido'] }}</option>
+                    @endif
                   @endforeach
               </select>
         </div>
