@@ -84,9 +84,13 @@ class EmpleadoController extends Controller
      * @param  \App\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function show(Empleado $empleado)
+    public function show(Empleado $empleado, $id)
     {
-        //
+        $empleados = Empleado::find($id);
+        $users = User::all();
+        $cargos = Cargo::all();
+        $centros = Centro::all();
+        return view('admin/personal/show')->with(compact('empleados','users','cargos','centros'));
     }
 
     /**

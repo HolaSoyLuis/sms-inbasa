@@ -8,10 +8,10 @@
 		    <div class="collapse navbar-collapse">
 		      <ul class="navbar-nav">
 		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('empleado.index') }}">Lista de Usuarios</a>
+		          <a class="nav-link" href="{{ route('empleados.index') }}">Lista de Usuarios</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('usuarios.create') }}">Nuevo Usuario</a>
+		          <a class="nav-link" href="{{ route('empleados.create') }}">Nuevo Usuario</a>
 		        </li>
 						<li class="nav-item active">
 		          <a class="nav-link" href="">Editar Usuario</a>
@@ -232,7 +232,7 @@
 						<div class="form-row">  {{--Contenedor Quinta Fila--}}
 							<div class="col"> {{-- Primera Columna --}}
 								<div class="form-group label-floating">																														
-									<select class="form-control{{ $errors->has('usuario_id') ? ' is-invalid' : '' }}" name="usuario_id" id="usuario_id">
+									<select class="form-control" name="usuario_id" id="usuario_id">
 										<option value="" disabled selected hidden>---Seleccione una Usuario---</option>
 										@foreach ($users as $u)																	
 										<option value="{{ $u['id'] }}">{{ $u['username'] }}</option>							
@@ -248,7 +248,7 @@
 
 							<div class="col"> {{-- Segunda Columna --}}
 								<div class="form-group label-floating">																			
-									<select class="form-control{{ $errors->has('cargo_id') ? ' is-invalid' : '' }}" name="cargo_id" id="centro_id" >
+									<select class="form-control" name="cargo_id" id="centro_id" >
 										<option value="" disabled selected hidden>---Seleccione una Cargo---</option>
 										@foreach ($cargos as $u)
 										<option value="{{ $u['id'] }}">{{ $u['cargo'] }}</option>								
@@ -264,7 +264,7 @@
 
 							<div class="col"> {{-- Tercera Columna --}}
 								<div class="form-group label-floating">																													
-									<select class="form-control{{ $errors->has('centro_id') ? ' is-invalid' : '' }}" name="centro_id" id="centro_id" >										
+									<select class="form-control" name="centro_id" id="centro_id" >										
 										@foreach ($centros as $u)
 										<option value="{{ $u['id'] }}">{{$u->nombre}}</option>
 										<option value="{{ $u['id'] }}">{{ $u['nombre'] }}</option>								
