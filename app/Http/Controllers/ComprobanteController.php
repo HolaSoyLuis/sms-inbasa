@@ -4,6 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Comprobante;
+use App\Empleado;
+use App\FormaPago;
+use App\Encargado;
+
+// use App\Http\Controllers\DetalleComprobanteController;
+
 class ComprobanteController extends Controller
 {
     /**
@@ -13,7 +20,12 @@ class ComprobanteController extends Controller
      */
     public function index()
     {
-        //
+        //empleado, forma_pago, encargado
+        $comprobantes = Comprobante::all();
+        $empleados = Empleado::all();
+        $formapagos = FormaPago::all();
+        $encargados = Encargado::all();
+        return view('comprobante.index', compact('comprobantes', 'empleados', 'formapagos', 'encargados'));
     }
 
     /**
@@ -24,6 +36,11 @@ class ComprobanteController extends Controller
     public function create()
     {
         //
+
+        $empleados = Empleado::all();
+        $formapagos = FormaPago::all();
+        $encargados = Encargado::all();
+        return view('comprobante.create', compact('empleados', 'formapagos', 'encargados'));
     }
 
     /**
@@ -35,6 +52,22 @@ class ComprobanteController extends Controller
     public function store(Request $request)
     {
         //
+        
+        $request->validate([
+            'serie'=> 'required',
+            'descuento'=> 'required',
+            'total' => 'required',
+            'detalles' => 'required',
+            'estado' => 'required',
+            'empleado_id'=> 'required',
+            'forma_pago_id'=> 'required',
+            'encargado_id'=> 'required'
+          ]);
+    
+        $empleados = Comprobante::create($request->all());
+
+        // return view('/comprobante')->with('succes', 'Item agregado :D');
+        return redirect('/detalle_comprobante/create')->with('error', 'Item agregado :D, ahora cree el detalle del comprobante');
     }
 
     /**
