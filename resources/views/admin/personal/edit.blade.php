@@ -13,7 +13,10 @@
 		        <li class="nav-item">
 		          <a class="nav-link" href="{{ route('empleados.create') }}">Nuevo Usuario</a>
 		        </li>
-						<li class="nav-item active">
+				<li class="nav-item">
+		          <a class="nav-link" href="{{ route('empleados.pdf') }}">Exportar PDF</a>
+		        </li>
+				<li class="nav-item active">
 		          <a class="nav-link" href="">Editar Usuario</a>
 		        </li>
 		      </ul>

@@ -13,6 +13,9 @@
 						</li>
 						<li class="nav-item active">
 							<a class="nav-link" href="{{ route('empleados.create') }}">Nuevo Empleado</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{{ route('empleados.pdf') }}">Exportar PDF</a>
 						</li>						
 					</ul>
 				</div>

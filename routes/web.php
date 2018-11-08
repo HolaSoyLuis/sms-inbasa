@@ -89,6 +89,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('admin/empleados/create', 'EmpleadoController@create')->name('empleados.create')
         ->middleware('permission:empleados.create');
 
+    Route::get('admin/empleados/pdf', 'EmpleadoController@createPDF')->name('empleados.pdf')
+        ->middleware('permission:empleados.edit');                
+
     Route::put('admin/empleados/{id}', 'EmpleadoController@update')->name('empleados.update')
         ->middleware('permission:empleados.edit');
 

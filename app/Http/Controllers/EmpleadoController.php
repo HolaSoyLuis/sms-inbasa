@@ -19,7 +19,8 @@ class EmpleadoController extends Controller
     public function index()
     {
         $empleados = Empleado::all();
-        return view('admin/personal/personal')->with(compact('empleados'));
+        $users = User::all();
+        return view('admin/personal/personal')->with(compact('empleados', 'users'));
     }
 
     /**
@@ -33,6 +34,13 @@ class EmpleadoController extends Controller
         $cargos = Cargo::all();
         $centros = Centro::all();
         return view("admin/personal/create")->with(compact('users','cargos','centros'));            
+    }
+
+    public function createPDF()
+    {
+        $empleados = Empleado::all();
+        $pdf = \PDF::loadView('admin/personal/pdf', ['empleados' => $empleados])->setPaper('a4', 'landscape');
+        return $pdf->download('Reporte Empleados.pdf');
     }
 
     /**
@@ -65,17 +73,14 @@ class EmpleadoController extends Controller
         $empleados->centro_id = $request->input('centro_id');
 
         $empleados->save();
-
         return redirect('admin/personal/personal');
-
         */
-        $empleados = Empleado::create($request->all());
+        
+        $empleados = Empleado::create($request->all()); 
 
         $request->session()->flash('alert-success', 'Empleado Creado con Exito');
         return redirect()->route('empleados.index'); 
-
-        // return redirect()->route('empleados.index',$empleados->id)
-        //     ->with('info', 'Empleado creado con Exito');              
+           
     }
 
     /**
