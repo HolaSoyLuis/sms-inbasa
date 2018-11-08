@@ -13,70 +13,74 @@
 		        <li class="nav-item">
 		          <a class="nav-link" href="{{ route('estudiantes.create') }}">Nuevo Estudiante</a>
 		        </li>
+						<li class="nav-item">
+		          <a class="nav-link" href="{{ route('estudiantes.pdf') }}">Exportar PDF</a>
+		        </li>
 		      </ul>
-				<form class="form-inline ml-auto">
-					<div class="form-group has-white">
-						<input type="text" class="form-control" placeholder="Buscar">
-					</div>
-					<button type="submit" class="btn btn-white btn-just-icon btn-round">
-							<i class="material-icons">search</i>
-					</button>
-				</form>
 		    </div>
 		  </div>
 		</nav>
 	</div>
-</div>
-
+</div> 
+@include('message._message')
 <div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-		<div class="table-responsive">
-			<table class="table table-striped table-bordered table-condensed table-hover">
-				<thead>
-					<th>No</th>	
-					<th>Primer Nombre</th>					
-					<th>Primer Apellido</th>
-					<th>Codigo</th>
-					<th>Estado</th>
-					<th>Creado</th>
-					<th>Actualizado</th>
-					<th>Eliminado</th>
-				</thead>		
-				@foreach($estudiantes as $e)		
-				<tr>
-					<td>{{$e->id}}</td>
-					<td>{{$e->p_nombre}}</td>
-					<td>{{$e->p_apellido}}</td>
-					<td>{{$e->codigo}}</td>
-					<td>{{$e->codigo}}</td>
-					<td>{{$e->estado}}</td>
-					<td>{{$e->created_at}}</td>
-					<td>{{$e->updated_at}}</td>
-					<td>{{$e->deleted_at}}</td>	
-					<td>
-						<a href="#">
-							<button class="btn btn-info btn-sm" title="Ver">
-								<i class="material-icons">visibility</i>
-								Ver
-							</button>
-						</a>
-						<a href="#">
-							<button class="btn btn-primary btn-sm" title="Editar">
-								<i class="material-icons">edit</i>
-								Editar
-							</button>
-						</a>
-						<a href="" data-target="#" data-toggle="modal">
-							<button class="btn btn-danger btn-sm" title="Eliminar">
-								<i class="material-icons">delete</i>
-								Eliminar
-							</button>
-						</a>
-					</td>
-				</tr>	
-				@endforeach						
-			</table>
-		</div>		
+		<div class="card">
+			<div class="card-body">	
+				<div class="table-responsive">
+					<table id="datatable_table" class="table table-condensed table-hover">
+						<thead>
+							<td class="td-actions text-left"></td>	
+							<td class="td-actions text-left">Primer Nombre</td>					
+							<td class="td-actions text-left">Primer Apellido</td>
+							<td class="td-actions text-left">Codigo</td>
+							<td class="td-actions text-left">Estado</td>
+							<td class="td-actions text-left">Usuario</td>
+							<td class="td-actions text-left">Actualizado</td>
+							<td class="td-actions text-center">Opciones</td>
+						</thead>		
+						@foreach($estudiantes as $e)		
+						<tr>
+							<td class="td-actions text-left">{{$e->id}}</td>
+							<td class="td-actions text-left">{{$e->p_nombre}}</td>
+							<td class="td-actions text-left">{{$e->p_apellido}}</td>
+							<td class="td-actions text-left">{{$e->codigo}}</td>
+							@if ($e->estado == 1)            
+								<td class="td-actions text-left">ACTIVO</td>
+								@elseif ($e->estado == 2)
+								<td class="td-actions text-left">INACTIVO</td>
+								@elseif ($e->estado == 3)
+								<td class="td-actions text-left">RETIRADO</td>
+								@elseif ($e->estado == 4)
+								<td class="td-actions text-left">SUSPENDIDO</td>
+							@endif
+							@foreach($users as $use)
+								@if($e->usuario_id == $use->id)          
+									<td class="td-actions text-left">{{$use->username}}</td>
+								@endif
+							@endforeach	
+							<td class="td-actions text-left">{{$e->updated_at}}</td>	
+							<td class="td-actions text-center">
+								<form method="post" action="{{ route('estudiantes.destroy', $e->id) }}">						
+									<a href="{{ route('estudiantes.show', $e->id) }}" class="btn btn-info btn-sm" title="Ver">
+										<i class="material-icons">visibility</i>Ver
+									</a>
+									<a href="{{ route('estudiantes.edit', $e->id) }}" class="btn btn-primary btn-sm" title="Editar">
+										<i class="material-icons">edit</i>Editar
+									</a>													
+									@csrf
+                  @method('DELETE')
+									<button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
+										<i class="material-icons">delete</i>Eliminar
+									</button>								
+								</form>
+							</td>
+						</tr>	
+						@endforeach						
+					</table>
+				</div>	
+			</div>	
+		</div>
 	</div>
 </div>
 @endsection

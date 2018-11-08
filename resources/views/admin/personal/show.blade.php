@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Asignacion')
+@section('title', 'Empleados')
 @section('content')
 <div class="row">
   <div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">
@@ -15,6 +15,9 @@
             </li>
             <li class="nav-item">
 		          <a class="nav-link" href="{{ route('empleados.pdf') }}">Exportar PDF</a>
+		        </li>
+            <li class="nav-item active">
+		          <a class="nav-link" href="">Lista de Detalles</a>
 		        </li>
           </ul>
         </div>
@@ -202,9 +205,16 @@
                 <p>{{ $cen['nombre'] }}</p>
               @endif
             @endforeach
-          </div> {{--Fin Columna--}}            
-        </div>
+          </div> {{--Fin Columna--}}
 
+          <div class="col">{{--Primera Columna --}}
+            <label>Dato Actualizado:</label>
+          </div> {{--Fin Columna--}}
+
+          <div class="col"> {{--Segunda Columna --}}
+            <p>{{$empleados->updated_at}}</p>
+          </div> {{--Fin Columna--}}             
+        </div>
       </div>
     </div>
   </div>  

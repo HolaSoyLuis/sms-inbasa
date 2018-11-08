@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Crear Estudiantes')
+@section('title', 'Editar Estudiantes')
 @section('content')
 
 <div class="row">
@@ -11,18 +11,21 @@
 					<li class="nav-item">
 						<a class="nav-link" href="{{ route('estudiantes.index') }}">Lista de Estudiantes</a>
 					</li>
-					<li class="nav-item active">
+					<li class="nav-item">
 						<a class="nav-link" href="{{ route('estudiantes.create') }}">Nuevo Estudiante</a>
 					</li>
-					<li class="nav-item ">
+					<li class="nav-item">
 						<a class="nav-link" href="{{ route('estudiantes.pdf') }}">Exportar PDF</a>
-					</li>				
+					</li>
+					<li class="nav-item active">
+						<a class="nav-link" href="">Actualizar Estudiante</a>
+					</li>		
 				</ul>				
 			</div>
 		</nav>
 	</div>
 </div>
-
+ 
 <div class="container">
 	<div class="row justify-content-center">	
 		<div class="col">			
@@ -39,14 +42,14 @@
 				<div class="card-body text-center">								
 					<form method="post" action="{{ route('estudiantes.store') }}">
 						@csrf
-						<h3>Ingrese los Datos</h3>	
+						<h3>Actualizar los Datos</h3>	
 			 			{{--Formulario--}}	
  						<div class="form-row">  {{--Contenedor Primera Fila--}}		
 							<div class="col">  {{--Primera Columna --}}	
 								<div class="form-group">
 									<div class="form-group label-floating">								
 										<label for="p_nombre">Primer Nombre</label>
-										<input type="text" class="form-control{{ $errors->has('p_nombre') ? ' is-invalid' : '' }}" name="p_nombre" input id="p_nombre">
+										<input type="text" class="form-control{{ $errors->has('p_nombre') ? ' is-invalid' : '' }}" value='{{$estudiantes->p_nombre}}' name="p_nombre" input id="p_nombre">
 										@if ($errors->has('p_nombre'))
 											<span class="invalid-feedback" role="alert">
 												<strong>{{ $errors->first('p_nombre') }}</strong>
@@ -59,7 +62,7 @@
 							<div class="col"> {{-- Segunda Columna --}}
 								<div class="form-group label-floating">								
 									<label for="s_nombre">Segundo Nombre</label>
-									<input type="text" class="form-control{{ $errors->has('s_nombre') ? ' is-invalid' : '' }}" name="s_nombre" input id="s_nombre">
+									<input type="text" class="form-control{{ $errors->has('s_nombre') ? ' is-invalid' : '' }}" value='{{$estudiantes->s_nombre}}' name="s_nombre" input id="s_nombre">
 									@if ($errors->has('s_nombre'))
 											<span class="invalid-feedback" role="alert">
 													<strong>{{ $errors->first('s_nombre') }}</strong>
@@ -71,7 +74,7 @@
 							<div class="col"> {{-- Tercera Columna --}}
 								<div class="form-group label-floating">								
 									<label for="p_apellido">Primer Apellido</label>
-									<input type="text" class="form-control{{ $errors->has('p_apellido') ? ' is-invalid' : '' }}" name="p_apellido" input id="p_apellido">
+									<input type="text" class="form-control{{ $errors->has('p_apellido') ? ' is-invalid' : '' }}" value='{{$estudiantes->p_apellido}}' name="p_apellido" input id="p_apellido">
 									@if ($errors->has('p_apellido'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('p_apellido') }}</strong>
@@ -82,8 +85,8 @@
 
 							<div class="col"> {{-- Cuarta Columna --}}
 								<div class="form-group label-floating">								
-									<label for="s_apellido">Segndo Apellido</label>
-									<input type="text" class="form-control{{ $errors->has('s_apellido') ? ' is-invalid' : '' }}" name="s_apellido" input id="s_apellido">
+									<label for="s_apellido">Segundo Apellido</label>
+									<input type="text" class="form-control{{ $errors->has('s_apellido') ? ' is-invalid' : '' }}" value='{{$estudiantes->s_apellido}}' name="s_apellido" input id="s_apellido">
 									@if ($errors->has('s_apellido'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('s_apellido') }}</strong>
@@ -98,7 +101,7 @@
 								<div class="form-group">
 									<div class="form-group label-floating">								
 										<label for="codigo">Codigo</label>
-										<input type="text" class="form-control{{ $errors->has('codigo') ? ' is-invalid' : '' }}" name="codigo" input id="codigo">
+										<input type="text" class="form-control{{ $errors->has('codigo') ? ' is-invalid' : '' }}" value='{{$estudiantes->codigo}}' name="codigo" input id="codigo">
 										@if ($errors->has('codigo'))
 											<span class="invalid-feedback" role="alert">
 												<strong>{{ $errors->first('codigo') }}</strong>
@@ -110,11 +113,18 @@
 
 							<div class="col"> {{-- Segunda Columna --}}
 								<div class="form-group label-floating">																	
-									<select class="form-control" name="genero" id="genero">
-										<option value="" disabled selected hidden>---Seleccione una Genero---</option>																											
-										<option value="Masculino">Masculino</option>	
-										<option value="Femenino">Femenino</option>
-									</select>			
+									<select class="form-control" name="genero" id="genero" >
+									<?php
+										$array = array("Masculino", "Femenino");
+									?>
+									@foreach ($array as $v)
+										@if($estudiantes->genero == $v)																	
+											<option value="{{ $v }}" selected="true">{{ $v }}</option>											
+										@elseif ($estudiantes->estado != $v)
+											<option value="{{ $v }}">{{ $v }}</option>																																				
+										@endif
+									@endforeach	
+									</select>		
 									@if ($errors->has('genero'))
 										<span class="invalid-feedback" role="alert">
 											<strong>{{ $errors->first('genero') }}</strong>
@@ -127,7 +137,7 @@
 								<div class="form-group">
 									<div class="form-group label-floating">								
 										<label for="fecha_nac">Fecha Nacimiento</label>
-										<input type="date" class="form-control{{ $errors->has('fecha_nac') ? ' is-invalid' : '' }}" name="fecha_nac" input id="fecha_nac">
+										<input type="date" class="form-control{{ $errors->has('fecha_nac') ? ' is-invalid' : '' }}" value='{{$estudiantes->fecha_nac}}' name="fecha_nac" input id="fecha_nac">
 										@if ($errors->has('fecha_nac'))
 											<span class="invalid-feedback" role="alert">
 												<strong>{{ $errors->first('fecha_nac') }}</strong>
@@ -141,7 +151,7 @@
 								<div class="form-group">
 									<div class="form-group label-floating">								
 										<label for="direccion">Direccion</label>
-										<input type="direccion" class="form-control{{ $errors->has('direccion') ? ' is-invalid' : '' }}" name="direccion" input id="direccion">
+										<input type="direccion" class="form-control{{ $errors->has('direccion') ? ' is-invalid' : '' }}" value='{{$estudiantes->direccion}}' name="direccion" input id="direccion">
 										@if ($errors->has('direccion'))
 											<span class="invalid-feedback" role="alert">
 												<strong>{{ $errors->first('direccion') }}</strong>
@@ -156,11 +166,21 @@
 							<div class="col"> {{-- Primera  Columna --}}
 								<div class="form-group label-floating">								
 									<select class="form-control" name="estado" id="estado">
-										<option value="" disabled selected hidden>---Seleccione un Estado---</option>																											
-										<option value="1">ACTIVO</option>	
-										<option value="2">INACTIVO</option>
-										<option value="3">RETIRADO</option>	
-										<option value="4">SUSPENDIDO</option>
+										<?php
+											$array = [
+												[1, "ACTIVO"],
+												[2, "INACTIVO"],
+												[3, "RETIRADO"],
+												[4, "SUSPENDIDO"]
+											];
+										?>
+										@foreach ($array as list($k, $v))
+											@if($estudiantes->estado == $k)																	
+												<option value="{{ $k }}" selected="true">{{ $v }}</option>											
+											@elseif ($estudiantes->estado != $k)
+												<option value="{{ $k }}">{{ $v }}</option>																																				
+											@endif
+										@endforeach
 									</select>									
 									@if ($errors->has('estado'))
 										<span class="invalid-feedback" role="alert">
@@ -174,10 +194,13 @@
 								<div class="form-group label-floating">								
 									<label for="usuario_id">Usuario</label>																
 									<select class="form-control" name="usuario_id" id="usuario_id">
-										<option value="" disabled selected hidden>---Seleccione una Usuario---</option>
-										@foreach ($users as $u)
-										<option value="{{ $u['id'] }}">{{ $u['username'] }}</option>										
-										@endforeach																										
+									@foreach ($users as $use)
+										@if($estudiantes->usuario_id == $use->id)																	
+											<option value="{{ $use['id'] }}" selected="true">{{ $use['username'] }}</option>
+										@elseif ($estudiantes->usuario_id != $use->id)
+                      						<option value="{{ $use['id'] }}">{{ $use['username'] }}</option>								
+										@endif																		
+									@endforeach																									
 									</select>																							
 									@if ($errors->has('username'))
 										<span class="invalid-feedback" role="alert">
@@ -186,10 +209,12 @@
 									@endif					
 								</div>
 							</div> {{--Fin Columna--}}
+
 						</div>{{-- Fin Contenedor --}}
 																	
 						<div class="form-group text-center">
-							<button class="btn btn-primary" type="submit">Guardar</button>				
+							<button class="btn btn-primary" type="submit">Actualiar</button>				
+							<a href="{{ route('estudiantes.index') }}" class="btn btn-default" >Cancelar</a>				
 						</div>
 					</form>											
 				</div>

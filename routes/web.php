@@ -139,6 +139,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('admin/estudiantes/create', 'EstudianteController@create')->name('estudiantes.create')
         ->middleware('permission:estudiantes.create');
 
+    Route::get('admin/estudiantes/pdf', 'EstudianteController@createPDF')->name('estudiantes.pdf')
+        ->middleware('permission:estudiantes.edit');          
+
     Route::put('admin/estudiantes/{id}', 'EstudianteController@update')->name('estudiantes.update')
         ->middleware('permission:estudiantes.edit');
 
@@ -160,6 +163,9 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('admin/encargado/create', 'EncargadoController@create')->name('encargado.create')
         ->middleware('permission:encargado.create');
+
+    Route::get('admin/encargado/pdf', 'EncargadoController@createPDF')->name('encargado.pdf')
+        ->middleware('permission:encargado.edit');        
 
     Route::put('admin/encargado/{id}', 'EncargadoController@update')->name('encargado.update')
         ->middleware('permission:encargado.edit');

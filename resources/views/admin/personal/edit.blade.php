@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Crear Usuarios')
+@section('title', 'Editar Empleado')
 @section('content')
 <div class="row">
 	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">		
@@ -17,7 +17,7 @@
 		          <a class="nav-link" href="{{ route('empleados.pdf') }}">Exportar PDF</a>
 		        </li>
 				<li class="nav-item active">
-		          <a class="nav-link" href="">Editar Usuario</a>
+		          <a class="nav-link" href="">Actualizar Usuario</a>
 		        </li>
 		      </ul>
 		    </div>
@@ -43,7 +43,7 @@
 					<form method="post" action="{{ route('empleados.update', $empleados->id) }}">
 						@method('PUT')
 						@csrf
-						<h3>Ingrese los Datos</h3>	
+						<h3>Actualice los Datos</h3>	
 							{{--Formulario--}}	
 							{{--Contenedor Primera Fila--}}		
 						<div class="form-row">  
@@ -310,7 +310,7 @@
 						</div>
 
 						<div class="form-group text-center">
-							<button class="btn btn-primary" type="submit">Guardar</button>
+							<button class="btn btn-primary" type="submit">Actualizar</button>
 							<a href="{{ route('empleados.index') }}" class="btn btn-default" >Cancelar</a>				
 						</div>
 					</form>																			
