@@ -172,7 +172,7 @@
 
           <div class="col"> {{--Segunda Columna --}}																																		
             @foreach ($users as $u)
-              @if($empleados->id == $u->id)
+              @if($empleados->usuario_id == $u->id)
                 <p>{{ $u['username'] }}</p>
               @endif
             @endforeach
@@ -184,7 +184,7 @@
 
           <div class="col"> {{--Segunda Columna --}}																																		
             @foreach ($cargos as $c)
-              @if($empleados->id == $c->id)
+              @if($empleados->cargo_id == $c->id)
                 <p>{{ $c['cargo'] }}</p>
               @endif
             @endforeach

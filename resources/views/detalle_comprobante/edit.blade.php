@@ -108,7 +108,7 @@
                 @if($detallecomprobante->tipo_pago_id == $tipopago->id)
                       <option value="{{ $tipopago['id'] }}" selected="true">{{ $tipopago['tipo'] }}</option>
                     @elseif ($comprobante->tipo_pago_id != $tipopago->id)
-                        <option value="{{ $tipopago['id'] }}">{{ $tipopago['tipo'] }}</option>
+                      <option value="{{ $tipopago['id'] }}">{{ $tipopago['tipo'] }}</option>
                     @endif
               @endforeach
             </select>

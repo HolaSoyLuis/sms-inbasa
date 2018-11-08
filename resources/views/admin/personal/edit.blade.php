@@ -124,9 +124,16 @@
 							<div class="col">  {{--Tercera Columna --}}									
 								<div class="form-group label-floating">								
 									<select class="form-control" name="genero" id="genero" >
-										<option >{{$empleados->genero}}</option>																											
-										<option value="Masculino">Masculino</option>	
-										<option value="Femenino">Femenino</option>
+									<?php
+										$array = array("Masculino", "Femenino");
+									?>
+									@foreach ($array as $v)
+										@if($empleados->genero == $v)																	
+											<option value="{{ $v }}" selected="true">{{ $v }}</option>											
+										@elseif ($empleados->estado != $v)
+											<option value="{{ $v }}">{{ $v }}</option>																																				
+										@endif
+									@endforeach	
 									</select>
 									@if ($errors->has('genero'))
 										<span class="invalid-feedback" role="alert">
@@ -217,11 +224,21 @@
 							<div class="col"> {{-- Segunda Columna --}}								
 								<div class="form-group label-floating">								
 									<select class="form-control" name="estado" id="estado">
-										<option value="" disabled selected hidden>---Seleccione un Estado---</option>																											
-										<option value="1">ACTIVO</option>	
-										<option value="2">INACTIVO</option>
-										<option value="3">RETIRADO</option>	
-										<option value="4">SUSPENDIDO</option>
+										<?php
+											$array = [
+												[1, "ACTIVO"],
+												[2, "INACTIVO"],
+												[3, "RETIRADO"],
+												[4, "SUSPENDIDO"]
+											];
+										?>
+										@foreach ($array as list($k, $v))
+											@if($empleados->estado == $k)																	
+												<option value="{{ $k }}" selected="true">{{ $v }}</option>											
+											@elseif ($empleados->estado != $k)
+												<option value="{{ $k }}">{{ $v }}</option>																																				
+											@endif
+										@endforeach											
 									</select>									
 									@if ($errors->has('estado'))
 										<span class="invalid-feedback" role="alert">
@@ -236,26 +253,32 @@
 							<div class="col"> {{-- Primera Columna --}}
 								<div class="form-group label-floating">																														
 									<select class="form-control" name="usuario_id" id="usuario_id">
-										<option value="" disabled selected hidden>---Seleccione una Usuario---</option>
-										@foreach ($users as $u)																	
-										<option value="{{ $u['id'] }}">{{ $u['username'] }}</option>							
-										@endforeach																			
+									@foreach ($users as $use)
+										@if($empleados->usuario_id == $use->id)																	
+											<option value="{{ $use['id'] }}" selected="true">{{ $use['username'] }}</option>
+										@elseif ($empleados->usuario_id != $use->id)
+                      						<option value="{{ $use['id'] }}">{{ $use['username'] }}</option>								
+										@endif																		
+									@endforeach																			
 									</select>
-										@if ($errors->has('username'))
-											<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('username') }}</strong>
-											</span>
-										@endif					
+									@if ($errors->has('username'))
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $errors->first('username') }}</strong>
+										</span>
+									@endif					
 								</div>
 							</div> {{--Fin Columna--}}
 
 							<div class="col"> {{-- Segunda Columna --}}
 								<div class="form-group label-floating">																			
-									<select class="form-control" name="cargo_id" id="centro_id" >
-										<option value="" disabled selected hidden>---Seleccione una Cargo---</option>
-										@foreach ($cargos as $u)
-										<option value="{{ $u['id'] }}">{{ $u['cargo'] }}</option>								
-										@endforeach																				
+									<select class="form-control" name="cargo_id" id="centro_id" >										
+									@foreach ($cargos as $car)
+										@if($empleados->cargo_id == $car->id)
+											<option value="{{ $car['id'] }}" selected="true">{{ $car['cargo'] }}</option>
+										@elseif ($empleados->cargo_id != $car->id)
+                      						<option value="{{ $car['id'] }}">{{ $car['cargo'] }}</option>								
+										@endif
+									@endforeach																				
 									</select>																							
 										@if ($errors->has('cargo_id'))
 											<span class="invalid-feedback" role="alert">
@@ -266,12 +289,15 @@
 							</div> {{--Fin Columna--}}
 
 							<div class="col"> {{-- Tercera Columna --}}
-								<div class="form-group label-floating">																													
+								<div class="form-group label-floating">	
 									<select class="form-control" name="centro_id" id="centro_id" >										
-										@foreach ($centros as $u)
-										<option value="{{ $u['id'] }}">{{$u->nombre}}</option>
-										<option value="{{ $u['id'] }}">{{ $u['nombre'] }}</option>								
-										@endforeach
+									@foreach ($centros as $cen)
+										@if($empleados->centro_id == $cen->id)
+											<option value="{{ $cen['id'] }}" selected="true">{{ $cen['nombre'] }}</option>
+										@elseif ($empleados->centro_id != $cen->id)
+                      						<option value="{{ $car['id'] }}">{{ $cen['nombre'] }}</option>							
+										@endif
+									@endforeach
 									</select>																						
 										@if ($errors->has('centro_id'))
 											<span class="invalid-feedback" role="alert">
