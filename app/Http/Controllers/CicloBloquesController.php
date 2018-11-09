@@ -1,11 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Http\Requests\CicloRequest;
+
 use Illuminate\Http\Request;
 use App\Ciclo;
+use App\Bloque;
 
-class CicloController extends Controller
+class CicloBloquesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +15,9 @@ class CicloController extends Controller
      */
     public function index()
     {
-        $ciclos = Ciclo::all();      
-        return view('admin/ciclosbloques/ciclos/ciclos')->with(compact('ciclos')); 
+        $ciclos = Ciclo::all();
+        $bloques = Bloque::all();      
+        return view('admin/ciclosbloques/ciclosbloques')->with(compact('ciclos', 'bloques'));
     }
 
     /**
@@ -25,7 +27,7 @@ class CicloController extends Controller
      */
     public function create()
     {
-        return view("admin/ciclosbloques/ciclos/create");
+        //
     }
 
     /**
@@ -34,11 +36,9 @@ class CicloController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CicloRequest $request)
+    public function store(Request $request)
     {
-        $ciclos = Ciclo::create($request->all());
-        $request->session()->flash('alert-success', 'Ciclo Creado');
-        return redirect()->route('ciclos.index');    
+        //
     }
 
     /**
@@ -59,9 +59,8 @@ class CicloController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {        
-        $ciclos = Ciclo::find($id);  
-        return view("admin/ciclosbloques/ciclos/edit")->with(compact('ciclos'));
+    {
+        //
     }
 
     /**
@@ -73,11 +72,7 @@ class CicloController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $ciclos = Ciclo::find($id);
-        $ciclos->fill($request->all())->save();
-
-        $request->session()->flash('alert-success', 'Ciclo Actualizado');
-        return redirect()->route('ciclos.index');   
+        //
     }
 
     /**
@@ -86,13 +81,8 @@ class CicloController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, $id)
+    public function destroy($id)
     {
-        $ciclos = Ciclo::find($id);
-        $ciclos->delete();  
-              
-        Ciclo::destroy($id);
-        $request->session()->flash('alert-success', 'Ciclo Eliminado');
-        return redirect()->back();
+        //
     }
 }

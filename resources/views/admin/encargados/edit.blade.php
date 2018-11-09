@@ -40,7 +40,7 @@
           <form method="post" action="{{ route('encargado.update', $encargado->id) }}">
             <h3>Actualice los Datos</h3>
             @method('PUT')
-			@csrf
+		      	@csrf
             <div class="form-row">
               <div class="col">  {{--Primera Columna --}}
                 <div class="form-group label-floating">

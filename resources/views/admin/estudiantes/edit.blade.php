@@ -40,9 +40,10 @@
       			</div><br/>
     			@endif
 				<div class="card-body text-center">								
-					<form method="post" action="{{ route('estudiantes.store') }}">
-						@csrf
-						<h3>Actualizar los Datos</h3>	
+					<form method="post" action="{{ route('estudiantes.update', $estudiantes->id) }}">						
+						<h3>Actualizar los Datos</h3>
+						@method('PUT')
+						@csrf	
 			 			{{--Formulario--}}	
  						<div class="form-row">  {{--Contenedor Primera Fila--}}		
 							<div class="col">  {{--Primera Columna --}}	

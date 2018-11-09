@@ -53,7 +53,7 @@ class EmpleadoController extends Controller
     {       
         $empleados = Empleado::create($request->all()); 
 
-        $request->session()->flash('alert-success', 'Empleado Creado con Exito');
+        $request->session()->flash('alert-success', 'Empleado Creado');
         return redirect()->route('empleados.index');            
     }
 
@@ -99,7 +99,7 @@ class EmpleadoController extends Controller
         $empleados = Empleado::find($id);
         $empleados->fill($request->all())->save();
         
-        $request->session()->flash('alert-success', 'Empleado Actualizado con Exito');
+        $request->session()->flash('alert-success', 'Empleado Actualizado');
         return redirect()->route('empleados.index'); 
     }
 
@@ -114,7 +114,7 @@ class EmpleadoController extends Controller
         $empleados = Empleado::find($id);
         $empleados->delete();        
 
-        $request->session()->flash('alert-success', 'Empleado Eliminado con Exito');
+        $request->session()->flash('alert-success', 'Empleado Eliminado');
         return redirect()->back();
     }
 }

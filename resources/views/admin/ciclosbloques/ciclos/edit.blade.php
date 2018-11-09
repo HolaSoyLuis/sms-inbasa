@@ -49,14 +49,15 @@
       			</div><br/> 
     			@endif
 				<div class="card-body text-center">								
-				<form method="post" action="{{ route('ciclos.store') }}">
+				<form method="post" action="{{ route('ciclos.update', $ciclos->id ) }}">
+					@method('PUT')
 					@csrf
 					<h3>Ingrese los Datos</h3>		
 
 						<div class="form-group">
 							<div class="form-group label-floating">								
 								<label for="fecha_inicio">Fecha Inicio</label>
-								<input type="date" class="form-control" name="fecha_inicio" input id="fecha_inicio"></input>
+								<input type="date" class="form-control" value="{{ $ciclos->fecha_inicio }}" name="fecha_inicio" input id="fecha_inicio">
 								@if ($errors->has('fecha_inicio'))
 										<span class="invalid-feedback" role="alert">
 												<strong>{{ $errors->first('fecha_inicio') }}</strong>
@@ -68,7 +69,7 @@
 						<div class="form-group">
 							<div class="form-group label-floating">								
 								<label for="fecha_fin">Fecha Fin</label>
-								<input type="date" class="form-control" name="fecha_fin" input id="fecha_fin"></input>
+								<input type="date" class="form-control" value="{{ $ciclos->fecha_fin }}" name="fecha_fin" input id="fecha_fin">
 								@if ($errors->has('fecha_fin'))
 										<span class="invalid-feedback" role="alert">
 												<strong>{{ $errors->first('fecha_fin') }}</strong>

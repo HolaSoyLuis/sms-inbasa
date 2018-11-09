@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\BloqueRequest;
 use App\Bloque;
 use App\Ciclo;
 
@@ -26,8 +27,7 @@ class BloqueController extends Controller
      */
     public function create()
     {
-        $ciclos = Ciclo::all();
-        return view("admin/ciclosbloques/bloques/create")->with(compact('ciclos'));
+        return view("admin/ciclosbloques/bloques/create");
     }
 
     /**
@@ -36,14 +36,11 @@ class BloqueController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BloqueRequest $request)
     {
-        $bloques = new Bloque();
-        $bloques->ciclo_id = $request->input('ciclo_id');
-        $bloques->bloque = $request->input('bloque');        
-        $bloques->save();      
-
-        return redirect('admin/ciclosbloques/bloques/index');
+        $bloques = Bloque::create($request->all());
+        $request->session()->flash('alert-success', 'Bloque Creado');
+        return redirect()->route('bloques.index');                       
     }
 
     /**
@@ -65,7 +62,8 @@ class BloqueController extends Controller
      */
     public function edit($id)
     {
-        //
+        $bloques = Bloque::find($id);
+        return view('admin/ciclosbloques/bloques/edit')->with(compact('bloques'));
     }
 
     /**
@@ -75,9 +73,13 @@ class BloqueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(BloqueRequest $request, $id)
     {
-        //
+        $bloques = Bloque::find($id);
+        $bloques->fill($request->all())->save();
+
+        $request->session()->flash('alert-success', 'Bloque Actualizado');
+        return redirect()->route('bloques.index');        
     }
 
     /**
@@ -86,8 +88,13 @@ class BloqueController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $bloques = Bloque::find($id);
+        $bloques->delete();  
+              
+        Bloque::destroy($id);
+        $request->session()->flash('alert-success', 'Bloque Eliminado');
+        return redirect()->back();
     }
 }
