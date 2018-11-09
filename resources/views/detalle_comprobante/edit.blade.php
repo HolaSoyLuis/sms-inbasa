@@ -81,6 +81,8 @@
         </div>
         </div>
         </div>
+        <br>
+        <br>
 
         <div class="col">
         <div class="form-group">
@@ -99,6 +101,8 @@
         </div>
         </div>
         </div>
+        <br>
+        <br>
 
         <div class="col">
         <div class="form-group">
@@ -106,10 +110,10 @@
             <select class="form-control" name="tipo_pago_id">
               @foreach ($tipopagos as $tipopago)
                 @if($detallecomprobante->tipo_pago_id == $tipopago->id)
-                      <option value="{{ $tipopago['id'] }}" selected="true">{{ $tipopago['tipo'] }}</option>
-                    @elseif ($comprobante->tipo_pago_id != $tipopago->id)
-                        <option value="{{ $tipopago['id'] }}">{{ $tipopago['tipo'] }}</option>
-                    @endif
+                  <option value="{{ $tipopago['id'] }}" selected="true">{{ $tipopago['tipo'] }}</option>
+                @elseif ($detallecomprobante->tipo_pago_id != $tipopago->id)
+                  <option value="{{ $tipopago['id'] }}">{{ $tipopago['tipo'] }}</option>
+                @endif
               @endforeach
             </select>
         </div>
