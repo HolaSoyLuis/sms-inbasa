@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Http\Requests\EncargadoRequest;
 use App\Encargado;
 use App\User;
 
@@ -16,10 +16,8 @@ class EncargadoController extends Controller
      */
     public function index()
     {
-        //
         $encargados = Encargado::all();
-
-        return view('encargado.index', compact('encargados'));
+        return view('admin/encargados/index')->with(compact('encargados'));
     }
 
     /**
@@ -29,11 +27,15 @@ class EncargadoController extends Controller
      */
     public function create()
     {
-        //
-        // return view('encargado.create');
-
         $users = User::all();
-        return view('encargado.create')->with(compact('users'));
+        return view('admin/encargados/create')->with(compact('users'));
+    }
+
+    public function createPDF()
+    {
+        $encargados = Encargado::all();
+        $pdf = \PDF::loadView('admin/encargados/pdf', ['encargados' => $encargados]);
+        return $pdf->download('Reporte Encargados.pdf');
     }
 
     /**
@@ -42,37 +44,11 @@ class EncargadoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EncargadoRequest $request)
     {
-        //
-        $request->validate([
-            'p_nombre'=>'required',
-            's_nombre'=> 'required',
-            'p_apellido' => 'required',
-            's_apellido'=> 'required',
-            'genero'=> 'required',
-            'fecha_nac'=> 'required',
-            'direccion'=> 'required',
-            'telefono'=> 'required|integer',
-            'cui'=> 'required|integer',
-            'foto'=> 'required',
-            'usuario_id' => 'required'
-          ]);
-          $encargado = new Encargado([
-            'p_nombre'=> $request->get('p_nombre'),
-            's_nombre'=> $request->get('s_nombre'),
-            'p_apellido' => $request->get('p_apellido'),
-            's_apellido'=> $request->get('s_apellido'),
-            'genero'=> $request->get('genero'),
-            'fecha_nac'=> $request->get('fecha_nac'),
-            'direccion'=> $request->get('direccion'),
-            'telefono'=> $request->get('telefono'),
-            'cui'=> $request->get('cui'),
-            'foto'=> $request->get('foto'),
-            'usuario_id' => $request->get('usuario_id')
-          ]);
-          $encargado->save();
-          return redirect('/admin/encargado')->with('success', 'Encargado guardado :D');
+        $encargados = Encargado::create($request->all());
+        $request->session()->flash('alert-success', 'Encargado Creado');
+        return redirect()->route('encargado.index');
     }
 
     /**
@@ -83,10 +59,9 @@ class EncargadoController extends Controller
      */
     public function show($id)
     {
-        //
         $encargado = Encargado::find($id);
         $users = User::all();
-        return view('encargado.show', compact('encargado', 'users'));
+        return view('admin/encargados/show')->with(compact('encargado', 'users'));
     }
 
     /**
@@ -97,10 +72,9 @@ class EncargadoController extends Controller
      */
     public function edit($id)
     {
-        //
         $encargado = Encargado::find($id);
-
-        return view('encargado.edit', compact('encargado'));
+        $users = User::all();
+        return view('admin/encargados/edit')->with(compact('encargado', 'users'));
     }
 
     /**
@@ -110,37 +84,13 @@ class EncargadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EncargadoRequest $request, $id)
     {
-        //
-        $request->validate([
-            'p_nombre'=>'required',
-            's_nombre'=> 'required',
-            'p_apellido' => 'required',
-            's_apellido'=> 'required',
-            'genero'=> 'required',
-            'fecha_nac'=> 'required',
-            'direccion'=> 'required',
-            'telefono'=> 'required|integer',
-            'cui'=> 'required',
-            'foto'=> 'required',
-            'usuario_id' => 'required'
-        ]);
         $encargado = Encargado::find($id);
-        $encargado->p_nombre = $request->get('p_nombre');
-        $encargado->s_nombre = $request->get('s_nombre');
-        $encargado->p_apellido = $request->get('p_apellido');
-        $encargado->s_apellido = $request->get('s_apellido');
-        $encargado->genero = $request->get('genero');
-        $encargado->fecha_nac = $request->get('fecha_nac');
-        $encargado->direccion = $request->get('direccion');
-        $encargado->telefono = $request->get('telefono');
-        $encargado->cui = $request->get('cui');
-        $encargado->foto = $request->get('foto');
-        $encargado->usuario_id = $request->get('usuario_id');
-
-        $encargado->save();
-        return redirect('/encargado')->with('success', 'Encargado actualizado :D');
+        $encargado->fill($request->all())->save();
+        
+        $request->session()->flash('alert-success', 'Encargado Actualizado');
+        return redirect()->route('encargado.index');
     }
     /**
      * Remove the specified resource from storage.
@@ -148,12 +98,12 @@ class EncargadoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
         $encargado = Encargado::find($id);
         $encargado->delete();
 
-        return redirect('/encargado')->with('success', 'Encargado eliminado');
+        $request->session()->flash('alert-success', 'Encargado Eliminado');
+        return redirect()->back();        
     }
 }

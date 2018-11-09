@@ -13,6 +13,9 @@
 		        <li class="nav-item">
 		          <a class="nav-link" href="{{ route('empleados.create') }}">Nuevo Empleado</a>
 		        </li>
+						<li class="nav-item">
+		          <a class="nav-link" href="{{ route('empleados.pdf') }}">Exportar PDF</a>
+		        </li>
 		      </ul>
 		    </div>
 		  </div>
@@ -30,12 +33,14 @@
 					<table id="datatable_table" class="table table-condensed table-hover">
 						<thead>
 							<td></td>	
-							<td>Primer Nombre</td>					
-							<td>Primer Apellido</td>
-							<td>Genero</td>
-							<td>Telefono</td>
-							<td>Direccion</td>	
-							<td>Opciones</td>
+							<td class="td-actions text-left">Primer Nombre</td>					
+							<td class="td-actions text-left">Primer Apellido</td>
+							<td class="td-actions text-left">Genero</td>
+							<td class="td-actions text-left">Telefono</td>
+							<td class="td-actions text-left">Direccion</td>
+							<td class="td-actions text-left">Estado</td>	
+							<td class="td-actions text-left">Usuario</td>
+							<td class="td-actions text-center">Opciones</td>
 						</thead>		
 						@foreach($empleados as $e)		
 						<tr>
@@ -45,13 +50,27 @@
 							<td class="td-actions text-left">{{$e->genero}}</td>
 							<td class="td-actions text-left">{{$e->telefono}}</td>
 							<td class="td-actions text-left">{{$e->direccion}}</td>
+							@if ($e->estado == 1)            
+								<td class="td-actions text-left">ACTIVO</td>
+								@elseif ($e->estado == 2)
+								<td class="td-actions text-left">INACTIVO</td>
+								@elseif ($e->estado == 3)
+								<td class="td-actions text-left">RETIRADO</td>
+								@elseif ($e->estado == 4)
+								<td class="td-actions text-left">SUSPENDIDO</td>
+							@endif
+							@foreach($users as $use)
+								@if($e->usuario_id == $use->id)          
+									<td class="td-actions text-left">{{$use->username}}</td>
+								@endif
+							@endforeach							
 							<td class="td-actions text-center">
 								<form method="post" action="{{ route('empleados.destroy', $e->id) }}">						
 									<a href="{{ route('empleados.show', $e->id) }}" class="btn btn-info btn-sm" title="Ver">
 										<i class="material-icons">visibility</i>Ver
 									</a>
 									<a href="{{ route('empleados.edit', $e->id) }}" class="btn btn-primary btn-sm" title="Editar">
-											<i class="material-icons">edit</i>Editar
+										<i class="material-icons">edit</i>Editar
 									</a>													
 									@csrf
                   @method('DELETE')

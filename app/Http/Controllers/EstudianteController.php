@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use App\Http\Requests\EstudianteStoreRequest;
-
-
+use App\Http\Requests\EstudianteRequest;
 use App\User;
 use App\Estudiante;
-
 
 class EstudianteController extends Controller
 {
@@ -21,9 +17,9 @@ class EstudianteController extends Controller
     public function index()
     {
         $estudiantes= Estudiante::all();
-        return view('admin/estudiantes/estudiantes')->with(compact('estudiantes'));
+        $users = User::all();
+        return view('admin/estudiantes/estudiantes')->with(compact('estudiantes', 'users'));
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -36,18 +32,25 @@ class EstudianteController extends Controller
         return view("admin/estudiantes/create")->with(compact('users'));
     }
 
+    public function createPDF()
+    {
+        $estudiantes = Estudiante::all();
+        $pdf = \PDF::loadView('admin/estudiantes/pdf', ['estudiantes' => $estudiantes])->setPaper('a4', 'landscape');
+        return $pdf->download('Reporte Estudiantes.pdf');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(EstudianteStoreRequest $request)
+    public function store(EstudianteRequest $request)
     {
-            $estudiantes = Estudiante::create($request->all());
+        $estudiantes = Estudiante::create($request->all());
 
-          return redirect()->route('estudiantes.index',$estudiantes->id)
-            ->with('info', 'Empleado creado con Exito');
+        $request->session()->flash('alert-success', 'Estudiante Creado');
+        return redirect()->route('estudiantes.index');
     }
 
     /**
@@ -58,7 +61,9 @@ class EstudianteController extends Controller
      */
     public function show($id)
     {
-        //
+        $estudiantes = Estudiante::find($id);
+        $users = User::all();
+        return view('admin/estudiantes/show')->with(compact('estudiantes','users'));
     }
 
     /**
@@ -69,7 +74,9 @@ class EstudianteController extends Controller
      */
     public function edit($id)
     {
-        //
+        $estudiantes = Estudiante::find($id);
+        $users = User::all();
+        return view('admin/estudiantes/edit')->with(compact('estudiantes','users'));
     }
 
     /**
@@ -79,9 +86,13 @@ class EstudianteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(EstudianteRequest $request, $id)
     {
-        //
+        $estudiantes = Estudiante::find($id);
+        $estudiantes->fill($request->all())->save();
+        
+        $request->session()->flash('alert-success', 'Estudiante Actualizado');
+        return redirect()->route('estudiantes.index');
     }
 
     /**
@@ -90,8 +101,12 @@ class EstudianteController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $estudiantes = Estudiante::find($id);
+        $estudiantes->delete();        
+
+        $request->session()->flash('alert-success', 'Estudiante Eliminado');
+        return redirect()->back();
     }
 }

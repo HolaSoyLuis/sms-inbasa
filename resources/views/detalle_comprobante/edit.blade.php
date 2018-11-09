@@ -110,10 +110,17 @@
             <select class="form-control" name="tipo_pago_id">
               @foreach ($tipopagos as $tipopago)
                 @if($detallecomprobante->tipo_pago_id == $tipopago->id)
+<<<<<<< HEAD
                   <option value="{{ $tipopago['id'] }}" selected="true">{{ $tipopago['tipo'] }}</option>
                 @elseif ($detallecomprobante->tipo_pago_id != $tipopago->id)
                   <option value="{{ $tipopago['id'] }}">{{ $tipopago['tipo'] }}</option>
                 @endif
+=======
+                      <option value="{{ $tipopago['id'] }}" selected="true">{{ $tipopago['tipo'] }}</option>
+                    @elseif ($comprobante->tipo_pago_id != $tipopago->id)
+                      <option value="{{ $tipopago['id'] }}">{{ $tipopago['tipo'] }}</option>
+                    @endif
+>>>>>>> acdb3553b47b203276a2e6175a20e27a1a3746b0
               @endforeach
             </select>
         </div>
