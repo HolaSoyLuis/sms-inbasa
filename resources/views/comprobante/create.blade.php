@@ -10,34 +10,23 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ route('comprobante.index') }}">Lista de comprobantes</a>
             </li>
+            <li class="nav-item">
+		          <a class="nav-link" href="{{ route('comprobante.create') }}">Nuevo comprobante</a>
+		        </li>
           </ul>
         </div>
       </div>
     </nav>
   </div>
 </div>
-<style>
-  .uper {
-    margin-top: 40px;
-  }
-</style>
-<div class="card uper">
-  <div class="card-body">
-    @if ($errors->any())
-      <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-              <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-      </div><br/>
-    @endif
-    <div class="container">
-      <div class="row justify-content-center">
-            <div class="card-body text-center">
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col">			
+			<div class="card">
+    <div class="card-body text-center">
       <form method="post" action="{{ route('comprobante.store') }}">
         <h3>Ingrese los datos</h3>
-
         <div class="form-row">
           <div class="col">
           <div class="form-group">
@@ -52,7 +41,7 @@
           <div class="form-group">
           <div class="form-group label-floating">
               <label>Descuento: </label>
-              <input type="text" class="form-control" name="descuento"/>
+              <input type="text" class="form-control" name="descuento" placeholder="Ejemplo: 0.15"/>
           </div>
           </div>
           </div>
@@ -73,13 +62,12 @@
           </div>
           </div>
         </div>
-
         <div class="form-row">
           <div class="col">
           <div class="form-group">
           <div class="form-group label-floating">
-              <label>Estado: </label>
               <select class="form-control" name="estado">
+              <option value="" disabled selected hidden>--Seleccione un Estado--</option>
                 <option value="1">Procesado</option>
                 <option value="2">Impreso</option>
                 <option value="3">Anulado</option>
@@ -91,8 +79,8 @@
           <div class="col">
           <div class="form-group">
           <div class="form-group label-floating">
-              <label>Empleado: </label>
                 <select class="form-control" name="empleado_id">
+                    <option value="" disabled selected hidden>---Seleccione un Empleado---</option>
                   @foreach ($empleados as $empleado)
                     <option value="{{ $empleado['id'] }}">{{ $empleado['p_nombre'] }} {{ $empleado['p_apellido'] }}</option>
                   @endforeach
@@ -102,9 +90,9 @@
           </div>
           <div class="col">
           <div class="form-group">
-          <div class="form-group label-floating">
-              <label>Forma de pago: </label>
+          <div class="form-group label-floating">              
                 <select class="form-control" name="forma_pago_id">
+                <option value="" disabled selected hidden>--Seleccione una Forma de Pago--</option>
                   @foreach ($formapagos as $formapago)
                     <option value="{{ $formapago['id'] }}">{{ $formapago['forma'] }}</option>
                   @endforeach
@@ -115,8 +103,9 @@
           <div class="col">
           <div class="form-group">
           <div class="form-group label-floating">
-              <label>Encargado: </label>
+              <label></label>
                 <select class="form-control" name="encargado_id">
+                <option value="" disabled selected hidden>--Seleccione un Encargado--</option>
                   @foreach ($encargados as $encargado)
                     <option value="{{ $encargado['id'] }}">{{ $encargado['p_nombre'] }} {{ $encargado['p_apellido'] }}</option>
                   @endforeach
@@ -125,9 +114,6 @@
           </div>
           </div>
         </div>
-        <!--
-          <button type="submit" class="btn btn-primary" onclick="location.href='/detalle_comprobante/index'">Agregar</button>
-        -->
           <button type="submit" class="btn btn-primary">Agregar</button>
       </form>
     </div>
@@ -137,5 +123,4 @@
 </div>
 </div>
 </div>
-
 @endsection

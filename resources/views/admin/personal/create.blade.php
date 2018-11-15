@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Crear Empleado')
 @section('content')
-
 <div class="row">
 	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">		
 		<nav class="navbar navbar-expand-lg bg-primary">

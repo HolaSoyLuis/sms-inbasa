@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use App\Http\Requests\CursoRequest;
 use App\Curso;
 use App\Grado;
 use App\Empleado;
+use App\Cargo;
 
 class CursoController extends Controller
 {
@@ -17,7 +19,9 @@ class CursoController extends Controller
     public function index()
     {        
         $cursos = Curso::all();
-        return view('admin/cursos/cursos')->with(compact('cursos'));        
+        $empleados = Empleado::all();
+        $grados = Grado::all();
+        return view('admin/cursos/cursos')->with(compact('cursos', 'empleados', 'grados'));        
     }
 
     /**
@@ -45,7 +49,8 @@ class CursoController extends Controller
     {
         $grados = Grado::all();  
         $docentes = Empleado::all();
-        return view('admin/cursos/create')->with(compact('grados','docentes'));
+        $cargos = Cargo::all();
+        return view('admin/cursos/create')->with(compact('grados','docentes', 'cargos'));
     }
 
     /**
@@ -54,14 +59,11 @@ class CursoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CursoRequest $request)
     {
-      
-         $cursos = Curso::create($request->all());
-          return redirect()->route('cursos.index',$cursos->id)
-            ->with('info', 'Curso creado con Exito');
-         
-        return redirect('admin/curso/curso');
+        $cursos = Curso::create($request->all());
+        $request->session()->flash('alert-success', 'Curso Creado');
+        return redirect()->route('cursos.index');  
     }
 
     /**
@@ -70,9 +72,13 @@ class CursoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Curso $curso, $id)
     {
-        //
+        $cursos = Curso::find($id);
+        $grados = Grado::all();  
+        $docentes = Empleado::all();
+        $cargos = Cargo::all();
+        return view('admin/cursos/show')->with(compact('cursos', 'grados','docentes', 'cargos'));        
     }
 
     /**
@@ -83,7 +89,11 @@ class CursoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cursos = Curso::find($id);
+        $grados = Grado::all();  
+        $docentes = Empleado::all();
+        $cargos = Cargo::all();
+        return view('admin/cursos/edit')->with(compact('cursos', 'grados','docentes', 'cargos'));
     }
 
     /**
@@ -93,9 +103,12 @@ class CursoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CursoRequest $request, $id)
     {
-        //
+        $cursos = Curso::find($id);
+        $cursos->fill($request->all())->save();        
+        $request->session()->flash('alert-success', 'Curso Actualizado');
+        return redirect()->route('cursos.index'); 
     }
 
     /**
@@ -104,8 +117,12 @@ class CursoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        //
+        $cursos = Curso::find($id);
+        $cursos->delete();        
+
+        $request->session()->flash('alert-success', 'Curso Eliminado');
+        return redirect()->back();
     }
 }

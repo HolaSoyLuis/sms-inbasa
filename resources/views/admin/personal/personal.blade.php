@@ -22,9 +22,7 @@
 		</nav>
 	</div>
 </div>
-
 @include('message._message')
-
 <div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 		<div class="card">
@@ -40,6 +38,7 @@
 							<td class="td-actions text-left">Direccion</td>
 							<td class="td-actions text-left">Estado</td>	
 							<td class="td-actions text-left">Usuario</td>
+							<td class="td-actions text-left">Cargo</td>
 							<td class="td-actions text-center">Opciones</td>
 						</thead>		
 						@foreach($empleados as $e)		
@@ -63,7 +62,14 @@
 								@if($e->usuario_id == $use->id)          
 									<td class="td-actions text-left">{{$use->username}}</td>
 								@endif
-							@endforeach							
+							@endforeach
+
+							@foreach ($cargos as $c)
+								@if($e->cargo_id == $c->id)
+									<td class="td-actions text-left">{{ $c['cargo'] }}</td>
+								@endif
+            	@endforeach
+
 							<td class="td-actions text-center">
 								<form method="post" action="{{ route('empleados.destroy', $e->id) }}">						
 									<a href="{{ route('empleados.show', $e->id) }}" class="btn btn-info btn-sm" title="Ver">
