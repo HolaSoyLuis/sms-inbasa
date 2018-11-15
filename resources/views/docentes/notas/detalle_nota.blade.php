@@ -7,12 +7,6 @@
 		  <div class="container">		    		    		    
 		    <div class="collapse navbar-collapse">
 		      <ul class="navbar-nav">
-		        <li class="nav-item active">
-		          <a class="nav-link" href="{{ route('docentes.notas.index') }}">Notas</a>
-		        </li>
-		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('docentes.notas.create') }}">Registrar Notas</a>
-		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link" href="{{ route('detalle_nota.index') }}">Detalle Notas</a>
 		        </li>
@@ -33,8 +27,6 @@
 				<thead>
 					<th>No</th>	
 					<th>Nota</th>					
-					<th>ID nota</th>
-					<th>ID aspecto</th>
 					<th>Tipo</th>	
 					<th>Bloque</th>
 					<th>Estudiante</th>
@@ -49,13 +41,6 @@
 				<tr>
 					<td>{{$n->id}}</td>
 					<td>{{$n->nota}}</td>
-					<td>{{$n->nota_id}}</td>
-            @foreach($aspectos as $aspecto)
-              @if($aspecto->id == $n->aspecto_id)
-                <td>{{ $aspecto['aspecto'] }}</td>
-              @endif
-            @endforeach
-
                 @foreach($tipo_evaluaciones as $tipo)
               @if($tipo->id == $n->tipo_evaluacion_id)
                 <td>{{ $tipo['tipo'] }}</td>

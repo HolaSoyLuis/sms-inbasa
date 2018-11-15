@@ -10,12 +10,6 @@
 		  <div class="container">		    		    		    
 		    <div class="collapse navbar-collapse">
 		      <ul class="navbar-nav">
-		        <li class="nav-item active">
-		          <a class="nav-link" href="{{ route('docentes.notas.index') }}">Notas</a>
-		        </li>
-		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('docentes.notas.create') }}">Registrar Notas</a>
-		        </li>
 		        <li class="nav-item">
 		          <a class="nav-link" href="{{ route('detalle_nota.index') }}">Detalle Notas</a>
 		        </li>
@@ -74,6 +68,7 @@
 				</div> {{--Fin Columna--}}
 
 
+<!--
 				<div class="col">  {{--Segunda Columna --}}	
 					<div class="form-group label-floating">								
 								<label for="nota_id">Nota ID</label>																
@@ -90,9 +85,10 @@
 							</div>
 
 				</div> {{--Fin Columna--}}
+-->
 
 
-
+<!--
 				<div class="col">  {{--Tercera Columna --}}	
 					<div class="form-group label-floating">								
 								<label for="aspecto_id">Aspecto</label>																
@@ -110,7 +106,7 @@
 
 				</div> {{--Fin Columna--}}
 
-
+-->
 
 
 				
@@ -177,7 +173,7 @@
 								<label for="estudiante_id">Estudiante</label>																
 								<select class="form-control{{ $errors->has('estudiante_id') ? ' is-invalid' : '' }}" name="estudiante_id" id="estudiante_id">
 									@foreach ($estudiantes as $u)
-										<option value="{{ $u['id'] }}">{{ $u['p_nombre']}}</option>										
+										<option value="{{ $u['id'] }}">{{ $u['p_nombre'] }} {{ $u['s_nombre'] }} {{ $u['p_apellido'] }} {{ $u['s_apellido'] }}</option>										
 									@endforeach																										
 								</select>																							
 								@if ($errors->has('estudiante_id'))
