@@ -187,7 +187,7 @@
 
                                     @if(Auth::check() && Auth::user()->can('docentes.notas.index'))
                                         <li class="nav-item ">
-                                            <a class="nav-link" href="{{ route('docentes.notas.index') }}">
+                                            <a class="nav-link" href="{{ route('detalle_nota.index') }}">
                                               <span class="sidebar-mini"> N </span>
                                               <span class="sidebar-normal"> Notas </span>
                                             </a>

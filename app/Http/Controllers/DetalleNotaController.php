@@ -59,8 +59,6 @@ class DetalleNotaController extends Controller
 
           $request->validate([
             'nota'=> 'required',
-            'nota_id'=> 'required',
-            'aspecto_id' => 'required',
             'bloque_id'=> 'required',
             'tipo_evaluacion_id'=> 'required',
             'estudiante_id'=> 'required',
@@ -69,8 +67,6 @@ class DetalleNotaController extends Controller
 
         $detallenotas = new DetalleNota();
         $detallenotas->nota = $request->input('nota');
-        $detallenotas->nota_id = $request->input('nota_id');
-        $detallenotas->aspecto_id = $request->input('aspecto_id');
         $detallenotas->bloque_id  = $request->input('bloque_id');
         $detallenotas->tipo_evaluacion_id = $request->input('tipo_evaluacion_id'); 
         $detallenotas->estudiante_id = $request->input('estudiante_id'); 
@@ -92,7 +88,16 @@ class DetalleNotaController extends Controller
      */
     public function show($id)
     {
-        //
+        $notas_detalle = DetalleNota::find($id);
+        $tipo_evaluaciones = TipoEvaluacion::all();
+        $estudiantes = Estudiante::all();
+        $cursos = Curso::all();
+        $notas = Nota::all();
+        $aspectos = Aspecto::all();
+        $bloques = Bloque::all();
+
+
+        return view('docentes/notas/detalle_nota_show', compact('notas_detalle','estudiantes','cursos','tipo_evaluaciones','notas','aspectos','bloques'));
     }
 
     /**
@@ -103,7 +108,16 @@ class DetalleNotaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $notas_detalle = DetalleNota::find($id);
+        $tipo_evaluaciones = TipoEvaluacion::all();
+        $estudiantes = Estudiante::all();
+        $cursos = Curso::all();
+        $notas = Nota::all();
+        $aspectos = Aspecto::all();
+        $bloques = Bloque::all();
+
+
+        return view('docentes/notas/detalle_nota_edit', compact('notas_detalle','estudiantes','cursos','tipo_evaluaciones','notas','aspectos','bloques'));
     }
 
     /**
@@ -116,6 +130,11 @@ class DetalleNotaController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $notas_detalle = DetalleNota::find($id);
+        $notas_detalle->fill($request->all())->save();
+        
+        $request->session()->flash('alert-success', 'Nota Actualizada');
+        return redirect()->route('detalle_nota.index.index'); 
     }
 
     /**
