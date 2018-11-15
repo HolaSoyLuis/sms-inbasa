@@ -34,10 +34,10 @@
 					<th>No</th>	
 					<th>Nota</th>					
 					<th>ID nota</th>
-					<th>ID aspecto<th>
-					<th>ID Tipo de Evaluacion</th>
-					<th>ID Bloque</th>
-					<th>ID Estudiante</th>
+					<th>ID aspecto</th>
+					<th>Tipo</th>	
+					<th>Bloque</th>
+					<th>Estudiante</th>
 					<th>ID Curso</th>
 					<th>Creado</th>
 					<th>Actualizado</th>
@@ -45,16 +45,41 @@
 					<th>Opciones</th>
 
 				</thead>		
-				@foreach($notas as $n)		
+				@foreach($notas_detalle as $n)		
 				<tr>
 					<td>{{$n->id}}</td>
 					<td>{{$n->nota}}</td>
 					<td>{{$n->nota_id}}</td>
-					<td>{{$n->aspecto_id}}</td>
-					<td>{{$n->tipo_evaluacion_id}}</td>
-					<td>{{$n->bloque_id}}</td>
-					<td>{{$n->estudiante_id}}</td>
-					<td>{{$n->curso_id}}</td>
+            @foreach($aspectos as $aspecto)
+              @if($aspecto->id == $n->aspecto_id)
+                <td>{{ $aspecto['aspecto'] }}</td>
+              @endif
+            @endforeach
+
+                @foreach($tipo_evaluaciones as $tipo)
+              @if($tipo->id == $n->tipo_evaluacion_id)
+                <td>{{ $tipo['tipo'] }}</td>
+              @endif
+            @endforeach
+
+                  @foreach($bloques as $bloque)
+              @if($bloque->id == $n->bloque_id)
+                <td>{{ $bloque['bloque'] }}</td>
+              @endif
+            @endforeach
+
+                 @foreach ($estudiantes as $estudiante)
+              @if ($estudiante->id == $n->estudiante_id)
+                <td>{{ $estudiante['p_nombre'] }} {{ $estudiante['s_nombre'] }} {{ $estudiante['p_apellido'] }} {{ $estudiante['s_apellido'] }}</td>
+              @endif
+            @endforeach
+
+               @foreach($cursos as $curso)
+              @if($curso->id == $n->curso_id)
+                <td>{{ $curso['nombre'] }}</td>
+              @endif
+            @endforeach
+					
 					<td>{{$n->created_at}}</td>
 					<td>{{$n->updated_at}}</td>
 					<td>{{$n->deleted_at}}</td>
