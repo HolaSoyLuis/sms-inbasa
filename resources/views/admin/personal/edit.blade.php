@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Crear Usuarios')
+@section('title', 'Editar Empleado')
 @section('content')
 <div class="row">
 	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">		
@@ -8,13 +8,16 @@
 		    <div class="collapse navbar-collapse">
 		      <ul class="navbar-nav">
 		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('usuarios.index') }}">Lista de Usuarios</a>
+		          <a class="nav-link" href="{{ route('empleados.index') }}">Lista de Usuarios</a>
 		        </li>
 		        <li class="nav-item">
-		          <a class="nav-link" href="{{ route('usuarios.create') }}">Nuevo Usuario</a>
+		          <a class="nav-link" href="{{ route('empleados.create') }}">Nuevo Usuario</a>
 		        </li>
-						<li class="nav-item active">
-		          <a class="nav-link" href="">Editar Usuario</a>
+				<li class="nav-item">
+		          <a class="nav-link" href="{{ route('empleados.pdf') }}">Exportar PDF</a>
+		        </li>
+				<li class="nav-item active">
+		          <a class="nav-link" href="">Actualizar Usuario</a>
 		        </li>
 		      </ul>
 		    </div>
@@ -40,7 +43,7 @@
 					<form method="post" action="{{ route('empleados.update', $empleados->id) }}">
 						@method('PUT')
 						@csrf
-						<h3>Ingrese los Datos</h3>	
+						<h3>Actualice los Datos</h3>	
 							{{--Formulario--}}	
 							{{--Contenedor Primera Fila--}}		
 						<div class="form-row">  
@@ -121,9 +124,16 @@
 							<div class="col">  {{--Tercera Columna --}}									
 								<div class="form-group label-floating">								
 									<select class="form-control" name="genero" id="genero" >
-										<option >{{$empleados->genero}}</option>																											
-										<option value="Masculino">Masculino</option>	
-										<option value="Femenino">Femenino</option>
+									<?php
+										$array = array("Masculino", "Femenino");
+									?>
+									@foreach ($array as $v)
+										@if($empleados->genero == $v)																	
+											<option value="{{ $v }}" selected="true">{{ $v }}</option>											
+										@elseif ($empleados->estado != $v)
+											<option value="{{ $v }}">{{ $v }}</option>																																				
+										@endif
+									@endforeach	
 									</select>
 									@if ($errors->has('genero'))
 										<span class="invalid-feedback" role="alert">
@@ -214,11 +224,21 @@
 							<div class="col"> {{-- Segunda Columna --}}								
 								<div class="form-group label-floating">								
 									<select class="form-control" name="estado" id="estado">
-										<option value="" disabled selected hidden>---Seleccione un Estado---</option>																											
-										<option value="1">ACTIVO</option>	
-										<option value="2">INACTIVO</option>
-										<option value="3">RETIRADO</option>	
-										<option value="4">SUSPENDIDO</option>
+										<?php
+											$array = [
+												[1, "ACTIVO"],
+												[2, "INACTIVO"],
+												[3, "RETIRADO"],
+												[4, "SUSPENDIDO"]
+											];
+										?>
+										@foreach ($array as list($k, $v))
+											@if($empleados->estado == $k)																	
+												<option value="{{ $k }}" selected="true">{{ $v }}</option>											
+											@elseif ($empleados->estado != $k)
+												<option value="{{ $k }}">{{ $v }}</option>																																				
+											@endif
+										@endforeach											
 									</select>									
 									@if ($errors->has('estado'))
 										<span class="invalid-feedback" role="alert">
@@ -232,27 +252,33 @@
 						<div class="form-row">  {{--Contenedor Quinta Fila--}}
 							<div class="col"> {{-- Primera Columna --}}
 								<div class="form-group label-floating">																														
-									<select class="form-control{{ $errors->has('usuario_id') ? ' is-invalid' : '' }}" name="usuario_id" id="usuario_id">
-										<option value="" disabled selected hidden>---Seleccione una Usuario---</option>
-										@foreach ($users as $u)																	
-										<option value="{{ $u['id'] }}">{{ $u['username'] }}</option>							
-										@endforeach																			
+									<select class="form-control" name="usuario_id" id="usuario_id">
+									@foreach ($users as $use)
+										@if($empleados->usuario_id == $use->id)																	
+											<option value="{{ $use['id'] }}" selected="true">{{ $use['username'] }}</option>
+										@elseif ($empleados->usuario_id != $use->id)
+                      						<option value="{{ $use['id'] }}">{{ $use['username'] }}</option>								
+										@endif																		
+									@endforeach																			
 									</select>
-										@if ($errors->has('username'))
-											<span class="invalid-feedback" role="alert">
-												<strong>{{ $errors->first('username') }}</strong>
-											</span>
-										@endif					
+									@if ($errors->has('username'))
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $errors->first('username') }}</strong>
+										</span>
+									@endif					
 								</div>
 							</div> {{--Fin Columna--}}
 
 							<div class="col"> {{-- Segunda Columna --}}
 								<div class="form-group label-floating">																			
-									<select class="form-control{{ $errors->has('cargo_id') ? ' is-invalid' : '' }}" name="cargo_id" id="centro_id" >
-										<option value="" disabled selected hidden>---Seleccione una Cargo---</option>
-										@foreach ($cargos as $u)
-										<option value="{{ $u['id'] }}">{{ $u['cargo'] }}</option>								
-										@endforeach																				
+									<select class="form-control" name="cargo_id" id="centro_id" >										
+									@foreach ($cargos as $car)
+										@if($empleados->cargo_id == $car->id)
+											<option value="{{ $car['id'] }}" selected="true">{{ $car['cargo'] }}</option>
+										@elseif ($empleados->cargo_id != $car->id)
+                      						<option value="{{ $car['id'] }}">{{ $car['cargo'] }}</option>								
+										@endif
+									@endforeach																				
 									</select>																							
 										@if ($errors->has('cargo_id'))
 											<span class="invalid-feedback" role="alert">
@@ -263,12 +289,15 @@
 							</div> {{--Fin Columna--}}
 
 							<div class="col"> {{-- Tercera Columna --}}
-								<div class="form-group label-floating">																													
-									<select class="form-control{{ $errors->has('centro_id') ? ' is-invalid' : '' }}" name="centro_id" id="centro_id" >										
-										@foreach ($centros as $u)
-										<option value="{{ $u['id'] }}">{{$u->nombre}}</option>
-										<option value="{{ $u['id'] }}">{{ $u['nombre'] }}</option>								
-										@endforeach
+								<div class="form-group label-floating">	
+									<select class="form-control" name="centro_id" id="centro_id" >										
+									@foreach ($centros as $cen)
+										@if($empleados->centro_id == $cen->id)
+											<option value="{{ $cen['id'] }}" selected="true">{{ $cen['nombre'] }}</option>
+										@elseif ($empleados->centro_id != $cen->id)
+                      						<option value="{{ $car['id'] }}">{{ $cen['nombre'] }}</option>							
+										@endif
+									@endforeach
 									</select>																						
 										@if ($errors->has('centro_id'))
 											<span class="invalid-feedback" role="alert">
@@ -281,7 +310,7 @@
 						</div>
 
 						<div class="form-group text-center">
-							<button class="btn btn-primary" type="submit">Guardar</button>
+							<button class="btn btn-primary" type="submit">Actualizar</button>
 							<a href="{{ route('empleados.index') }}" class="btn btn-default" >Cancelar</a>				
 						</div>
 					</form>																			

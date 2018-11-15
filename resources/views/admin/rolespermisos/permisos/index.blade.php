@@ -27,33 +27,17 @@
 				<div class="table-responsive">
 					<table id="datatable_table" class="table table-condensed table-hover">
 						<thead>
-							<th></th>	
-							<th>Nombre</th>											
-							<th>Slug</th>
-                            <th>Descripcion</th>
-							<th>Opciones</th>
+							<td></td>	
+							<td>Nombre</td>											
+							<td>Slug</td>
+              <td>Descripcion</td>
 						</thead>
 						@foreach($permisos as $permiso)		
 						<tr>
 							<td class="td-actions text-left">{{$permiso->id}}</td>
 							<td class="td-actions text-left">{{$permiso->name}}</td>
-                            <td class="td-actions text-left">{{$permiso->slug}}</td>
-                            <td class="td-actions text-left">{{$permiso->description}}</td>					
-							<td class="td-actions text-center">
-								<form method="post" action="">						
-									<a href="#" class="btn btn-info btn-sm" title="Ver">
-										<i class="material-icons">visibility</i>Ver
-									</a>
-									<a href="" class="btn btn-primary btn-sm" title="Editar">
-											<i class="material-icons">edit</i>Editar
-									</a>													
-									@csrf
-                                    @method('DELETE')
-									<button type="submit" class="btn btn-danger btn-sm" title="Eliminar">
-										<i class="material-icons">delete</i>Eliminar
-									</button>								
-								</form>	
-							</td>
+							<td class="td-actions text-left">{{$permiso->slug}}</td>
+							<td class="td-actions text-left">{{$permiso->description}}</td>
 						</tr>	
 						@endforeach						
 					</table>

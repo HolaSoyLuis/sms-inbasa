@@ -53,7 +53,9 @@ class UserController extends Controller
         $users->username = $request->input('username');      
         $users->password=bcrypt($request->input('password'));            
         $users->save();      
-        return redirect('admin/usuarios');
+
+        $request->session()->flash('alert-success', 'Usuario Creado');
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -96,7 +98,9 @@ class UserController extends Controller
         $users->username = $request->input('username');      
         $users->password=bcrypt($request->input('password'));            
         $users->update(); 
-        return redirect('admin/usuarios');
+
+        $request->session()->flash('alert-success', 'Usuario Actualizado');
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -105,10 +109,12 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $users = User::find($id);
         $users->delete();
-        return redirect('admin/usuarios');
+        
+        $request->session()->flash('alert-success', 'Usuario Eliminado');
+        return redirect()->route('usuarios.index');
     }
 }

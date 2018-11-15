@@ -81,8 +81,8 @@
                                     @if(Auth::check() && Auth::user()->can('personal.index'))
                                         <li class="nav-item ">
                                             <a class="nav-link" href="{{ route('empleados.index') }}">
-                                              <span class="sidebar-mini"> P </span>
-                                              <span class="sidebar-normal"> Personal </span>
+                                              <span class="sidebar-mini"> EM </span>
+                                              <span class="sidebar-normal"> Empleados </span>
                                             </a>
                                         </li>
                                     @endif
@@ -149,16 +149,6 @@
                                             </a>
                                         </li>
                                     @endif
-
-                                    @if(Auth::check() && Auth::user()->can('asignacion.index'))
-                                        <li class="nav-item ">
-                                            <a class="nav-link" href="{{ route('asignacion.index') }}">
-                                              <span class="sidebar-mini"> AS </span>
-                                              <span class="sidebar-normal"> Asignacion </span>
-                                            </a>
-                                        </li>
-                                    @endif
-
                                 </ul>
                             </div>
                         </li>
@@ -292,11 +282,11 @@
 
                             <div class="collapse" id="modEconomico">
                                 <ul class="nav">
-                                    @if(Auth::check() && Auth::user()->can('inscripciones.index'))
+                                    @if(Auth::check() && Auth::user()->can('asignacion.index'))
                                         <li class="nav-item ">
-                                            <a class="nav-link" href="{{ route('inscripciones.index') }}">
-                                              <span class="sidebar-mini"> IN </span>
-                                              <span class="sidebar-normal"> Inscripciones </span>
+                                            <a class="nav-link" href="{{ route('asignacion.index') }}">
+                                              <span class="sidebar-mini"> AS </span>
+                                              <span class="sidebar-normal"> Asignacion </span>
                                             </a>
                                         </li>
                                     @endif

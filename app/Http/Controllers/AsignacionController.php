@@ -8,7 +8,7 @@ use App\Asignacion;
 use App\Estudiante;
 use App\Grado;
 use App\Ciclo;
-use App\Seccion;
+use App\Seccion; 
 
 class AsignacionController extends Controller
 {
@@ -103,8 +103,12 @@ class AsignacionController extends Controller
     {
         //
         $asignacion = Asignacion::find($id);
+        $estudiantes = Estudiante::all();
+        $grados = Grado::all();
+        $ciclos = Ciclo::all();
+        $secciones = Seccion::all();
 
-        return view('asignacion.edit', compact('asignacion'));
+        return view('asignacion.edit', compact('asignacion', 'estudiantes', 'grados', 'ciclos', 'secciones'));
     }
 
     /**

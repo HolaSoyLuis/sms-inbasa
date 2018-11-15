@@ -101,8 +101,12 @@ class DetalleComprobanteController extends Controller
     {
         //
         $detallecomprobante = DetalleComprobante::find($id);
+        $asignaciones = Asignacion::all();
+        $comprobantes = Comprobante::all();
+        $tipopagos = TipoPago::all();
+        $estudiantes = Estudiante::all();
 
-        return view('detalle_comprobante.edit', compact('detallecomprobante'));
+        return view('detalle_comprobante.edit', compact('detallecomprobante', 'asignaciones', 'comprobantes', 'tipopagos', 'estudiantes'));
     }
 
     /**

@@ -19,7 +19,8 @@ class EmpleadoController extends Controller
     public function index()
     {
         $empleados = Empleado::all();
-        return view('admin/personal/personal')->with(compact('empleados'));
+        $users = User::all();
+        return view('admin/personal/personal')->with(compact('empleados', 'users'));
     }
 
     /**
@@ -35,6 +36,13 @@ class EmpleadoController extends Controller
         return view("admin/personal/create")->with(compact('users','cargos','centros'));            
     }
 
+    public function createPDF()
+    {
+        $empleados = Empleado::all();
+        $pdf = \PDF::loadView('admin/personal/pdf', ['empleados' => $empleados])->setPaper('a4', 'landscape');
+        return $pdf->download('Reporte Empleados.pdf');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -42,40 +50,11 @@ class EmpleadoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(EmpleadoRequest $request)
-    {
-        /*
-        $empleados = new Empleado();
-        $empleados->p_nombre = $request->input('p_nombre');
-        $empleados->s_nombre = $request->input('s_nombre'); 
-        $empleados->p_apellido = $request->input('p_apellido'); 
-        $empleados->s_apellido = $request->input('s_apellido'); 
-        $empleados->genero = $request->input('genero');  
-        $empleados->fecha_nac = $request->input('fecha_nac'); 
-        $empleados->lugar_nac = $request->input('lugar_nac'); 
-        $empleados->estado_civil = $request->input('estado_civil'); 
-        $empleados->direccion = $request->input('direccion'); 
-        $empleados->inicio_labores = $request->input('inicio_labores'); 
-        $empleados->cui = $request->input('cui'); 
-        $empleados->telefono = $request->input('telefono'); 
-        $empleados->correo = $request->input('correo');
-        $empleados->foto  = 'f'; 
-        $empleados->estado = $request->input('estado');
-        $empleados->usuario_id = $request->input('usuario_id'); 
-        $empleados->cargo_id = $request->input('cargo_id');
-        $empleados->centro_id = $request->input('centro_id');
+    {       
+        $empleados = Empleado::create($request->all()); 
 
-        $empleados->save();
-
-        return redirect('admin/personal/personal');
-
-        */
-        $empleados = Empleado::create($request->all());
-
-        $request->session()->flash('alert-success', 'Empleado Creado con Exito');
-        return redirect()->route('empleados.index'); 
-
-        // return redirect()->route('empleados.index',$empleados->id)
-        //     ->with('info', 'Empleado creado con Exito');              
+        $request->session()->flash('alert-success', 'Empleado Creado');
+        return redirect()->route('empleados.index');            
     }
 
     /**
@@ -84,9 +63,13 @@ class EmpleadoController extends Controller
      * @param  \App\Empleado  $empleado
      * @return \Illuminate\Http\Response
      */
-    public function show(Empleado $empleado)
+    public function show(Empleado $empleado, $id)
     {
-        //
+        $empleados = Empleado::find($id);
+        $users = User::all();
+        $cargos = Cargo::all();
+        $centros = Centro::all();
+        return view('admin/personal/show')->with(compact('empleados','users','cargos','centros'));
     }
 
     /**
@@ -116,7 +99,7 @@ class EmpleadoController extends Controller
         $empleados = Empleado::find($id);
         $empleados->fill($request->all())->save();
         
-        $request->session()->flash('alert-success', 'Empleado Actualizado con Exito');
+        $request->session()->flash('alert-success', 'Empleado Actualizado');
         return redirect()->route('empleados.index'); 
     }
 
@@ -131,7 +114,7 @@ class EmpleadoController extends Controller
         $empleados = Empleado::find($id);
         $empleados->delete();        
 
-        $request->session()->flash('alert-success', 'Empleado Eliminado con Exito');
+        $request->session()->flash('alert-success', 'Empleado Eliminado');
         return redirect()->back();
     }
 }

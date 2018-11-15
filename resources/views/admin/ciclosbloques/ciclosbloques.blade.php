@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Ciclos')
+@section('title', 'Ciclos y Bloques')
 @section('content')
 <div class="row">
 	<div class="col-lg-12 col-md-8 col-sm-8 col-xs-12">		
@@ -7,7 +7,7 @@
 		  <div class="container">		    		    		    
 		    <div class="collapse navbar-collapse">
 		      <ul class="navbar-nav">
-		        <li class="nav-item dropdown active">		          
+		        <li class="nav-item dropdown">		          
 					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ciclos</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="{{ route('ciclos.index') }}">Lista de Ciclos</a>
@@ -21,11 +21,11 @@
 						<a class="dropdown-item" href="{{ route('bloques.create') }}">Nuevo Bloque</a>
 					</div>
 				</li>
-		        <li class="nav-item dropdown">
+		        <li class="nav-item dropdown active">
 					<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Ciclos y Bloques</a>
 					<div class="dropdown-menu">
-						<a class="dropdown-item" href="{{ route('ciclosbloques.index') }}">Listado</a>
-						<a class="dropdown-item" href="{{ route('ciclosbloques.create') }}">Nuevo</a>
+						<a class="dropdown-item" href="">Listado</a>
+						<a class="dropdown-item" href="">Nuevo</a>
 					</div>
 				</li>						
 		      </ul>
@@ -45,15 +45,18 @@
 							<td></td>	
 							<td>Fecha Inicio</td>					
 							<td>Fecha Fin</td>
+							<td>Bloque</td>
 							<td>Creado</td>
 							<td>Actualizado</td>
 							<td>Opciones</td>
 						</thead>		
-						@foreach($ciclos as $ciclo)		
+						@foreach($bloques as $bloque)
+						@foreach($ciclos as $ciclo)	
 						<tr>
-							<td>{{$ciclo->id}}</td>
+							<td>{{$bloque->id}}</td>
 							<td>{{$ciclo->fecha_inicio}}</td>
 							<td>{{$ciclo->fecha_fin}}</td>
+							<td>{{$bloque->bloque}}</td>
 							<td>{{$ciclo->created_at}}</td>
 							<td>{{$ciclo->updated_at}}</td>
 							<td class="td-actions text-center">
@@ -69,6 +72,7 @@
 								</form>
 							</td>
 						</tr>	
+						@endforeach
 						@endforeach						
 					</table>
 				</div>

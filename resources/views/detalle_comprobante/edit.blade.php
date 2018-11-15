@@ -45,7 +45,7 @@
           <div class="form-group">
         <div class="form-group label-floating">
             <label for="cantidad">Cantidad: </label>
-            <input type="text" class="form-control" name="cantidad" value={{ $detallecomprobante->cantidad }}/>
+            <input type="text" class="form-control" name="cantidad" value={{ $detallecomprobante->cantidad }}>
         </div>
         </div>
         </div>
@@ -53,7 +53,7 @@
           <div class="form-group">
         <div class="form-group label-floating">
             <label for="costo">Costo: (Q)</label>
-            <input type="text" class="form-control" name="costo" value={{ $detallecomprobante->costo }}/>
+            <input type="text" class="form-control" name="costo" value={{ $detallecomprobante->costo }}>
         </div>
         </div>
         </div>
@@ -61,34 +61,63 @@
           <div class="form-group">
         <div class="form-group label-floating">
             <label for="mes">Mes: </label>
-            <input type="text" class="form-control" name="mes" value={{ $detallecomprobante->mes }}/>
+            <input type="text" class="form-control" name="mes" value={{ $detallecomprobante->mes }}>
         </div>
         </div>
         </div>
+
         <div class="col">
           <div class="form-group">
         <div class="form-group label-floating">
-            <label for="comprobante_id">Comprobante ID: </label>
-            <input type="text" class="form-control" name="comprobante_id" value={{ $detallecomprobante->comprobante_id }}/>
+            <select class="form-control" name="comprobante_id">
+                  @foreach ($comprobantes as $comprobante)
+                    @if($detallecomprobante->comprobante_id == $comprobante->id)
+                      <option value="{{ $comprobante['id'] }}" selected="true">No. Serie:{{ $comprobante['serie']}} Total:{{ $comprobante['total']}}</option>
+                    @elseif ($comprobante->comprobante_id != $comprobante->id)
+                        <option value="{{ $comprobante['id'] }}">No. Serie:{{ $comprobante['serie']}} Total:{{ $comprobante['total']}}</option>
+                    @endif
+                  @endforeach
+              </select>
         </div>
         </div>
         </div>
+
         <div class="col">
-          <div class="form-group">
+        <div class="form-group">
         <div class="form-group label-floating">
-            <label for="asignacion_id">Asignacion ID: </label>
-            <input type="text" class="form-control" name="asignacion_id" value={{ $detallecomprobante->asignacion_id }}/>
+            <select class="form-control" name="asignacion_id">
+                  @foreach ($asignaciones as $asignacion)
+                    @foreach($estudiantes as $estudiante)
+                      @if($detallecomprobante->asignacion_id == $asignacion->id)
+                        <option value="{{ $asignacion['id'] }}" selected="true">Fecha:{{ $asignacion['fecha_asignacion'] }} Estudiante:{{ $estudiante['p_nombre'] }} {{ $estudiante['s_nombre'] }} {{ $estudiante['p_apellido'] }} {{ $estudiante['s_apellido'] }}</option>
+                      @elseif ($comprobante->asignacion_id != $asignacion->id)
+                        <option value="{{ $asignacion['id'] }}">Fecha:{{ $asignacion['fecha_asignacion'] }} Estudiante:{{ $estudiante['p_nombre'] }} {{ $estudiante['s_nombre'] }} {{ $estudiante['p_apellido'] }} {{ $estudiante['s_apellido'] }}</option>
+                      @endif
+                    @endforeach
+                  @endforeach
+              </select>
         </div>
         </div>
         </div>
+
         <div class="col">
-          <div class="form-group">
+        <div class="form-group">
         <div class="form-group label-floating">
-            <label for="tipo_pago_id">Tipo pago ID: </label>
-            <input type="text" class="form-control" name="tipo_pago_id" value={{ $detallecomprobante->tipo_pago_id }}/>
+            <select class="form-control" name="tipo_pago_id">
+              @foreach ($tipopagos as $tipopago)
+                @if($detallecomprobante->tipo_pago_id == $tipopago->id)
+                      <option value="{{ $tipopago['id'] }}" selected="true">{{ $tipopago['tipo'] }}</option>
+                    @elseif ($comprobante->tipo_pago_id != $tipopago->id)
+                      <option value="{{ $tipopago['id'] }}">{{ $tipopago['tipo'] }}</option>
+                    @endif
+              @endforeach
+            </select>
         </div>
         </div>
         </div>
+
+        <br>
+        <br>
         <button type="submit" class="btn btn-primary">Actualizar</button>
     </form>
   </div>

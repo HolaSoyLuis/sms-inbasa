@@ -89,6 +89,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('admin/empleados/create', 'EmpleadoController@create')->name('empleados.create')
         ->middleware('permission:empleados.create');
 
+    Route::get('admin/empleados/pdf', 'EmpleadoController@createPDF')->name('empleados.pdf')
+        ->middleware('permission:empleados.edit');                
+
     Route::put('admin/empleados/{id}', 'EmpleadoController@update')->name('empleados.update')
         ->middleware('permission:empleados.edit');
 
@@ -136,6 +139,9 @@ Route::middleware(['auth'])->group(function(){
     Route::get('admin/estudiantes/create', 'EstudianteController@create')->name('estudiantes.create')
         ->middleware('permission:estudiantes.create');
 
+    Route::get('admin/estudiantes/pdf', 'EstudianteController@createPDF')->name('estudiantes.pdf')
+        ->middleware('permission:estudiantes.edit');          
+
     Route::put('admin/estudiantes/{id}', 'EstudianteController@update')->name('estudiantes.update')
         ->middleware('permission:estudiantes.edit');
 
@@ -157,6 +163,9 @@ Route::middleware(['auth'])->group(function(){
 
     Route::get('admin/encargado/create', 'EncargadoController@create')->name('encargado.create')
         ->middleware('permission:encargado.create');
+
+    Route::get('admin/encargado/pdf', 'EncargadoController@createPDF')->name('encargado.pdf')
+        ->middleware('permission:encargado.edit');        
 
     Route::put('admin/encargado/{id}', 'EncargadoController@update')->name('encargado.update')
         ->middleware('permission:encargado.edit');
@@ -212,6 +221,28 @@ Route::middleware(['auth'])->group(function(){
         ->middleware('permission:bloques.destroy');
 
     Route::get('admin/bloques/{id}/edit', 'BloqueController@edit')->name('bloques.edit')
+        ->middleware('permission:bloques.edit');
+
+    // Ciclos y bloques
+    Route::post('admin/ciclosbloques/store', 'CicloBloquesController@store')->name('ciclosbloques.store')
+        ->middleware('permission:bloques.create');
+
+    Route::get('admin/ciclosbloques', 'CicloBloquesController@index')->name('ciclosbloques.index')
+        ->middleware('permission:bloques.index');
+
+    Route::get('admin/ciclosbloques/create', 'CicloBloquesController@create')->name('ciclosbloques.create')
+        ->middleware('permission:ciclosbim.create');
+
+    Route::put('admin/ciclosbloques/{id}', 'CicloBloquesController@update')->name('ciclosbloques.update')
+        ->middleware('permission:bloques.edit');
+
+    Route::get('admin/ciclosbloques/{id}', 'CicloBloquesController@show')->name('ciclosbloques.show')
+        ->middleware('permission:bloques.show');
+
+    Route::delete('admin/ciclosbloques/{id}', 'CicloBloquesController@destroy')->name('ciclosbloques.destroy')
+        ->middleware('permission:bloques.destroy');
+
+    Route::get('admin/ciclosbloques/{id}/edit', 'CicloBloquesController@edit')->name('ciclosbloques.edit')
         ->middleware('permission:bloques.edit');
 
     //Grados

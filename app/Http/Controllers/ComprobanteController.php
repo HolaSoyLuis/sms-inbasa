@@ -90,6 +90,11 @@ class ComprobanteController extends Controller
     public function edit($id)
     {
         //
+        $comproba = Comprobante::find($id);
+        $empleados = Empleado::all();
+        $formapagos = FormaPago::all();
+        $encargados = Encargado::all();
+        return view('comprobante.edit', compact('comproba', 'empleados', 'formapagos', 'encargados'));
     }
 
     /**
@@ -102,6 +107,30 @@ class ComprobanteController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'serie'=> 'required',
+            'descuento'=> 'required',
+            'total' => 'required',
+            'detalles' => 'required',
+            'estado' => 'required',
+            'empleado_id'=> 'required',
+            'forma_pago_id'=> 'required',
+            'encargado_id'=> 'required'
+          ]);
+
+        $comprobante = Comprobante::find($id);
+        $comprobante->serie = $request->get('serie');
+        $comprobante->descuento = $request->get('descuento');
+        $comprobante->total = $request->get('total');
+        $comprobante->detalles = $request->get('detalles');
+        $comprobante->estado = $request->get('estado');
+        $comprobante->empleado_id = $request->get('empleado_id');
+        $comprobante->forma_pago_id = $request->get('forma_pago_id');
+        $comprobante->encargado_id = $request->get('encargado_id');
+
+        $comprobante->save();
+        return redirect('/comprobante')->with('succes', 'Item actualizado :D');
+        //return redirect('/detalle_comprobante/create')->with('error', 'Item agregado :D, ahora cree el detalle del comprobante');
     }
 
     /**
