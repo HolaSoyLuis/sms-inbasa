@@ -19,25 +19,17 @@
     </nav>
   </div>
 </div>
-<style>
-  .uper {
-    margin-top: 40px;
-  }
-</style>
-<div class="uper">
-  @if(session()->get('success'))
-    <div class="alert alert-success">
-      {{ session()->get('success') }}
-    </div><br />
-  @endif
+
 
   <div class="row">
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="card">
+			<div class="card-body">	
       <div class="table-responsive">
-  <table class="table table-striped">
+  <table id="datatable_table" class="table table-condensed table-hover">
     <thead>
         <tr>
-          <td>ID</td>
+          <td></td>
           <td>Cantidad</td>
           <td>Costo</td>
           <td>Mes</td>
@@ -93,5 +85,7 @@
 </div>
 </div>
 </div>
+</div>
+
 
 @endsection

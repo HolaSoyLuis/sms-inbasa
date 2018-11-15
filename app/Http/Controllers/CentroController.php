@@ -14,7 +14,8 @@ class CentroController extends Controller
      */
     public function index()
     {
-        return view('admin/centro_educativo/centro');
+        $centros = Centro::all();
+        return view('admin/centro_educativo/centro')->with(compact('centros'));
     }
 
     /**

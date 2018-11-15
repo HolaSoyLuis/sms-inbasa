@@ -25,12 +25,12 @@
                         <div class="card-icon">
                             <i class="material-icons">supervisor_account</i>
                         </div>
-                        <p class="card-category">Personal del Centro</p>
-                        <h3 class="card-title">3</h3>
+                        <p class="card-category">Personal</p>
+                        <h3 class="card-title">{{$empleados}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <a href="#" class="btn btn-sm">Ver</a>
+                            <a href="{{ route('empleados.index') }}" class="btn btn-sm">Ver</a>
                         </div>
                     </div>
                 </div>
@@ -42,11 +42,11 @@
                             <i class="material-icons">assignment_ind</i>
                         </div>
                         <p class="card-category">Docentes</p>
-                        <h3 class="card-title">11</h3>
+                        <h3 class="card-title">{{$docentes}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <a href="#" class="btn btn-sm">Ver</a>
+                            <a href="{{ route('empleados.index') }}" class="btn btn-sm">Ver</a>
                         </div>
                     </div>
                 </div>
@@ -58,11 +58,11 @@
                             <i class="material-icons">face</i>
                         </div>
                         <p class="card-category">Encargados</p>
-                        <h3 class="card-title">10</h3>
+                        <h3 class="card-title">{{$encargados}}</h3>
                     </div>
                     <div class="card-footer">
                         <div class="stats">
-                            <a href="#" class="btn btn-sm">Ver</a>
+                            <a href="{{ route('encargado.index') }}" class="btn btn-sm">Ver</a>
                         </div>
                     </div>
                 </div>
@@ -74,11 +74,11 @@
                         <i class="material-icons">school</i>
                     </div>
                     <p class="card-category">Estudiantes</p>
-                    <h3 class="card-title">205</h3>
+                    <h3 class="card-title">{{$estudiantes}}</h3>
                 </div>
                 <div class="card-footer">
                     <div class="stats">
-                        <a href="#" class="btn btn-sm">Ver</a>
+                        <a href="{{ route('estudiantes.index') }}" class="btn btn-sm">Ver</a>
                     </div>
                 </div>
             </div>
@@ -86,7 +86,6 @@
         </div>
         {{-- Fin de Botones de Administradores --}}
     @else
-
         {{-- Contenido para los que no tienen ningún permiso de administración --}}
         <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-6">
@@ -109,10 +108,6 @@
 
     @endif
     
-
-
-
-
     <style>
         .card-footer{
             justify-content: center !important;

@@ -55,12 +55,8 @@
           <div class="col">
           <div class="form-group">
           <div class="form-group label-floating">
-            <!--
-              <label for="nuevo_reingreso">Nuevo/Reingreso: </label>
-              <input type="text" class="form-control" name="nuevo_reingreso"/>
-            -->
             <select class="form-control" name="nuevo_reingreso" id="nuevo_reingreso">
-              <option selected="true" disabled="disabled">Seleccione nuevo/reingreso</option>
+            <option value="" disabled selected hidden>---Seleccione Nuevo/Reingreso---</option>
               <option value="1">Nuevo</option>
               <option value="2">Reingreso</option>
             </select>
@@ -89,8 +85,8 @@
           <div class="col">
           <div class="form-group">
           <div class="form-group label-floating">
-                  <select class="form-control" name="estudiante_id" id="estudiante_id">
-                  <option selected="true" disabled="disabled">seleccione el estudiante</option>
+              <select class="form-control" name="estudiante_id" id="estudiante_id">
+              <option value="" disabled selected hidden>---Seleccione el estudiante---</option>
                   @foreach ($estudiantes as $estudiante)
                     <option value="{{ $estudiante['id'] }}">{{ $estudiante['p_nombre'] }} {{ $estudiante['s_nombre'] }} {{ $estudiante['p_apellido'] }} {{ $estudiante['s_apellido'] }}</option>
                   @endforeach
@@ -102,7 +98,7 @@
           <div class="form-group">
           <div class="form-group label-floating">
                 <select class="form-control" name="ciclo_id" id="ciclo_id">
-                <option selected="true" disabled="disabled">seleccione el ciclo</option>
+                <option value="" disabled selected hidden>---Seleccione ciclo---</option>
                   @foreach ($ciclos as $ciclo)
                     <option value="{{ $ciclo['id'] }}">{{ $ciclo['fecha_inicio'] }} - {{ $ciclo['fecha_fin'] }}</option>
                   @endforeach
@@ -114,7 +110,7 @@
           <div class="form-group">
           <div class="form-group label-floating">
               <select class="form-control" name="grado_id" id="grado_id">
-              <option selected="true" disabled="disabled">seleccione el grado</option>
+              <option value="" disabled selected hidden>---Seleccione Grado---</option>
                   @foreach ($grados as $grado)
                     <option value="{{ $grado['id'] }}">{{ $grado['grado'] }}</option>
                   @endforeach
@@ -126,7 +122,7 @@
           <div class="form-group">
           <div class="form-group label-floating">
                 <select class="form-control" name="seccion_id" id="seccion_id">
-                <option selected="true" disabled="disabled">seleccione la seccion</option>
+                <option value="" disabled selected hidden>---Seleccione una Seccion---</option>
                   @foreach ($secciones as $seccion)
                     <option value="{{ $seccion['id'] }}">{{ $seccion['seccion'] }} - {{ $seccion['grado_id'] }}</option>
                   @endforeach

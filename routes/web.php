@@ -223,6 +223,28 @@ Route::middleware(['auth'])->group(function(){
     Route::get('admin/bloques/{id}/edit', 'BloqueController@edit')->name('bloques.edit')
         ->middleware('permission:bloques.edit');
 
+    // Ciclos y bloques
+    Route::post('admin/ciclosbloques/store', 'CicloBloquesController@store')->name('ciclosbloques.store')
+        ->middleware('permission:bloques.create');
+
+    Route::get('admin/ciclosbloques', 'CicloBloquesController@index')->name('ciclosbloques.index')
+        ->middleware('permission:bloques.index');
+
+    Route::get('admin/ciclosbloques/create', 'CicloBloquesController@create')->name('ciclosbloques.create')
+        ->middleware('permission:ciclosbim.create');
+
+    Route::put('admin/ciclosbloques/{id}', 'CicloBloquesController@update')->name('ciclosbloques.update')
+        ->middleware('permission:bloques.edit');
+
+    Route::get('admin/ciclosbloques/{id}', 'CicloBloquesController@show')->name('ciclosbloques.show')
+        ->middleware('permission:bloques.show');
+
+    Route::delete('admin/ciclosbloques/{id}', 'CicloBloquesController@destroy')->name('ciclosbloques.destroy')
+        ->middleware('permission:bloques.destroy');
+
+    Route::get('admin/ciclosbloques/{id}/edit', 'CicloBloquesController@edit')->name('ciclosbloques.edit')
+        ->middleware('permission:bloques.edit');
+
     //Grados
     Route::post('admin/grados/store', 'GradoController@store')->name('grados.store')
         ->middleware('permission:grados.create');

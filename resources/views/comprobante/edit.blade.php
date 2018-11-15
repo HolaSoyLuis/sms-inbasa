@@ -109,9 +109,8 @@
                   @foreach ($empleados as $empleado)
                     @if($comproba->empleado_id == $empleado->id)
                       <option value="{{ $empleado['id'] }}" selected="true">{{ $empleado['p_nombre'] }} {{ $empleado['p_apellido'] }}</option>
-                      @elseif ($comproba->empleado_id != $empleado->id)
+                    @elseif ($comproba->empleado_id != $empleado->id)
                       <option value="{{ $empleado['id'] }}">{{ $empleado['p_nombre'] }} {{ $empleado['p_apellido'] }}</option>
-                    @endif
                     @endif
                   @endforeach
               </select>

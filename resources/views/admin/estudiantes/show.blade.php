@@ -8,13 +8,13 @@
         <div class="collapse navbar-collapse">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('empleados.index') }}">Lista de Empleados</a>
+              <a class="nav-link" href="{{ route('estudiantes.index') }}">Lista de Estudiantes</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('empleados.create') }}">Nuevo Empleado</a>
+              <a class="nav-link" href="{{ route('estudiantes.create') }}">Nuevo Estudiante</a>
             </li>
             <li class="nav-item">
-		          <a class="nav-link" href="{{ route('empleados.pdf') }}">Exportar PDF</a>
+		          <a class="nav-link" href="{{ route('estudiantes.pdf') }}">Exportar PDF</a>
 		        </li>
             <li class="nav-item active">
 		          <a class="nav-link" href="">lista de Detales</a>

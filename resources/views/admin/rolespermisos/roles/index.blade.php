@@ -40,9 +40,6 @@
               <td class="td-actions text-left">{{$rol->description}}</td>					
 							<td class="td-actions text-center">
 								<form method="post" action="">						
-									<a href="#" class="btn btn-info btn-sm" title="Ver">
-										<i class="material-icons">visibility</i>Ver
-									</a>
 									<a href="" class="btn btn-primary btn-sm" title="Editar">
 											<i class="material-icons">edit</i>Editar
 									</a>													

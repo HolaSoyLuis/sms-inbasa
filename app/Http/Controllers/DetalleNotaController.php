@@ -8,7 +8,9 @@ use App\TipoEvaluacion;
 use App\Estudiante;
 use App\Curso;
 use App\Nota;
-
+use App\Aspecto;
+use App\Bloque;
+ 
 class DetalleNotaController extends Controller
 {
     /**
@@ -18,8 +20,16 @@ class DetalleNotaController extends Controller
      */
     public function index()
     {
-        $notas = DetalleNota::all();
-        return view('docentes/notas/detalle_nota', compact('notas'));
+        $notas_detalle = DetalleNota::all();
+        $tipo_evaluaciones = TipoEvaluacion::all();
+        $estudiantes = Estudiante::all();
+        $cursos = Curso::all();
+        $notas = Nota::all();
+        $aspectos = Aspecto::all();
+        $bloques = Bloque::all();
+
+
+        return view('docentes/notas/detalle_nota', compact('notas_detalle','estudiantes','cursos','tipo_evaluaciones','notas','aspectos','bloques'));
     }
 
     /**
@@ -29,11 +39,13 @@ class DetalleNotaController extends Controller
      */
     public function create()
     {
-        $tipoEvaluaciones = TipoEvaluacion::all();
+        $tipo_evaluaciones = TipoEvaluacion::all();
         $estudiantes = Estudiante::all();
         $cursos = Curso::all();
         $notas = Nota::all();
-        return view("docentes/notas/detalle_nota_create")->with(compact('estudiantes','cursos','tipoEvaluaciones','notas')); 
+        $aspectos = Aspecto::all();
+        $bloques = Bloque::all();
+        return view("docentes/notas/detalle_nota_create")->with(compact('estudiantes','cursos','tipo_evaluaciones','notas','aspectos','bloques')); 
     }
 
     /**
@@ -45,9 +57,21 @@ class DetalleNotaController extends Controller
     public function store(Request $request)
     {
 
+          $request->validate([
+            'nota'=> 'required',
+            'nota_id'=> 'required',
+            'aspecto_id' => 'required',
+            'bloque_id'=> 'required',
+            'tipo_evaluacion_id'=> 'required',
+            'estudiante_id'=> 'required',
+            'curso_id'=> 'required',
+          ]);
+
         $detallenotas = new DetalleNota();
         $detallenotas->nota = $request->input('nota');
         $detallenotas->nota_id = $request->input('nota_id');
+        $detallenotas->aspecto_id = $request->input('aspecto_id');
+        $detallenotas->bloque_id  = $request->input('bloque_id');
         $detallenotas->tipo_evaluacion_id = $request->input('tipo_evaluacion_id'); 
         $detallenotas->estudiante_id = $request->input('estudiante_id'); 
         $detallenotas->curso_id = $request->input('curso_id'); 

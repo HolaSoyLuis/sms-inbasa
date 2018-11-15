@@ -14,14 +14,6 @@
 		          <a class="nav-link" href="{{ route('tipo_pago.create') }}">Nuevo tipo de pago</a>
 		        </li>
 		      </ul>
-				<form class="form-inline ml-auto">
-					<div class="form-group has-white">
-						<input type="text" class="form-control" placeholder="Buscar">
-					</div>
-					<button type="submit" class="btn btn-white btn-just-icon btn-round">
-							<i class="material-icons">search</i>
-					</button>
-				</form>
 		    </div>
 		  </div>
 		</nav>
@@ -30,26 +22,28 @@
 
 <div class="row">
 	<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+	<div class="card">
+			<div class="card-body">	
 		<div class="table-responsive">
-			<table id="datatable_table" class="table table-striped table-bordered table-condensed table-hover">
+			<table id="datatable_table" class="table table-condensed table-hover">
 				<thead>
-					<th>No</th>
-					<th>Tipo</th>
-					<th>Costo</th>
-					<th>Detalle</th>
-          <th>Accion</th>
+					<td>No</td>
+					<td>Tipo</td>
+					<td>Costo</td>
+					<td>Detalle</td>
+          <td>Accion</td>
 				</thead>
 				@foreach($tipopagos as $tipopago)
 				<tr>
-					<td>{{$tipopago->id}}</td>
-					<td>{{$tipopago->tipo}}</td>
-					<td>{{$tipopago->costo}}</td>
-					<td>{{$tipopago->detalle}}</td>
-					<td>
-            <a href="{{ route('tipo_pago.edit',$tipopago->id)}}">
-              <button class="btn btn-primary btn-sm" title="Editar"><i class="material-icons">edit</i>Editar</button>
-            </a>
-            <form action="{{ route('tipo_pago.destroy', $tipopago->id)}}" method="post">
+					<td class="td-actions text-left">{{$tipopago->id}}</td>
+					<td class="td-actions text-left">{{$tipopago->tipo}}</td>
+					<td class="td-actions text-left">{{$tipopago->costo}}</td>
+					<td class="td-actions text-left">{{$tipopago->detalle}}</td>
+					<td class="td-actions text-center">
+						<form action="{{ route('tipo_pago.destroy', $tipopago->id)}}" method="post">
+							<a href="{{ route('tipo_pago.edit',$tipopago->id)}}">
+								<button class="btn btn-primary btn-sm" title="Editar"><i class="material-icons">edit</i>Editar</button>
+							</a>            
               @csrf
               @method('DELETE')
               <button class="btn btn-danger btn-sm" title="Eliminar">
@@ -62,6 +56,8 @@
 				@endforeach
 			</table>
 		</div>
+	</div>
+	</div>
 	</div>
 </div>
 @endsection
