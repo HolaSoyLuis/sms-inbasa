@@ -309,7 +309,15 @@
                                         </li>
                                     @endif
 
-
+                                    @if(Auth::check() && Auth::user()->can('tipo_pago.index'))
+                                        <li class="nav-item ">
+                                            <a class="nav-link" href="{{ route('comprobante.index') }}">
+                                              <span class="sidebar-mini"> CO </span>
+                                              <span class="sidebar-normal"> Comprobante </span>
+                                            </a>
+                                        </li>
+                                    @endif
+                                    
                                     @if(Auth::check() && Auth::user()->can('detalle_comprobante.index'))
                                         <li class="nav-item ">
                                             <a class="nav-link" href="{{ route('detalle_comprobante.index') }}">
@@ -328,14 +336,6 @@
                                         </li>
                                     @endif
 
-                                    @if(Auth::check() && Auth::user()->can('tipo_pago.index'))
-                                        <li class="nav-item ">
-                                            <a class="nav-link" href="{{ route('comprobante.index') }}">
-                                              <span class="sidebar-mini"> CO </span>
-                                              <span class="sidebar-normal"> Comprobante </span>
-                                            </a>
-                                        </li>
-                                    @endif
                                 </ul>
                             </div>
                         </li>

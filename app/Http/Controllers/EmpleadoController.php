@@ -20,7 +20,8 @@ class EmpleadoController extends Controller
     {
         $empleados = Empleado::all();
         $users = User::all();
-        return view('admin/personal/personal')->with(compact('empleados', 'users'));
+        $cargos = Cargo::all();
+        return view('admin/personal/personal')->with(compact('empleados', 'users', 'cargos'));
     }
 
     /**
@@ -97,8 +98,7 @@ class EmpleadoController extends Controller
     public function update(EmpleadoRequest $request, $id)
     {        
         $empleados = Empleado::find($id);
-        $empleados->fill($request->all())->save();
-        
+        $empleados->fill($request->all())->save();        
         $request->session()->flash('alert-success', 'Empleado Actualizado');
         return redirect()->route('empleados.index'); 
     }

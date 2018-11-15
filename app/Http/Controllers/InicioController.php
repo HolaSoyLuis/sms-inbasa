@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Caffeinated\Shinobi\Models\Permission;
+use App\Empleado;
+use App\Encargado;
+use App\Estudiante;
 
 class InicioController extends Controller
 {
@@ -25,6 +28,10 @@ class InicioController extends Controller
      */
     public function index()
     {
-        return view('inicio.inicio');
+        $empleados = Empleado::all()->count();
+        $docentes = Empleado::where('cargo_id', '=', 2)->count();
+        $encargados = Encargado::all()->count();
+        $estudiantes = Estudiante::all()->count();
+        return view('inicio.inicio')->with(compact('empleados', 'docentes', 'encargados', 'estudiantes'));
     }
 }
