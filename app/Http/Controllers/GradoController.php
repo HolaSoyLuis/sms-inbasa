@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Grado;
+use App\Jornada;
 
 class GradoController extends Controller
 {
@@ -26,7 +27,8 @@ class GradoController extends Controller
      */
     public function create()
     {
-        return view("admin/grados_secciones/grados/create");
+        $jornadas = Jornada::all();
+        return view("admin/grados_secciones/grados/create")->with(compact('jornadas'));
     }
 
     /**
@@ -38,9 +40,9 @@ class GradoController extends Controller
     public function store(Request $request)
     {
       $grados = new Grado();
-      $grados->grado = $request->input('grado');           
+      $grados->grado = $request->input('grado');
+      $grados->jornada_id = $request->input('jornada_id');           
       $grados->save();
-
       return redirect('admin/grados');
     }
 

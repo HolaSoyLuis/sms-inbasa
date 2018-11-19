@@ -38,6 +38,8 @@ class SeccionController extends Controller
     {
         $secciones = new Seccion();
         $secciones->seccion = $request->input('seccion');
+        $secciones->estado = $request->input('estado');
+        $secciones->grado_id = $request->input('grado_id');
         $secciones->save();        
         return redirect('admin/secciones');
     }

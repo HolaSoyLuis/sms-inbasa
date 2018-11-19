@@ -38,7 +38,11 @@ class BloqueController extends Controller
      */
     public function store(BloqueRequest $request)
     {
-        $bloques = Bloque::create($request->all());
+        $bloques = new Bloque();
+        $bloques->bloque = $request->input('bloque');
+        $bloques->nota_min = $request->input('nota_min');
+        $bloques->nota_max = $request->input('nota_max');
+        $bloques->save();      
         $request->session()->flash('alert-success', 'Bloque Creado');
         return redirect()->route('bloques.index');                       
     }
