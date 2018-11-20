@@ -10,9 +10,9 @@
 		        <li class="nav-item">
 		          <a class="nav-link" href="{{ route('grados.index') }}">Lista de Grados</a>
 		        </li>
-		        <li class="nav-item">
+		        <!-- <li class="nav-item">
 		          <a class="nav-link" href="{{ route('grados.create') }}">Nuevo ciclo</a>
-		        </li>
+		        </li> -->
 		        <li class="nav-item">
 		          <a class="nav-link" href="{{ route('secciones.index') }}">Lista de Secciones</a>
 		        </li>
@@ -38,7 +38,7 @@
 						<div class="form-group">
 							<div class="form-group label-floating">								
 								<label for="seccion">Sección</label>
-								<input type="text" class="form-control" name="seccion" input id="seccion"></input>
+								<input type="text" class="form-control" name="seccion" input id="seccion">
 								@if ($errors->has('seccion'))
 										<span class="invalid-feedback" role="alert">
 												<strong>{{ $errors->first('seccion') }}</strong>
@@ -46,7 +46,31 @@
 								@endif					
 							</div>
 						</div>
-																									
+
+						<div class="form-group">
+							<div class="form-group label-floating">								
+								<label for="estado">Estado</label>
+								<input type="text" class="form-control" name="estado" input id="estado">
+								@if ($errors->has('estado'))
+										<span class="invalid-feedback" role="alert">
+												<strong>{{ $errors->first('estado') }}</strong>
+										</span>
+								@endif					
+							</div>
+						</div>
+
+						<div class="form-group">
+							<div class="form-group label-floating">								
+								<label for="grado_id">Grado</label>
+								<input type="text" class="form-control" name="grado_id" input id="grado_id">
+								@if ($errors->has('grado_id'))
+										<span class="invalid-feedback" role="alert">
+												<strong>{{ $errors->first('grado_id') }}</strong>
+										</span>
+								@endif					
+							</div>
+						</div>
+
 						<div class="form-group">
 							<button class="btn btn-primary" type="submit">Guardar</button>				
 						</div>
