@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\ComprobanteRequest;
+
 use App\Comprobante;
 use App\Empleado;
 use App\FormaPago;
@@ -142,5 +144,18 @@ class ComprobanteController extends Controller
     public function destroy($id)
     {
         //
+        $c = Comprobante::find($id);
+        $c->delete();
+        return redirect('/comprobante')->with('succes', 'Item eliminado :c');
+    }
+
+    public function pdf($id)
+    {
+        $compro = Comprobante::find($id);
+        $empleados = Empleado::all();
+        $formapagos = FormaPago::all();
+        $encargados = Encargado::all();
+        $pdf = \PDF::loadView('comprobante/pdf', ['compro'=>$compro,'empleados'=>$empleados,'formapagos'=>$formapagos,'encargados'=>$encargados])->setPaper('a4', 'landscape');
+        return $pdf->download('file.pdf');
     }
 }
