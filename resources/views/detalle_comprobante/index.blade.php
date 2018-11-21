@@ -30,26 +30,26 @@
     <thead>
         <tr>
           <td></td>
-          <td>Cantidad</td>
-          <td>Costo</td>
-          <td>Mes</td>
-          <td>Comprobante</td>
-          <td>Asignacion</td>
-          <td>Tipo de pago</td>
+          <td class="td-actions text-center">Cantidad</td>
+          <td class="td-actions text-center">Costo</td>
+          <td class="td-actions text-center">Mes</td>
+          <td class="td-actions text-center">Comprobante</td>
+          <td class="td-actions text-center">Asignacion</td>
+          <td class="td-actions text-center">Tipo de pago</td>
           <td>Accion</td>
         </tr>
     </thead>
     <tbody>
         @foreach($detallecomprobantes as $detallecomprobante)
         <tr>
-            <td>{{$detallecomprobante->id}}</td>
-            <td>{{$detallecomprobante->cantidad}}</td>
-            <td>{{$detallecomprobante->costo}}</td>
-            <td>{{$detallecomprobante->mes}}</td>
+            <td class="td-actions text-center">{{$detallecomprobante->id}}</td>
+            <td class="td-actions text-center">{{$detallecomprobante->cantidad}}</td>
+            <td class="td-actions text-center">{{$detallecomprobante->costo}}</td>
+            <td class="td-actions text-center">{{$detallecomprobante->mes}}</td>
 
             @foreach($comprobantes as $comprobante)
               @if($comprobante->id == $detallecomprobante->comprobante_id)
-                <td>No. Serie:{{ $comprobante['serie']}} Total:{{ $comprobante['total']}}</td>
+                <td class="td-actions text-center">No. Serie:{{ $comprobante['serie']}} Total:{{ $comprobante['total']}}</td>
               @endif
             @endforeach
 
@@ -57,7 +57,7 @@
               @if($asignacion->id == $detallecomprobante->asignacion_id)
                 @foreach($estudiantes as $estudiante)
                   @if($estudiante->id == $asignacion->estudiante_id)
-                    <td>Fecha:{{ $asignacion['fecha_asignacion'] }} Estudiante:{{ $estudiante['p_nombre'] }} {{ $estudiante['s_nombre'] }} {{ $estudiante['p_apellido'] }} {{ $estudiante['s_apellido'] }}</td>
+                    <td class="td-actions text-center">Fecha:{{ $asignacion['fecha_asignacion'] }} Estudiante:{{ $estudiante['p_nombre'] }} {{ $estudiante['s_nombre'] }} {{ $estudiante['p_apellido'] }} {{ $estudiante['s_apellido'] }}</td>
                   @endif
                 @endforeach
               @endif
@@ -65,17 +65,22 @@
 
             @foreach($tipopagos as $tipopago)
               @if($tipopago->id == $detallecomprobante->tipo_pago_id)
-                <td>{{ $tipopago['tipo'] }}</td>
+                <td class="td-actions text-center">{{ $tipopago['tipo'] }}</td>
               @endif
             @endforeach
 
-            <td>
-              <a href="{{ route('detalle_comprobante.edit',$detallecomprobante->id)}}" class="btn btn-primary btn-sm" title="Editar">Editar</a>
-              <a href="{{ route('detalle_comprobante.show',$detallecomprobante->id)}}" class="btn btn-primary btn-sm" title="Mostrar">Mostrar</a>
+            <td class="td-actions text-center">
                 <form action="{{ route('detalle_comprobante.destroy', $detallecomprobante->id)}}" method="post">
+                  <a href="{{ route('detalle_comprobante.pdf', $detallecomprobante->id)}}" class="btn btn-primary btn-sm" title="Print">
+						      <i class="material-icons">print</i></a>
+                  <a href="{{ route('detalle_comprobante.show',$detallecomprobante->id)}}" class="btn btn-primary btn-sm" title="Mostrar">
+                  <i class="material-icons">visibility</i></a>
+                  <a href="{{ route('detalle_comprobante.edit',$detallecomprobante->id)}}" class="btn btn-primary btn-sm" title="Editar">
+                  <i class="material-icons">edit</i>Editar</a>
                   @csrf
                   @method('DELETE')
-                  <button class="btn btn-danger btn-sm" title="Eliminar" type="submit">Eliminar</button>
+                  <button class="btn btn-danger btn-sm" title="Eliminar" type="submit">
+                  <i class="material-icons">delete</i>Eliminar</button>
                 </form>
             </td>
         </tr>

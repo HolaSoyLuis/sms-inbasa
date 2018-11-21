@@ -530,12 +530,15 @@ Route::middleware(['auth'])->group(function(){
 
 
     Route::resource('/asignacion', 'AsignacionController');
+
     Route::resource('/detalle_comprobante', 'DetalleComprobanteController');
+    Route::get('/detalle_comprobante/pdf/{id}', 'DetalleComprobanteController@pdf')->name('detalle_comprobante.pdf');
+
     Route::resource('/tipo_pago', 'TipoPagoController');
 
     Route::resource('/comprobante', 'ComprobanteController');
-    //Route::get('admin/comprobante/pdf', 'ComprobanteController@createPDF')->name('comprobante.pdf')->middleware('permission:comprobante.edit');
     Route::get('/comprobante/pdf/{id}', 'ComprobanteController@pdf')->name('comprobante.pdf');
+
     Route::resource('/detalle_nota','DetalleNotaController');
     //Route::resource('/nota','NotaController');
 

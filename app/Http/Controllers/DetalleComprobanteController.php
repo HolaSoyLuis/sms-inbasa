@@ -153,4 +153,16 @@ class DetalleComprobanteController extends Controller
 
         return redirect('/detalle_comprobante')->with('success', 'Detalle de comprobante de pogo eliminado :D');
     }
+
+    public function pdf($id)
+    {
+        $detallecomprobante = DetalleComprobante::find($id);
+        $asignaciones = Asignacion::all();
+        $comprobantes = Comprobante::all();
+        $tipopagos = TipoPago::all();
+        $estudiantes = Estudiante::all();
+
+        $pdf = \PDF::loadView('detalle_comprobante/pdf', ['detallecomprobante'=>$detallecomprobante,'asignaciones'=>$asignaciones,'tipopagos'=>$tipopagos,'comprobantes'=>$comprobantes,'estudiantes'=>$estudiantes])->setPaper('a4', 'landscape');
+        return $pdf->download('file.pdf');
+    }
 }
