@@ -141,7 +141,7 @@
             <h4 class="card-title">Luis Velásquez</h4>
             <h6 class="category text-muted">WEB DEVELOPER</h6>
             <p class="card-description">
-              Desarrollador Web.
+              Desktop and web developer.
             </p>
             <div class="footer">
               <div class="d-flex justify-content-center">
